@@ -202,4 +202,4 @@ document.addEventListener('DOMContentLoaded', () => {
   DonutChart.render('donut-chart', 87);
 });
 
-window.KDPA_Dashboard = { AttendanceChart, MiniCalendar, DonutChart };
+window.Artiste_Dashboard = window.KDPA_Dashboard = { AttendanceChart, MiniCalendar, DonutChart };

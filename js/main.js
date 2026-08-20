@@ -242,4 +242,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Expose globally
-window.KDPA = { ThemeManager, RTLManager, Toast };
+window.Artiste = window.ArtisteAcademy = window.KDPA = { ThemeManager, RTLManager, Toast };

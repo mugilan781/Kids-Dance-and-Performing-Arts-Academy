@@ -48,16 +48,17 @@
 }
 .sidebar-logo-name {
   font-family: var(--font-display);
-  font-size: var(--text-sm);
+  font-size: 1.18rem;
   font-weight: var(--weight-bold);
   color: var(--text-primary);
-  line-height: 1.2;
+  line-height: 1.15;
 }
 .sidebar-logo-sub {
   font-size: 0.65rem;
   color: var(--rose-gold);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  margin-top: 3px;
 }
 
 .sidebar-user {

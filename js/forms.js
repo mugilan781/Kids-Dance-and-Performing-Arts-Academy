@@ -101,7 +101,7 @@ const FormValidation = (() => {
 
   function handleFormSuccess(form) {
     // Default success — show toast
-    window.KDPA?.Toast?.show('Message sent successfully! We\'ll be in touch soon.', 'success');
+    window.Artiste?.Toast?.show('Message sent successfully! We\'ll be in touch soon.', 'success');
     form.reset();
     form.querySelectorAll('[data-validate]').forEach(f => clearState(f));
   }
@@ -227,4 +227,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initPasswordToggle();
 });
 
-window.KDPA_Forms = { FormValidation, MultiStepForm };
+window.Artiste_Forms = window.KDPA_Forms = { FormValidation, MultiStepForm };

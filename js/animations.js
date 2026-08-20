@@ -316,4 +316,4 @@ document.addEventListener('DOMContentLoaded', () => {
   FAQ.init();
 });
 
-window.KDPA_Anim = { ScrollReveal, CounterAnimation, Lightbox, FAQ };
+window.Artiste_Anim = window.KDPA_Anim = { ScrollReveal, CounterAnimation, Lightbox, FAQ };

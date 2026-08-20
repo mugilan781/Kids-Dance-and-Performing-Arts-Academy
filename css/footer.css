@@ -48,16 +48,17 @@
 }
 .footer-brand .logo-name {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
+  font-size: 1.35rem;
   font-weight: var(--weight-bold);
   color: #fff;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 .footer-brand .logo-sub {
-  font-size: var(--text-xs);
+  font-size: 0.68rem;
   color: var(--champagne);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  margin-top: 4px;
 }
 
 .footer-desc {
