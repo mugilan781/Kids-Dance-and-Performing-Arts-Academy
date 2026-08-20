@@ -25,7 +25,7 @@
       align-items: center;
       justify-content: center;
       padding: var(--space-6);
-      background: #FBF7F1;
+      background: var(--bg-primary);
       overflow-x: hidden;
     }
     .signup-glows {
@@ -61,7 +61,7 @@
       z-index: 1;
       width: 100%;
       max-width: 420px;
-      background: #ffffff;
+      background: var(--bg-card);
       border-radius: 28px;
       box-shadow: var(--shadow-xl);
       padding: var(--space-10);
@@ -99,7 +99,7 @@
       font-family: var(--font-display);
       font-size: 1.2rem;
       font-weight: var(--weight-bold);
-      color: var(--charcoal);
+      color: var(--text-primary);
       letter-spacing: 0.01em;
     }
 
@@ -108,7 +108,7 @@
       font-family: var(--font-display);
       font-size: clamp(1.6rem, 4vw, 1.9rem);
       font-weight: var(--weight-black);
-      color: var(--charcoal);
+      color: var(--text-primary);
       text-align: center;
       margin-bottom: var(--space-2);
     }
@@ -130,12 +130,12 @@
       margin-bottom: var(--space-2);
     }
     .signup-card .form-control {
-      background: #ffffff;
-      border: 1px solid rgba(84, 36, 95, 0.18);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: 13px;
       padding: 0.9375rem 1.125rem;
       font-size: var(--text-base);
-      color: var(--charcoal);
+      color: var(--text-primary);
     }
     .signup-card .form-control:focus {
       border-color: var(--orchid);
@@ -204,7 +204,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: rgba(84, 36, 95, 0.12);
+      background: var(--border-color);
     }
     .signup-divider span {
       font-size: var(--text-xs);
@@ -221,12 +221,12 @@
       justify-content: center;
       gap: var(--space-2);
       padding: 0.875rem 1rem;
-      background: #ffffff;
-      border: 1.5px solid rgba(84, 36, 95, 0.3);
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
       border-radius: var(--radius-full);
       font-size: var(--text-sm);
       font-weight: var(--weight-semi);
-      color: var(--charcoal);
+      color: var(--text-primary);
       cursor: pointer;
       transition: all var(--duration-fast);
     }
@@ -249,6 +249,29 @@
       text-decoration: none;
     }
     .signup-footer a:hover { text-decoration: underline; }
+
+    /* Dark mode — follows the saved site theme */
+    [data-theme="dark"] .signup-glow { opacity: 0.5; }
+    [data-theme="dark"] .signup-brand-logo {
+      background: rgba(217, 203, 232, 0.1);
+      border-color: rgba(217, 203, 232, 0.2);
+    }
+    [data-theme="dark"] .signup-card .form-control:focus {
+      box-shadow: 0 0 0 4px rgba(217, 203, 232, 0.12);
+    }
+    [data-theme="dark"] .signup-social-btn {
+      border-color: rgba(217, 203, 232, 0.28);
+      background: var(--bg-card);
+    }
+    [data-theme="dark"] .signup-social-btn:hover {
+      border-color: var(--champagne);
+      background: rgba(217, 203, 232, 0.08);
+    }
+    [data-theme="dark"] .signup-terms a,
+    [data-theme="dark"] .signup-footer a {
+      color: var(--champagne);
+    }
+    [data-theme="dark"] .signup-brand:hover .signup-brand-name { color: var(--champagne); }
 
     /* Responsive */
     @media (max-width: 480px) {
@@ -392,10 +415,6 @@ function handleSignupSuccess(form) {
   window.Artiste.Toast.show('Account created! Welcome to Artiste Academy.', 'success');
   setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
 }
-// Force light theme for this auth page (matches the reference design)
-document.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.setAttribute('data-theme', 'light');
-});
 </script>
 </body>
 </html>
