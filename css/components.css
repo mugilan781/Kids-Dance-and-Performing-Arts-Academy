@@ -1304,3 +1304,150 @@ blockquote {
   border: 0;
 }
 
+/* ═══════════════════════════════════════════════
+   SVG ICON SYSTEM (Professional Vector Support)
+   ═══════════════════════════════════════════════ */
+.icon-svg {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.15em;
+  stroke: currentColor;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast), color var(--duration-fast);
+}
+.icon-svg.fill-current {
+  fill: currentColor;
+}
+.icon-svg-sm { width: 1rem; height: 1rem; }
+.icon-svg-md { width: 1.25rem; height: 1.25rem; }
+.icon-svg-lg { width: 1.5rem; height: 1.5rem; }
+.icon-svg-xl { width: 2rem; height: 2rem; }
+.icon-svg-2xl { width: 2.75rem; height: 2.75rem; }
+.icon-svg-3xl { width: 3.5rem; height: 3.5rem; }
+
+/* Logo vector */
+.logo-mark-svg {
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+.nav-logo-icon,
+.sidebar-logo-icon,
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stars rating */
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.star-icon {
+  width: 18px;
+  height: 18px;
+  fill: #F59E0B;
+  color: #F59E0B;
+  flex-shrink: 0;
+}
+
+/* Social link icons */
+.social-link svg,
+.social-link.dark svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Checkmarks and Crosses in lists */
+.check svg,
+.check-svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 3;
+}
+.cross-svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.5;
+}
+
+/* Section tags with vector icons */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.section-tag .icon-svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Drawer links with icons */
+.drawer-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.drawer-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--orchid);
+  flex-shrink: 0;
+}
+.drawer-link:hover .drawer-link-icon {
+  color: var(--rose-gold);
+}
+
+/* Quick nav and value icons */
+.quick-nav-icon,
+.value-icon,
+.award-icon,
+.program-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.quick-nav-icon svg {
+  width: 2rem;
+  height: 2rem;
+  color: var(--orchid);
+}
+.value-icon svg,
+.award-icon svg {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--orchid);
+}
+
+/* Footer contact icons */
+.footer-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.08);
+  color: var(--champagne);
+  flex-shrink: 0;
+}
+.footer-contact-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Form error warning icon */
+.form-err-icon {
+  width: 14px;
+  height: 14px;
+  stroke: #dc2626;
+}
+
+

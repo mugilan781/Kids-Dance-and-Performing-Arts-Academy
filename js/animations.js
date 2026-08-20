@@ -175,7 +175,7 @@ const Lightbox = (() => {
     overlay.setAttribute('aria-label', 'Image viewer');
     overlay.innerHTML = `
       <div class="lightbox-inner" role="document">
-        <button class="lightbox-close modal-close" aria-label="Close lightbox">✕</button>
+        <button class="lightbox-close modal-close" aria-label="Close lightbox"><svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         <button class="lightbox-prev hero-arrow" aria-label="Previous image">&#8592;</button>
         <img class="lightbox-img" src="" alt="" />
         <button class="lightbox-next hero-arrow" aria-label="Next image">&#8594;</button>

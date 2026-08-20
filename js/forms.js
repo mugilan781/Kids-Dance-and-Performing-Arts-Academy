@@ -31,7 +31,7 @@ const FormValidation = (() => {
       errEl.setAttribute('role', 'alert');
       field.parentElement.appendChild(errEl);
     }
-    errEl.innerHTML = `<span>⚠</span> ${message}`;
+    errEl.innerHTML = `<svg class="icon-svg form-err-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> ${message}`;
     errEl.classList.add('visible');
   }
 
@@ -101,7 +101,7 @@ const FormValidation = (() => {
 
   function handleFormSuccess(form) {
     // Default success — show toast
-    window.KDPA?.Toast?.show('Message sent successfully! We\'ll be in touch soon. 🎭', 'success');
+    window.KDPA?.Toast?.show('Message sent successfully! We\'ll be in touch soon.', 'success');
     form.reset();
     form.querySelectorAll('[data-validate]').forEach(f => clearState(f));
   }
@@ -178,7 +178,11 @@ const MultiStepForm = (() => {
         // Show success
         form.innerHTML = `
           <div style="text-align:center; padding: 3rem; animation: scaleIn 0.5s var(--ease-spring);">
-            <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
+            <div style="width:72px;height:72px;border-radius:50%;background:rgba(84,36,95,0.1);color:var(--orchid);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
+              <svg class="icon-svg" style="width:36px;height:36px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
             <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem; color: var(--orchid);">
               Enrollment Submitted!
             </h3>
@@ -198,15 +202,20 @@ const MultiStepForm = (() => {
 
 // ── Password Toggle ───────────────────────────────────────────
 function initPasswordToggle() {
+  const eyeSvg = `<svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`;
+  const eyeOffSvg = `<svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg>`;
+
   document.querySelectorAll('[data-password-toggle]').forEach(btn => {
     const targetId = btn.dataset.passwordToggle;
     const field = document.getElementById(targetId);
     if (!field) return;
 
+    btn.innerHTML = eyeSvg;
+
     btn.addEventListener('click', () => {
       const isPassword = field.type === 'password';
       field.type = isPassword ? 'text' : 'password';
-      btn.innerHTML = isPassword ? '🙈' : '👁';
+      btn.innerHTML = isPassword ? eyeOffSvg : eyeSvg;
       btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
     });
   });

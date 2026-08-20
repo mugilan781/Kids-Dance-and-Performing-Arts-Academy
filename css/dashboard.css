@@ -128,7 +128,19 @@
   background: var(--orchid);
   border-radius: 0 var(--radius-full) var(--radius-full) 0;
 }
-.sidebar-link-icon { font-size: 1.1rem; flex-shrink: 0; }
+.sidebar-link-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sidebar-link-icon svg,
+.sidebar-link svg.icon-svg {
+  width: 18px;
+  height: 18px;
+}
 .sidebar-badge {
   margin-left: auto;
   background: var(--orchid);
@@ -236,6 +248,8 @@
   font-size: 1.5rem;
   flex-shrink: 0;
 }
+.kpi-icon svg { width: 24px; height: 24px; }
+.enrollment-icon svg { width: 26px; height: 26px; }
 .kpi-icon.orchid   { background: rgba(84,36,95,0.1);   color: var(--orchid); }
 .kpi-icon.rose     { background: rgba(199,139,155,0.15); color: var(--rose-gold); }
 .kpi-icon.champagne{ background: rgba(231,207,167,0.3);  color: #8a6a3a; }
