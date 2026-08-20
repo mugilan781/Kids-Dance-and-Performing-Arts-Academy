@@ -52,7 +52,7 @@
 }
 .sidebar-logo-sub {
   font-size: 0.65rem;
-  color: var(--rose-gold);
+  color: var(--rose-deep);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-top: 3px;
@@ -237,8 +237,8 @@
   font-weight: var(--weight-semi);
   display: flex; align-items: center; gap: 3px;
 }
-.kpi-change.up { color: #16a34a; }
-.kpi-change.down { color: #dc2626; }
+.kpi-change.up { color: #15803d; }
+.kpi-change.down { color: #b91c1c; }
 .kpi-icon {
   width: 52px; height: 52px;
   border-radius: var(--radius-lg);
@@ -249,9 +249,9 @@
 .kpi-icon svg { width: 24px; height: 24px; }
 .enrollment-icon svg { width: 26px; height: 26px; }
 .kpi-icon.orchid   { background: rgba(84,36,95,0.1);   color: var(--orchid); }
-.kpi-icon.rose     { background: rgba(199,139,155,0.15); color: var(--rose-gold); }
-.kpi-icon.champagne{ background: rgba(231,207,167,0.3);  color: #8a6a3a; }
-.kpi-icon.lavender { background: rgba(217,203,232,0.4);  color: var(--orchid-light); }
+.kpi-icon.rose     { background: rgba(199,139,155,0.15); color: var(--rose-deep); }
+.kpi-icon.champagne{ background: rgba(231,207,167,0.3);  color: #6E5428; }
+.kpi-icon.lavender { background: rgba(217,203,232,0.4);  color: var(--orchid); }
 
 /* ── Dashboard Widget Cards ────────────── */
 .widget-card {

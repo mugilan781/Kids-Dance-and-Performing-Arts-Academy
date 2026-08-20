@@ -10,6 +10,7 @@
   --orchid-light:  #7a3d8a;
   --rose-gold:     #C78B9B;
   --rose-gold-lt:  #d9a8b5;
+  --rose-deep:     #9A5B6F;
   --champagne:     #E7CFA7;
   --champagne-lt:  #f2e4c8;
   --lavender:      #D9CBE8;
@@ -130,6 +131,7 @@
 
 /* ── Dark Mode ──────────────────────────────── */
 [data-theme="dark"] {
+  --rose-deep:     #9A5B6F;
   --bg-primary:    #1a1520;
   --bg-secondary:  #221c28;
   --bg-card:       #2a2232;
