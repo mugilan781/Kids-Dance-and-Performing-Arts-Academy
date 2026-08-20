@@ -39,6 +39,18 @@
   background: var(--champagne);
   color: var(--orchid);
 }
+[data-theme="dark"] .contact-icon-box {
+  background: rgba(217, 203, 232, 0.14);
+  color: var(--champagne);
+  border: 1px solid rgba(217, 203, 232, 0.2);
+}
+[data-theme="dark"] .contact-item:hover .contact-icon-box {
+  background: var(--champagne);
+  color: var(--orchid);
+}
+[data-theme="dark"] .find-us-icon {
+  color: var(--champagne);
+}
 [data-theme="dark"] .timeline-year {
   color: var(--champagne);
 }
