@@ -27,11 +27,12 @@
       box-shadow: var(--shadow-xl);
       margin-bottom: var(--space-12);
     }
-    .blog-hero-img {
+.blog-hero-img {
       aspect-ratio: 4/3;
       overflow: hidden;
+      align-self: stretch;
     }
-    .blog-hero-img img { width:100%;height:100%;object-fit:cover;transition:transform var(--duration-slow) var(--ease-out); }
+    .blog-hero-img img { display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--duration-slow) var(--ease-out); }
     .blog-hero-post:hover .blog-hero-img img { transform:scale(1.04); }
     .blog-hero-body {
       background: var(--bg-card);
@@ -42,6 +43,8 @@
     }
     .blog-cat-tag {
       display: inline-block;
+      align-self: flex-start;
+      width: fit-content;
       padding: 4px 12px;
       background: rgba(84,36,95,0.1);
       color: var(--orchid);
@@ -72,13 +75,15 @@
     .blog-meta-sep { opacity: 0.4; }
     .blog-excerpt { color: var(--text-secondary); line-height: var(--leading-loose); margin-bottom: var(--space-6); }
 
-    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); }
-    .blog-card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-card); transition: transform var(--duration-base), box-shadow var(--duration-base); }
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); }
+    .blog-card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-card); transition: transform var(--duration-base), box-shadow var(--duration-base); display: flex; flex-direction: column; }
     .blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); }
     .blog-card-img { aspect-ratio: 16/9; overflow: hidden; position: relative; }
-    .blog-card-img img { width:100%;height:100%;object-fit:cover;transition:transform var(--duration-slow); }
+    .blog-card-img img { display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--duration-slow); }
     .blog-card:hover .blog-card-img img { transform: scale(1.06); }
-    .blog-card-body { padding: var(--space-6); }
+    .blog-card-body { padding: var(--space-6); display: flex; flex-direction: column; flex: 1; }
+    .blog-card-body .blog-cat-tag { align-self: flex-start; }
+    .blog-card .btn { align-self: flex-start; margin-top: auto; }
     .blog-card-title { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-3); line-height: 1.3; }
     .blog-card-title a { color: var(--text-primary); text-decoration: none; }
     .blog-card-title a:hover { color: var(--orchid); }
@@ -199,7 +204,7 @@
       <div class="blog-hero-body">
         <span class="blog-cat-tag">Featured • Dance Education</span>
         <h3 class="blog-hero-title">
-          <a href="blog-details.html">Why Classical Dance is the Best Foundation for Every Child's Arts Journey</a>
+          <a href="blog-details.html?post=classical">Why Classical Dance is the Best Foundation for Every Child's Arts Journey</a>
         </h3>
         <div class="blog-meta">
           <span style="display:inline-flex;align-items:center;gap:4px;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> November 20, 2025</span>
@@ -208,8 +213,8 @@
           <span class="blog-meta-sep">•</span>
           <span style="display:inline-flex;align-items:center;gap:4px;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 8 min read</span>
         </div>
-        <p class="blog-excerpt">Classical dance teaches far more than steps — it builds discipline, body awareness, storytelling ability and a profound connection to cultural heritage. Here's why we believe every child should experience it...</p>
-        <a href="blog-details.html" class="btn btn-primary">Read Full Article <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+<p class="blog-excerpt">Classical dance teaches far more than steps — it builds discipline, body awareness, storytelling ability and a profound connection to cultural heritage. Here's why we believe every child should experience it...</p>
+        <a href="blog-details.html?post=classical" class="btn btn-primary">Read Full Article <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
       </div>
     </div>
   </div>
@@ -240,10 +245,10 @@
         </div>
         <div class="blog-card-body">
           <span class="blog-cat-tag">Ballet</span>
-          <h3 class="blog-card-title"><a href="blog-details.html">The 7 Benefits of Ballet Training for Children Aged 3–10</a></h3>
+<h3 class="blog-card-title"><a href="blog-details.html?post=ballet">The 7 Benefits of Ballet Training for Children Aged 3–10</a></h3>
           <div class="blog-meta"><span>Nov 15, 2025</span><span class="blog-meta-sep">•</span><span>5 min</span></div>
           <p class="blog-card-excerpt">Ballet develops posture, coordination, musicality and self-discipline in ways no other activity quite matches...</p>
-          <a href="blog-details.html" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+          <a href="blog-details.html?post=ballet" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
       </article>
 
@@ -253,10 +258,10 @@
         </div>
         <div class="blog-card-body">
           <span class="blog-cat-tag">For Parents</span>
-          <h3 class="blog-card-title"><a href="blog-details.html">How to Support Your Child's Performing Arts Journey Without Adding Pressure</a></h3>
+<h3 class="blog-card-title"><a href="blog-details.html?post=parents">How to Support Your Child's Performing Arts Journey Without Adding Pressure</a></h3>
           <div class="blog-meta"><span>Nov 10, 2025</span><span class="blog-meta-sep">•</span><span>6 min</span></div>
           <p class="blog-card-excerpt">Your role as a parent at performances, rehearsals and home practice — finding the perfect balance...</p>
-          <a href="blog-details.html" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+          <a href="blog-details.html?post=parents" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
       </article>
 
@@ -266,10 +271,10 @@
         </div>
         <div class="blog-card-body">
           <span class="blog-cat-tag">Hip-Hop</span>
-          <h3 class="blog-card-title"><a href="blog-details.html">Hip-Hop Dance: More Than Music — It's a Language</a></h3>
+<h3 class="blog-card-title"><a href="blog-details.html?post=hiphop">Hip-Hop Dance: More Than Music — It's a Language</a></h3>
           <div class="blog-meta"><span>Nov 5, 2025</span><span class="blog-meta-sep">•</span><span>4 min</span></div>
           <p class="blog-card-excerpt">Breaking, popping and locking teach children rhythm, creativity and self-expression in a uniquely urban artform...</p>
-          <a href="blog-details.html" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+          <a href="blog-details.html?post=hiphop" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
       </article>
 
@@ -279,23 +284,23 @@
         </div>
         <div class="blog-card-body">
           <span class="blog-cat-tag">Drama</span>
-          <h3 class="blog-card-title"><a href="blog-details.html">Stage Fright to Stage Presence: A Beginner's Guide to Children's Drama</a></h3>
+<h3 class="blog-card-title"><a href="blog-details.html?post=drama">Stage Fright to Stage Presence: A Beginner's Guide to Children's Drama</a></h3>
           <div class="blog-meta"><span>Oct 28, 2025</span><span class="blog-meta-sep">•</span><span>7 min</span></div>
           <p class="blog-card-excerpt">How theater training transforms shy children into confident public speakers and creative thinkers...</p>
-          <a href="blog-details.html" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+          <a href="blog-details.html?post=drama" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
       </article>
 
-      <article class="blog-card" data-category="music">
-        <div class="blog-card-img" style="background:linear-gradient(135deg,#1a3a5a,#2a6090);display:flex;align-items:center;justify-content:center;">
-          <div style="width:80px;height:80px;opacity:0.7;display:flex;align-items:center;justify-content:center;color:#fff;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+<article class="blog-card" data-category="music">
+        <div class="blog-card-img">
+          <img src="assets/images/program_music.jpg" alt="Child learning music at Artiste Academy" loading="lazy">
         </div>
         <div class="blog-card-body">
           <span class="blog-cat-tag">Music</span>
-          <h3 class="blog-card-title"><a href="blog-details.html">When Should My Child Start Music Lessons? The Science Behind Early Learning</a></h3>
+          <h3 class="blog-card-title"><a href="blog-details.html?post=music">When Should My Child Start Music Lessons? The Science Behind Early Learning</a></h3>
           <div class="blog-meta"><span>Oct 20, 2025</span><span class="blog-meta-sep">•</span><span>5 min</span></div>
           <p class="blog-card-excerpt">Research shows that early music training literally reshapes the brain — here's what parents need to know...</p>
-          <a href="blog-details.html" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+          <a href="blog-details.html?post=music" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
       </article>
 
@@ -305,23 +310,14 @@
         </div>
         <div class="blog-card-body">
           <span class="blog-cat-tag">Academy News</span>
-          <h3 class="blog-card-title"><a href="blog-details.html">Winter Recital 2025: Behind the Scenes of Our Biggest Show Yet</a></h3>
+<h3 class="blog-card-title"><a href="blog-details.html?post=recital">Winter Recital 2025: Behind the Scenes of Our Biggest Show Yet</a></h3>
           <div class="blog-meta"><span>Oct 15, 2025</span><span class="blog-meta-sep">•</span><span>6 min</span></div>
           <p class="blog-card-excerpt">A look at the months of preparation, passion and hard work that go into our annual grand recital...</p>
-          <a href="blog-details.html" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+          <a href="blog-details.html?post=recital" class="btn btn-secondary btn-sm">Read More <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
       </article>
 
-    </div>
-
-    <!-- Pagination -->
-    <div style="display:flex;justify-content:center;gap:var(--space-3);margin-top:var(--space-12);" role="navigation" aria-label="Blog pagination">
-      <button class="btn btn-secondary btn-sm"><span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span> Previous</button>
-      <button class="btn btn-primary btn-sm" aria-current="page">1</button>
-      <button class="btn btn-secondary btn-sm">2</button>
-      <button class="btn btn-secondary btn-sm">3</button>
-      <button class="btn btn-secondary btn-sm">Next <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></button>
-    </div>
+</div>
   </div>
 </section>
 

@@ -109,15 +109,25 @@
   </div>
 </aside>
 
+<!-- PAGE HERO -->
+<header class="page-hero" aria-labelledby="article-page-heading">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><a href="blog.html">Blog</a><span class="breadcrumb-sep">›</span><span id="hero-current" aria-current="page">Classical Dance Foundation</span></nav>
+    <div class="section-tag" style="background:rgba(255,255,255,0.15);color:var(--champagne);"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg> Insights &amp; Stories</div>
+    <h1 id="article-page-heading" class="page-hero-title">The Artiste Journal</h1>
+    <p class="page-hero-subtitle">Thoughts on dance, arts education, parenting and the magic of performing arts.</p>
+  </div>
+</header>
+
 <!-- MAIN CONTENT -->
-<main style="padding-top: calc(var(--nav-height) + var(--space-12));">
+<main style="padding-bottom: var(--space-16);">
   <div class="container">
 
     <!-- Breadcrumb -->
     <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:var(--space-6);">
       <a href="index.html">Home</a><span class="breadcrumb-sep">›</span>
       <a href="blog.html">Blog</a><span class="breadcrumb-sep">›</span>
-      <span aria-current="page">Classical Dance Foundation</span>
+      <span id="breadcrumb-current" aria-current="page">Classical Dance Foundation</span>
     </nav>
 
     <div class="article-layout">
@@ -126,30 +136,31 @@
       <article class="blog-article-body" aria-labelledby="article-heading">
 
         <div style="margin-bottom:var(--space-8);">
-          <span class="blog-cat-tag" style="display:inline-block;padding:4px 12px;background:rgba(84,36,95,0.1);color:var(--orchid);border-radius:99px;font-size:var(--text-xs);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:var(--space-4);">Dance Education</span>
-          <h1 id="article-heading" style="font-size:clamp(2rem,4vw,3.5rem);line-height:1.15;margin-bottom:var(--space-5);">
+<span class="blog-cat-tag" id="article-cat" style="display:inline-block;padding:4px 12px;background:rgba(84,36,95,0.1);color:var(--orchid);border-radius:99px;font-size:var(--text-xs);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:var(--space-4);">Dance Education</span>
+          <h2 id="article-heading" style="font-size:clamp(2rem,4vw,3.5rem);line-height:1.15;margin-bottom:var(--space-5);">
             Why Classical Dance is the Best Foundation for Every Child's Arts Journey
-          </h1>
+          </h2>
           <div style="display:flex;align-items:center;gap:var(--space-5);flex-wrap:wrap;margin-bottom:var(--space-6);">
             <div style="display:flex;align-items:center;gap:var(--space-3);">
-              <img src="assets/images/faculty_1.jpg" alt="Priya Ramaswamy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;">
+              <img id="article-author-img" src="assets/images/faculty_1.jpg" alt="Priya Ramaswamy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;">
               <div>
-                <div style="font-weight:700;font-size:var(--text-sm);">Priya Ramaswamy</div>
-                <div style="font-size:var(--text-xs);color:var(--text-muted);">Classical Dance Director, Artiste Academy</div>
+                <div id="article-author-name" style="font-weight:700;font-size:var(--text-sm);">Priya Ramaswamy</div>
+                <div id="article-author-role" style="font-size:var(--text-xs);color:var(--text-muted);">Classical Dance Director, Artiste Academy</div>
               </div>
             </div>
-            <div style="font-size:var(--text-xs);color:var(--text-muted);display:flex;align-items:center;gap:4px;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> November 20, 2025</div>
-            <div style="font-size:var(--text-xs);color:var(--text-muted);">⏱ 8 min read</div>
-            <div style="font-size:var(--text-xs);color:var(--text-muted);display:flex;align-items:center;gap:4px;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg> 2,840 views</div>
+            <div id="article-date" style="font-size:var(--text-xs);color:var(--text-muted);display:flex;align-items:center;gap:4px;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> November 20, 2025</div>
+            <div id="article-read-time" style="font-size:var(--text-xs);color:var(--text-muted);display:flex;align-items:center;gap:4px;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 8 min read</div>
+            <div id="article-views" style="font-size:var(--text-xs);color:var(--text-muted);display:flex;align-items:center;gap:4px;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg> 2,840 views</div>
           </div>
         </div>
 
-        <img src="assets/images/program_classical.jpg" alt="Young children learning classical Bharatanatyam dance" class="article-hero-img" loading="eager">
+        <img id="article-hero-img" src="assets/images/program_classical.jpg" alt="Young children learning classical Bharatanatyam dance" class="article-hero-img" loading="eager">
 
-        <div style="font-size:var(--text-lg);color:var(--text-secondary);line-height:var(--leading-loose);margin-bottom:var(--space-8);font-style:italic;padding-left:var(--space-6);border-left:3px solid var(--orchid);">
+        <div id="article-quote" style="font-size:var(--text-lg);color:var(--text-secondary);line-height:var(--leading-loose);margin-bottom:var(--space-8);font-style:italic;padding-left:var(--space-6);border-left:3px solid var(--orchid);">
           "In thirty years of teaching, I have never seen a discipline that transforms children quite the way classical dance does — not just as performers, but as human beings."
         </div>
 
+        <div id="article-body">
         <p>When parents bring their children to us for the first time, they often ask: "Should we start with something modern? Won't classical dance be too strict for a five-year-old?" The question comes from a place of love — every parent wants their child to enjoy the experience. But what most parents don't yet know is that classical Indian dance is, paradoxically, one of the most joyful and developmentally rich activities a young child can undertake.</p>
 
         <h2>The Language of the Body</h2>
@@ -179,7 +190,8 @@
 
         <h2>A Word to Skeptical Parents</h2>
         <p>If you're still unsure, we invite you to simply come and watch. Book a free studio visit — sit at the back of one of our Juniors classes and observe. Watch what happens when a seven-year-old loses herself completely in the expression of a story through dance. Watch the light in her eyes. Then imagine that child in ten years — the poise, the confidence, the artistry.</p>
-        <p>That is what classical dance gives. Not just a skill. A way of being in the world.</p>
+<p>That is what classical dance gives. Not just a skill. A way of being in the world.</p>
+        </div>
 
         <!-- Share -->
         <div style="margin-top:var(--space-10);padding-top:var(--space-6);border-top:1px solid var(--border-color);">
@@ -193,9 +205,9 @@
         </div>
 
         <!-- Tags -->
-        <div style="margin-top:var(--space-6);">
+<div style="margin-top:var(--space-6);">
           <div style="font-size:var(--text-sm);font-weight:700;margin-bottom:var(--space-3);">Tags:</div>
-          <div class="tag-cloud" role="list">
+          <div class="tag-cloud" id="article-tags" role="list">
             <span class="article-tag" role="listitem">Classical Dance</span>
             <span class="article-tag" role="listitem">Bharatanatyam</span>
             <span class="article-tag" role="listitem">Children's Education</span>
@@ -208,13 +220,13 @@
         <!-- Author card -->
         <div class="author-card">
           <div class="author-avatar">
-            <img src="assets/images/faculty_1.jpg" alt="Priya Ramaswamy">
+            <img id="author-card-img" src="assets/images/faculty_1.jpg" alt="Priya Ramaswamy">
           </div>
           <div>
             <div style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.08em;">Written by</div>
-            <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:4px;">Priya Ramaswamy</h3>
-            <div style="font-size:var(--text-sm);color:var(--rose-gold);margin-bottom:var(--space-3);">Classical Dance Director, Artiste Academy</div>
-            <p style="font-size:var(--text-sm);color:var(--text-secondary);">Priya has 30+ years of experience in Bharatanatyam, having trained at Kalakshetra Foundation and performed on international stages. She leads Artiste Academy's classical dance program with a philosophy of joyful rigor.</p>
+            <h3 id="author-card-name" style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:4px;">Priya Ramaswamy</h3>
+            <div id="author-card-role" style="font-size:var(--text-sm);color:var(--rose-gold);margin-bottom:var(--space-3);">Classical Dance Director, Artiste Academy</div>
+            <p id="author-card-bio" style="font-size:var(--text-sm);color:var(--text-secondary);">Priya has 30+ years of experience in Bharatanatyam, having trained at Kalakshetra Foundation and performed on international stages. She leads Artiste Academy's classical dance program with a philosophy of joyful rigor.</p>
           </div>
         </div>
 
@@ -223,10 +235,9 @@
       <!-- SIDEBAR -->
       <aside class="article-sidebar" aria-label="Article sidebar">
 
-        <!-- CTA -->
-        <div class="sidebar-widget" style="background:var(--grad-brand);color:#fff;text-align:center;">
-          <div style="width:48px;height:48px;color:var(--orchid);display:flex;align-items:center;justify-content:center;margin-bottom:var(--space-4);" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-1.8 3.2-4.5 6-8 7 3.2 2 5.2 5.5 5.2 9.5h5.6c0-4 2-7.5 5.2-9.5-3.5-1-6.2-3.8-8-7z"/><path d="M12 8.5c-1 2-2.2 3.8-4.2 4.8 2 1.2 3.2 3 3.2 5.2h2c0-2.2 1.2-4 3.2-5.2-2-1-3.2-2.8-4.2-4.8z"/><path d="M6 21.5h12"/></svg></div>
-          <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-3);">Enroll in Classical Dance</h3>
+<!-- CTA -->
+        <div class="sidebar-widget" style="background:var(--grad-brand);color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <h3 id="cta-title" style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-3);">Enroll in Classical Dance</h3>
           <p style="font-size:var(--text-sm);color:rgba(255,255,255,0.8);margin-bottom:var(--space-5);">Give your child the foundation of a lifetime. Free trial class included!</p>
           <a href="signup.html" class="btn btn-champagne w-full" style="color:var(--orchid);display:flex;justify-content:center;">Enroll Now</a>
         </div>
@@ -234,31 +245,33 @@
         <!-- Related Posts -->
         <div class="sidebar-widget">
           <h3 class="sidebar-widget-title">Related Articles</h3>
-          <div class="related-post">
-            <div class="related-post-img">
-              <img src="assets/images/program_ballet.jpg" alt="Ballet article">
+          <div id="related-posts">
+            <div class="related-post">
+              <div class="related-post-img">
+                <img src="assets/images/program_ballet.jpg" alt="Ballet article">
+              </div>
+              <div>
+                <h4 class="related-post-title"><a href="blog-details.html?post=ballet">7 Benefits of Ballet Training for Children</a></h4>
+                <div class="related-post-date">Nov 15, 2025</div>
+              </div>
             </div>
-            <div>
-              <h4 class="related-post-title"><a href="blog-details.html">7 Benefits of Ballet Training for Children</a></h4>
-              <div class="related-post-date">Nov 15, 2025</div>
+            <div class="related-post">
+              <div class="related-post-img">
+                <img src="assets/images/program_drama.jpg" alt="Drama article">
+              </div>
+              <div>
+                <h4 class="related-post-title"><a href="blog-details.html?post=drama">Stage Fright to Stage Presence</a></h4>
+                <div class="related-post-date">Oct 28, 2025</div>
+              </div>
             </div>
-          </div>
-          <div class="related-post">
-            <div class="related-post-img">
-              <img src="assets/images/program_drama.jpg" alt="Drama article">
-            </div>
-            <div>
-              <h4 class="related-post-title"><a href="blog-details.html">Stage Fright to Stage Presence</a></h4>
-              <div class="related-post-date">Oct 28, 2025</div>
-            </div>
-          </div>
-          <div class="related-post">
-            <div class="related-post-img">
-              <img src="assets/images/program_hiphop.jpg" alt="Hip-hop article">
-            </div>
-            <div>
-              <h4 class="related-post-title"><a href="blog-details.html">Hip-Hop: More Than Music</a></h4>
-              <div class="related-post-date">Nov 5, 2025</div>
+            <div class="related-post">
+              <div class="related-post-img">
+                <img src="assets/images/program_hiphop.jpg" alt="Hip-hop article">
+              </div>
+              <div>
+                <h4 class="related-post-title"><a href="blog-details.html?post=hiphop">Hip-Hop: More Than Music</a></h4>
+                <div class="related-post-date">Nov 5, 2025</div>
+              </div>
             </div>
           </div>
         </div>
@@ -397,5 +410,309 @@
 <script src="js/navbar.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/forms.js"></script>
+<script>
+const POSTS = {
+  classical: {
+    shortTitle: "Classical Dance Foundation",
+    title: "Why Classical Dance is the Best Foundation for Every Child's Arts Journey",
+    image: "assets/images/program_classical.jpg",
+    date: "Nov 20, 2025"
+  },
+  ballet: {
+    shortTitle: "Ballet Benefits",
+    title: "The 7 Benefits of Ballet Training for Children Aged 3–10",
+    category: "Ballet",
+    cta: "Enroll in Ballet",
+    author: "Ananya Sharma",
+    authorRole: "Ballet Program Lead, Artiste Academy",
+    authorImg: "assets/images/faculty_2.jpg",
+    date: "Nov 15, 2025",
+    readTime: "5 min read",
+    views: "1,940 views",
+    image: "assets/images/program_ballet.jpg",
+    imageAlt: "Ballet class for children at Artiste Academy",
+    quote: "Ballet gives a child posture, discipline and musicality — the quiet foundations on which every other art form is built.",
+    tags: ["Ballet", "Children's Education", "Posture & Flexibility", "Dance Training", "Performing Arts", "Artiste Academy"],
+    authorBio: "Ananya trained at the Royal Academy of Dance and has spent 15 years teaching ballet to young children across India and the UK. She leads Artiste Academy's ballet program.",
+    body: [
+      { t: "p", x: "When parents ask us the best age to start ballet, our answer always surprises them: as early as three. Ballet is far more than pink tutus and pretty pirouettes — it is a complete physical and mental training system that shapes how a child holds their body, moves through space and listens to music." },
+      { t: "h2", x: "Why Ballet Works So Well for Young Children" },
+      { t: "p", x: "The barre work, the five positions, the pliés and tendus — every element of ballet was designed to build strength and alignment slowly and safely. For a young child, these repetitions feel like play when taught well. They are stretching, balancing, and learning to stand tall without even noticing the effort." },
+      { t: "h2", x: "The Seven Benefits We See in Every Child" },
+      { t: "ul", x: [
+        "<strong>Posture:</strong> Ballet's emphasis on alignment creates straight backs and confident stances that last a lifetime.",
+        "<strong>Coordination:</strong> Coordinating arms, legs and head to music builds remarkable body awareness.",
+        "<strong>Musicality:</strong> Children learn to hear rhythm, phrasing and dynamics — a gift they carry into any musical pursuit.",
+        "<strong>Discipline:</strong> The structure of class teaches patience, focus and the joy of gradual improvement.",
+        "<strong>Flexibility:</strong> Gentle, progressive stretching keeps young bodies supple and prevents injury in other sports.",
+        "<strong>Confidence:</strong> Mastering a combination and performing it in front of classmates is an early lesson in courage.",
+        "<strong>Teamwork:</strong> Ballet teaches children to move as one — respecting space, timing and each other."
+      ]},
+      { t: "h2", x: "When to Start" },
+      { t: "p", x: "Ages 3–5 are perfect for pre-ballet: short classes, imaginative storytelling and simple steps that build love for movement. From age 6, children are ready for structured barre work and formal technique. Starting early doesn't push children — it gives them a foundation of confidence and control they will thank you for later." },
+      { t: "blockquote", x: "My daughter started ballet at four. Three years later, her teachers say she walks into the classroom like she owns it — in the best possible way." },
+      { t: "h2", x: "Choosing the Right Class" },
+      { t: "p", x: "Look for small class sizes, a teacher trained in working with children, and a studio that celebrates effort over perfection. A great ballet class leaves a child tired, proud and counting down the days until the next session." }
+    ]
+  },
+  parents: {
+    shortTitle: "Parenting & Arts",
+    title: "How to Support Your Child's Performing Arts Journey Without Adding Pressure",
+    category: "For Parents",
+    cta: "Enroll Your Child Today",
+    author: "Divya Krishnan",
+    authorRole: "Parent & Child Counsellor, Artiste Academy",
+    authorImg: "assets/images/faculty_6.jpg",
+    date: "Nov 10, 2025",
+    readTime: "6 min read",
+    views: "2,315 views",
+    image: "assets/images/hero_slide_2.jpg",
+    imageAlt: "Parent watching a child perform on stage",
+    quote: "The most powerful thing a parent can give a young performer is not applause — it is presence.",
+    tags: ["Parenting", "Children's Education", "Confidence", "Performing Arts", "Artiste Academy"],
+    authorBio: "Divya is a child counsellor with 12 years of experience supporting young performers and their families. She partners with Artiste Academy's faculty on student wellbeing.",
+    body: [
+      { t: "p", x: "Every parent dreams of watching their child shine on stage. But somewhere between the first rehearsal and the big performance, enthusiasm can quietly turn into pressure — and a child can sense it instantly. Here is how to be your child's biggest supporter without ever becoming their source of stress." },
+      { t: "h2", x: "The Pressure Trap" },
+      { t: "p", x: "Comments that sound encouraging can land as demands. 'You've been practicing so hard, you'll definitely win first place!' turns a joyful performance into a test. Children read our expectations in our tone, our questions and our silence. The fix is simple: focus on the experience, not the outcome." },
+      { t: "h2", x: "Five Ways to Support Without Pressure" },
+      { t: "ul", x: [
+        "Praise effort, not results: celebrate that they practiced, learned their lines, or tried something scary.",
+        "Ask open questions: instead of 'Did you get the part?', try 'What was your favourite part of rehearsal today?'",
+        "Be present without hovering: attend rehearsals and performances, but let the teacher and child do their work.",
+        "Let them own their progress: ask how they felt, and respect it when they say they're nervous — don't talk them out of it.",
+        "Keep it fun: if practice stops being fun, talk to their teacher before pushing harder at home."
+      ]},
+      { t: "h2", x: "At Home Practice" },
+      { t: "p", x: "Home practice should be a choice, not a chore. Set up a space, play the music they love, and let them show you what they learned when they're ready. A child who practices because they want to will always practice more — and happier — than one who is reminded nightly." },
+      { t: "h2", x: "After the Performance" },
+      { t: "p", x: "Whatever happened on stage, the conversation afterwards matters most. Begin with what they loved, ask how it felt, and save your own critique — if any — for their teacher. Your job is to reflect their pride back at them, not to coach them from the audience." }
+    ]
+  },
+  hiphop: {
+    shortTitle: "Hip-Hop Culture",
+    title: "Hip-Hop Dance: More Than Music — It's a Language",
+    category: "Hip-Hop",
+    cta: "Enroll in Hip-Hop",
+    author: "Marcus D'Souza",
+    authorRole: "Hip-Hop Instructor, Artiste Academy",
+    authorImg: "assets/images/faculty_5.jpg",
+    date: "Nov 5, 2025",
+    readTime: "4 min read",
+    views: "1,620 views",
+    image: "assets/images/program_hiphop.jpg",
+    imageAlt: "Kids enjoying a hip-hop dance class",
+    quote: "Hip-hop doesn't tell a child how to move — it asks them who they are, and then lets them answer with their body.",
+    tags: ["Hip-Hop", "Dance", "Self-Expression", "Rhythm", "Performing Arts", "Artiste Academy"],
+    authorBio: "Marcus began dancing on the streets of Mumbai and now brings 18 years of breaking, popping and locking experience to Artiste Academy's youth programs.",
+    body: [
+      { t: "p", x: "Walk into a hip-hop class and the first thing you notice is the noise — laughter, bass, sneakers squeaking. But look closer and you'll see children doing something profound: they are speaking. Every freeze, wave and bounce is a sentence. Every battle is a conversation." },
+      { t: "h2", x: "A Language of Its Own" },
+      { t: "p", x: "Hip-hop grew out of streets and block parties as a way for young people to express themselves without words. That heritage is exactly what makes it so powerful for children. It rewards individuality. There is no single 'right' way to hit a move — there is your way, and that is the point." },
+      { t: "h2", x: "Breaking, Popping, Locking" },
+      { t: "p", x: "The three pillars of hip-hop dance teach very different skills. Breaking builds strength and acrobatic confidence. Popping develops sharp musicality and isolation. Locking is pure rhythm and joy — big moves, bigger smiles. Our classes weave all three into a routine that keeps every child engaged." },
+      { t: "h2", x: "Why Kids Love It" },
+      { t: "ul", x: [
+        "It feels like play, not practice.",
+        "They get to improvise — their ideas matter.",
+        "The music is theirs: current, energetic and theirs to feel.",
+        "There are no wrong answers, only different styles."
+      ]},
+      { t: "h2", x: "What Your Child Will Learn" },
+      { t: "p", x: "Beyond the moves, children learn rhythm and counting, spatial awareness, resilience in trying new things, and the confidence to be seen. And when they finally perform their own freestyle in front of the class, you will see something no choreography can teach: ownership." }
+    ]
+  },
+  drama: {
+    shortTitle: "Drama & Confidence",
+    title: "Stage Fright to Stage Presence: A Beginner's Guide to Children's Drama",
+    category: "Drama",
+    cta: "Enroll in Drama",
+    author: "Kavya Nair",
+    authorRole: "Drama & Theatre Coach, Artiste Academy",
+    authorImg: "assets/images/faculty_4.jpg",
+    date: "Oct 28, 2025",
+    readTime: "7 min read",
+    views: "1,875 views",
+    image: "assets/images/program_drama.jpg",
+    imageAlt: "Children in a drama class practicing improvisation",
+    quote: "We don't teach children to be actors. We use theatre to teach children how to be brave.",
+    tags: ["Drama", "Confidence", "Public Speaking", "Theatre", "Performing Arts", "Artiste Academy"],
+    authorBio: "Kavya is a theatre director and educator who has worked with children's ensembles for over a decade, specialising in improvisation and performance confidence.",
+    body: [
+      { t: "p", x: "It starts the same way every time: a small voice at the back of the class, a child who is certain they could never stand on a stage. Six months later, that same child is improvising scenes, projecting to the back row and asking for more stage time. This is the quiet magic of children's drama." },
+      { t: "h2", x: "From Fright to Presence" },
+      { t: "p", x: "Stage fright is not a weakness — it is energy looking for a way out. Drama training gives children tools to channel that energy: breathing, grounding, and the safety of a character. When a shy child puts on a role, the pressure moves from 'me being judged' to 'this character I'm playing.' That shift is liberating." },
+      { t: "h2", x: "What Happens in a Children's Drama Class" },
+      { t: "p", x: "Our classes begin with games that loosen the body and voice, move into improvisation where children create characters and stories on the spot, and end with scene work that builds cooperation. No scripts are forced. Confidence grows because children succeed, laugh, and try again in an environment where mistakes are celebrated." },
+      { t: "h2", x: "The Confidence Transfer" },
+      { t: "blockquote", x: "I watched my son go from hiding behind me at school events to volunteering to read aloud in class. Drama didn't change who he is — it showed him who he could be." },
+      { t: "p", x: "The benefits follow children far beyond the stage. Drama students become better listeners, sharper thinkers and more compassionate teammates. The skills of projection, eye contact and storytelling turn out to be exactly the skills that open doors in school, friendships and life." },
+      { t: "h2", x: "Getting Started" },
+      { t: "p", x: "The only requirement is a willingness to try. Whether your child is an eager performer or a reluctant one, we meet them where they are. The first win is always the same: a child who walks in afraid and walks out asking, 'Can we do that again?'" }
+    ]
+  },
+  music: {
+    shortTitle: "Music & The Brain",
+    title: "When Should My Child Start Music Lessons? The Science Behind Early Learning",
+    category: "Music",
+    cta: "Enroll in Music Lessons",
+    author: "Rohan Iyer",
+    authorRole: "Music Director, Artiste Academy",
+    authorImg: "assets/images/faculty_3.jpg",
+    date: "Oct 20, 2025",
+    readTime: "5 min read",
+    views: "2,480 views",
+    image: "assets/images/program_music.jpg",
+    imageAlt: "Child learning to play a musical instrument",
+    quote: "Music is the only activity that activates the whole brain at once — which is why early training changes how a child learns forever.",
+    tags: ["Music", "Brain Development", "Early Learning", "Children's Education", "Performing Arts", "Artiste Academy"],
+    authorBio: "Rohan is a trained pianist and composer who has directed children's music programs for 16 years. He leads Artiste Academy's music and vocal training.",
+    body: [
+      { t: "p", x: "Few questions reach our inbox as often as this one: how young is too young — or too late — for music lessons? The short answer, supported by decades of neuroscience, is that childhood is a golden window, and the earlier a child plays with music, the deeper the benefits. But the 'how' matters as much as the 'when'." },
+      { t: "h2", x: "What the Research Says" },
+      { t: "p", x: "Studies show that musical training physically reshapes the brain. Musicians develop larger auditory cortices, stronger connections between the hemispheres, and improved working memory. In children, these changes are most dramatic before age seven — the period when neural pathways are still being pruned and strengthened." },
+      { t: "h2", x: "The Critical Window" },
+      { t: "p", x: "Between ages three and six, children are natural pattern detectors. They absorb rhythm, pitch and melody effortlessly. Formal lessons can begin around five or six, but even earlier, exposure matters: singing together, clapping games, and dancing to music all prime the same neural circuitry." },
+      { t: "h2", x: "Signs Your Child Is Ready" },
+      { t: "ul", x: [
+        "They respond to music — moving, singing along or asking to hear it again.",
+        "They can follow simple rhythms by clapping or tapping.",
+        "They show curiosity about instruments you play or see.",
+        "They can focus on a single activity for 10–15 minutes."
+      ]},
+      { t: "h2", x: "How to Begin" },
+      { t: "p", x: "Start with play, not pressure. A child who dances to music, taps rhythms and sings with family is already learning. When they ask for more, introduce lessons with a patient teacher who keeps the joy front and centre. The science is clear: the goal isn't to produce a prodigy — it's to give a young brain the gift of music while it is most ready to receive it." }
+    ]
+  },
+  recital: {
+    shortTitle: "Winter Recital 2025",
+    title: "Winter Recital 2025: Behind the Scenes of Our Biggest Show Yet",
+    category: "Academy News",
+    cta: "Join the Next Recital",
+    author: "Priya Ramaswamy",
+    authorRole: "Director, Artiste Academy",
+    authorImg: "assets/images/faculty_1.jpg",
+    date: "Oct 15, 2025",
+    readTime: "6 min read",
+    views: "3,110 views",
+    image: "assets/images/hero_slide_3.jpg",
+    imageAlt: "Artiste Academy Winter Recital 2025 stage",
+    quote: "For three months, the studio hums with a secret. Then the curtain rises, and the whole city hears it.",
+    tags: ["Academy News", "Winter Recital", "Performing Arts", "Events", "Artiste Academy"],
+    authorBio: "Priya is the founder and director of Artiste Academy. She has choreographed over 40 productions and believes every child deserves a moment on stage.",
+    body: [
+      { t: "p", x: "Every winter, our little academy does something big. This year's Winter Recital was our largest yet — 212 performers, 14 original pieces, and a stage that seemed to grow a little taller each week. Here is the story of how it came together." },
+      { t: "h2", x: "Months of Preparation" },
+      { t: "p", x: "Planning began in September. Choreographers sketched pieces, costume designers measured smiles and hems, and our youngest dancers practised their first ever stage entrances. The hallways echoed with counts — one, two, three, four — for weeks before a single prop arrived." },
+      { t: "h2", x: "Behind the Scenes" },
+      { t: "p", x: "The real magic happened in the final fortnight. Parents sewed sequins at midnight, teachers ran back-to-back dress rehearsals, and students discovered something teachers can't manufacture: the discipline of caring about something bigger than themselves. Every child learned their cues, their marks and their moment." },
+      { t: "h2", x: "The Performance" },
+      { t: "blockquote", x: "When the lights came up on the first piece, I forgot to breathe. Not because of nerves — because of joy. These children were not performing for us. They were sharing." },
+      { t: "p", x: "The night itself was flawless not because nothing went wrong, but because our young performers turned every surprise into part of the show. A dropped prop became a laugh. A missed step became a bow. The audience gave standing ovations that lasted minutes." },
+      { t: "h2", x: "Thank You" },
+      { t: "p", x: "To every family who packed the auditorium, every parent who ironed a costume at midnight, and every child who stepped into the light: thank you. The 2025 recital is over, but we're already dreaming about the next one — and we hope you'll be on stage with us." }
+    ]
+  }
+};
+
+const ICON_CAL = '<svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+const ICON_CLOCK = '<svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+const ICON_VIEWS = '<svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>';
+
+const ORDER = ["classical", "ballet", "parents", "hiphop", "drama", "music", "recital"];
+
+function bodyHTML(p) {
+  return p.body.map(function (b) {
+    switch (b.t) {
+      case "h2": return "<h2>" + b.x + "</h2>";
+      case "p": return "<p>" + b.x + "</p>";
+      case "q": return '<div style="font-size:var(--text-lg);color:var(--text-secondary);line-height:var(--leading-loose);margin-bottom:var(--space-8);font-style:italic;padding-left:var(--space-6);border-left:3px solid var(--orchid);">"' + b.x + '"</div>';
+      case "blockquote": return "<blockquote>" + b.x + "</blockquote>";
+      case "ul": return "<ul>" + b.x.map(function (li) { return "<li>" + li + "</li>"; }).join("") + "</ul>";
+    }
+    return "";
+  }).join("");
+}
+
+function renderPost(p) {
+  document.title = p.title + " | Artiste Academy Blog";
+  var meta = document.querySelector('meta[name="description"]');
+  if (meta) meta.setAttribute("content", p.title + " — By " + p.author + ", Artiste Academy.");
+
+  var heroCurrent = document.getElementById("hero-current");
+  var bcCurrent = document.getElementById("breadcrumb-current");
+  if (heroCurrent) heroCurrent.textContent = p.shortTitle;
+  if (bcCurrent) bcCurrent.textContent = p.shortTitle;
+
+  var cat = document.getElementById("article-cat");
+  if (cat) cat.textContent = p.category;
+  var title = document.getElementById("article-heading");
+  if (title) title.textContent = p.title;
+  var aImg = document.getElementById("article-author-img");
+  if (aImg) { aImg.src = p.authorImg; aImg.alt = p.author; }
+  var aName = document.getElementById("article-author-name");
+  if (aName) aName.textContent = p.author;
+  var aRole = document.getElementById("article-author-role");
+  if (aRole) aRole.textContent = p.authorRole;
+  var aDate = document.getElementById("article-date");
+  if (aDate) aDate.innerHTML = ICON_CAL + " " + p.date;
+  var aTime = document.getElementById("article-read-time");
+  if (aTime) aTime.innerHTML = ICON_CLOCK + " " + p.readTime;
+  var aViews = document.getElementById("article-views");
+  if (aViews) aViews.innerHTML = ICON_VIEWS + " " + p.views;
+
+  var heroImg = document.getElementById("article-hero-img");
+  if (heroImg) { heroImg.src = p.image; heroImg.alt = p.imageAlt; }
+
+  var quote = document.getElementById("article-quote");
+  if (quote) quote.innerHTML = '"' + p.quote + '"';
+
+  var body = document.getElementById("article-body");
+  if (body) body.innerHTML = bodyHTML(p);
+
+  var tags = document.getElementById("article-tags");
+  if (tags) tags.innerHTML = p.tags.map(function (t) { return '<span class="article-tag" role="listitem">' + t + "</span>"; }).join("");
+
+  var cardImg = document.getElementById("author-card-img");
+  if (cardImg) cardImg.src = p.authorImg;
+  var cardName = document.getElementById("author-card-name");
+  if (cardName) cardName.textContent = p.author;
+  var cardRole = document.getElementById("author-card-role");
+  if (cardRole) cardRole.textContent = p.authorRole;
+  var cardBio = document.getElementById("author-card-bio");
+  if (cardBio) cardBio.textContent = p.authorBio;
+
+  var ctaTitle = document.getElementById("cta-title");
+  if (ctaTitle) ctaTitle.textContent = p.cta;
+}
+
+function renderRelated(currentId) {
+  var others = ORDER.filter(function (id) { return id !== currentId; }).slice(0, 3);
+  var el = document.getElementById("related-posts");
+  if (!el) return;
+  el.innerHTML = others.map(function (id) {
+    var p = POSTS[id];
+    return '<div class="related-post">' +
+      '<div class="related-post-img"><img src="' + p.image + '" alt="' + p.title + '"></div>' +
+      "<div><h4 class=\"related-post-title\"><a href=\"blog-details.html?post=" + id + "\">" + p.title + "</a></h4>" +
+      '<div class="related-post-date">' + p.date + "</div></div></div>";
+  }).join("");
+}
+
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var id = params.get("post") || "classical";
+  var post = POSTS[id] || POSTS.classical;
+  renderRelated(post === POSTS.classical ? "classical" : id);
+  if (id !== "classical" && POSTS[id]) {
+    renderPost(POSTS[id]);
+  } else {
+    var heroCurrent = document.getElementById("hero-current");
+    var bcCurrent = document.getElementById("breadcrumb-current");
+    if (heroCurrent) heroCurrent.textContent = POSTS.classical.shortTitle;
+    if (bcCurrent) bcCurrent.textContent = POSTS.classical.shortTitle;
+  }
+})();
+</script>
 </body>
 </html>
