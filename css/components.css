@@ -566,14 +566,23 @@
 .accordion-item {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   overflow: hidden;
-  transition: box-shadow var(--duration-base);
+  background: var(--bg-card);
+  box-sizing: border-box;
+  transition: box-shadow var(--duration-base), border-color var(--duration-base);
 }
-.accordion-item:hover { box-shadow: var(--shadow-sm); }
-.accordion-item.open  { box-shadow: var(--shadow-md); border-color: var(--orchid); }
+.accordion-item:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(84, 36, 95, 0.3);
+}
+.accordion-item.open {
+  box-shadow: var(--shadow-md);
+  border-color: var(--orchid);
+}
 
 .accordion-header {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -581,29 +590,43 @@
   cursor: pointer;
   gap: var(--space-4);
   background: var(--bg-card);
-  transition: background var(--duration-fast);
+  border: none;
+  outline: none;
+  text-align: left;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  transition: background var(--duration-fast), color var(--duration-fast);
 }
 .accordion-header:hover { background: var(--bg-secondary); }
-.accordion-item.open .accordion-header { background: rgba(84,36,95,0.04); }
+.accordion-item.open .accordion-header { background: rgba(84, 36, 95, 0.04); }
 
 .accordion-question {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   color: var(--text-primary);
   font-weight: var(--weight-semi);
+  flex: 1;
+  text-align: left;
+  line-height: 1.4;
 }
 .accordion-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(84,36,95,0.08);
+  background: rgba(84, 36, 95, 0.08);
   color: var(--orchid);
-  font-size: 1.1rem;
-  transition: transform var(--duration-base) var(--ease-out), background var(--duration-base);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-left: auto;
+  transition: transform var(--duration-base) var(--ease-spring), background var(--duration-base), color var(--duration-base);
 }
 .accordion-item.open .accordion-icon {
   transform: rotate(45deg);
@@ -618,9 +641,10 @@
 }
 .accordion-item.open .accordion-body { max-height: 600px; }
 .accordion-content {
-  padding: 0 var(--space-6) var(--space-5);
+  padding: 0 var(--space-6) var(--space-6);
   color: var(--text-secondary);
   line-height: var(--leading-loose);
+  font-size: var(--text-base);
 }
 
 /* ═══════════════════════════════════════════════
