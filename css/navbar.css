@@ -44,20 +44,14 @@
   text-decoration: none;
   flex-shrink: 0;
 }
-.nav-logo-icon {
+.nav-logo-img {
   width: 48px;
   height: 48px;
-  background: var(--grad-brand);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--duration-base) var(--ease-spring);
+  object-fit: contain;
   flex-shrink: 0;
+  transition: transform var(--duration-base) var(--ease-spring);
 }
-.nav-logo:hover .nav-logo-icon { transform: rotate(-8deg) scale(1.08); }
+.nav-logo:hover .nav-logo-img { transform: rotate(-8deg) scale(1.08); }
 .nav-logo-text {
   display: flex;
   flex-direction: column;

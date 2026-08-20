@@ -45,12 +45,9 @@
   margin-bottom: var(--space-5);
   text-decoration: none;
 }
-.footer-brand .logo-icon {
+.footer-brand .footer-logo-img {
   width: 48px; height: 48px;
-  background: linear-gradient(135deg, var(--champagne), var(--rose-gold));
-  border-radius: var(--radius-md);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
+  object-fit: contain;
   flex-shrink: 0;
 }
 .footer-brand .logo-name {

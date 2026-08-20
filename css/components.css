@@ -1328,20 +1328,13 @@ blockquote {
 .icon-svg-2xl { width: 2.75rem; height: 2.75rem; }
 .icon-svg-3xl { width: 3.5rem; height: 3.5rem; }
 
-/* Logo vector */
-.logo-mark-svg {
-  width: 26px;
-  height: 26px;
-  color: #fff;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+/* Logo image */
+.logo-img {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
 }
-.nav-logo-icon,
-.sidebar-logo-icon,
-.logo-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.auth-logo-img { width: 44px; height: 44px; }
 
 /* Stars rating */
 .stars {
