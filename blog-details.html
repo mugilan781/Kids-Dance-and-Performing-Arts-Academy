@@ -43,6 +43,30 @@
     .share-buttons { display: flex; gap: var(--space-3); }
     .share-btn { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border: 1.5px solid var(--border-color); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-secondary); background: transparent; cursor: pointer; transition: all var(--duration-fast); }
     .share-btn:hover { border-color: var(--orchid); color: var(--orchid); }
+    .sidebar-cta-widget {
+      background: linear-gradient(160deg, #3a1742 0%, #54245F 100%) !important;
+      color: #fff !important;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(231, 207, 167, 0.25) !important;
+      box-shadow: 0 10px 25px rgba(84, 36, 95, 0.25);
+    }
+    .sidebar-cta-widget h3,
+    .sidebar-cta-widget #cta-title,
+    #cta-title {
+      color: #ffffff !important;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-3);
+    }
+    .sidebar-cta-widget p {
+      color: rgba(255, 255, 255, 0.92) !important;
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-5);
+    }
     @media (max-width: 960px) {
       .article-layout { grid-template-columns: 1fr; }
       .article-sidebar { position: static; }
@@ -201,7 +225,7 @@
         </div>
 
         <!-- Tags -->
-<div style="margin-top:var(--space-6);">
+        <div style="margin-top:var(--space-6);">
           <div style="font-size:var(--text-sm);font-weight:700;margin-bottom:var(--space-3);">Tags:</div>
           <div class="tag-cloud" id="article-tags" role="list">
             <span class="article-tag" role="listitem">Classical Dance</span>
@@ -225,17 +249,16 @@
             <p id="author-card-bio" style="font-size:var(--text-sm);color:var(--text-secondary);">Priya has 30+ years of experience in Bharatanatyam, having trained at Kalakshetra Foundation and performed on international stages. She leads Artiste Academy's classical dance program with a philosophy of joyful rigor.</p>
           </div>
         </div>
-
       </article>
 
       <!-- SIDEBAR -->
       <aside class="article-sidebar" aria-label="Article sidebar">
 
-<!-- CTA -->
-        <div class="sidebar-widget" style="background:linear-gradient(160deg, #3a1742 0%, #54245F 100%);color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;border:none;">
-          <h3 id="cta-title" style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-3);">Enroll in Classical Dance</h3>
-          <p style="font-size:var(--text-sm);color:rgba(255,255,255,0.9);margin-bottom:var(--space-5);">Give your child the foundation of a lifetime. Free trial class included!</p>
-          <a href="signup.html" class="btn btn-champagne w-full" style="color:var(--orchid);display:flex;justify-content:center;">Enroll Now</a>
+        <!-- CTA -->
+        <div class="sidebar-widget sidebar-cta-widget">
+          <h3 id="cta-title">Enroll in Classical Dance</h3>
+          <p>Give your child the foundation of a lifetime. Free trial class included!</p>
+          <a href="signup.html" class="btn btn-champagne w-full" style="color:var(--orchid);display:flex;justify-content:center;font-weight:700;">Enroll Now</a>
         </div>
 
         <!-- Related Posts -->
