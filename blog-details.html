@@ -30,13 +30,16 @@
     .related-post-title a { color: var(--text-primary); text-decoration: none; }
     .related-post-title a:hover { color: var(--orchid); }
     .related-post-date { font-size: var(--text-xs); color: var(--text-muted); }
-    .article-hero-img { border-radius: var(--radius-xl); width: 100%; aspect-ratio: 16/7; object-fit: cover; margin-bottom: var(--space-8); box-shadow: var(--shadow-xl); }
+.article-hero-img { border-radius: var(--radius-xl); width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: var(--space-8); box-shadow: var(--shadow-xl); }
     .author-card { background: var(--bg-secondary); border-radius: var(--radius-xl); padding: var(--space-8); display: flex; gap: var(--space-5); align-items: flex-start; margin-top: var(--space-10); border: 1px solid var(--border-card); }
     .author-avatar { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
     .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .tag-cloud { display: flex; flex-wrap: wrap; gap: var(--space-2); }
     .article-tag { display: inline-block; padding: 4px 12px; background: rgba(84,36,95,0.08); color: var(--orchid); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: var(--weight-semi); cursor: pointer; transition: all var(--duration-fast); }
     .article-tag:hover { background: var(--orchid); color: #fff; }
+    [data-theme="dark"] .article-tag { background: rgba(217,203,232,0.14); color: #e3d7f0; }
+    [data-theme="dark"] .article-tag:hover { background: var(--orchid-light); color: #fff; }
+    [data-theme="dark"] .blog-cat-tag { background: rgba(217,203,232,0.14) !important; color: #e3d7f0 !important; }
     .share-buttons { display: flex; gap: var(--space-3); }
     .share-btn { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border: 1.5px solid var(--border-color); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-secondary); background: transparent; cursor: pointer; transition: all var(--duration-fast); }
     .share-btn:hover { border-color: var(--orchid); color: var(--orchid); }
@@ -50,7 +53,7 @@
 <div class="page-transition" aria-hidden="true"></div>
 
 <!-- NAVBAR -->
-<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+<nav class="navbar" id="navbar" data-transparent="true" role="navigation" aria-label="Main navigation">
   <div style="width:100%;max-width:100%;padding-inline:clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;">
     <a href="index.html" class="nav-logo" aria-label="Artiste Academy Home">
       <img class="logo-img nav-logo-img" src="assets/images/logo.png" alt="" aria-hidden="true" width="48" height="48">
@@ -120,15 +123,8 @@
 </header>
 
 <!-- MAIN CONTENT -->
-<main style="padding-bottom: var(--space-16);">
+<main style="padding: var(--space-12) 0 var(--space-16);">
   <div class="container">
-
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:var(--space-6);">
-      <a href="index.html">Home</a><span class="breadcrumb-sep">›</span>
-      <a href="blog.html">Blog</a><span class="breadcrumb-sep">›</span>
-      <span id="breadcrumb-current" aria-current="page">Classical Dance Foundation</span>
-    </nav>
 
     <div class="article-layout">
 
@@ -236,9 +232,9 @@
       <aside class="article-sidebar" aria-label="Article sidebar">
 
 <!-- CTA -->
-        <div class="sidebar-widget" style="background:var(--grad-brand);color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <div class="sidebar-widget" style="background:linear-gradient(160deg, #3a1742 0%, #54245F 100%);color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;border:none;">
           <h3 id="cta-title" style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-3);">Enroll in Classical Dance</h3>
-          <p style="font-size:var(--text-sm);color:rgba(255,255,255,0.8);margin-bottom:var(--space-5);">Give your child the foundation of a lifetime. Free trial class included!</p>
+          <p style="font-size:var(--text-sm);color:rgba(255,255,255,0.9);margin-bottom:var(--space-5);">Give your child the foundation of a lifetime. Free trial class included!</p>
           <a href="signup.html" class="btn btn-champagne w-full" style="color:var(--orchid);display:flex;justify-content:center;">Enroll Now</a>
         </div>
 
@@ -640,9 +636,7 @@ function renderPost(p) {
   if (meta) meta.setAttribute("content", p.title + " — By " + p.author + ", Artiste Academy.");
 
   var heroCurrent = document.getElementById("hero-current");
-  var bcCurrent = document.getElementById("breadcrumb-current");
   if (heroCurrent) heroCurrent.textContent = p.shortTitle;
-  if (bcCurrent) bcCurrent.textContent = p.shortTitle;
 
   var cat = document.getElementById("article-cat");
   if (cat) cat.textContent = p.category;
@@ -694,23 +688,23 @@ function renderRelated(currentId) {
     var p = POSTS[id];
     return '<div class="related-post">' +
       '<div class="related-post-img"><img src="' + p.image + '" alt="' + p.title + '"></div>' +
-      "<div><h4 class=\"related-post-title\"><a href=\"blog-details.html?post=" + id + "\">" + p.title + "</a></h4>" +
+      '<div><h4 class="related-post-title"><a href="blog-details.html?post=' + id + '">' + p.title + '</a></h4>' +
       '<div class="related-post-date">' + p.date + "</div></div></div>";
   }).join("");
 }
 
 (function () {
   var params = new URLSearchParams(window.location.search);
-  var id = params.get("post") || "classical";
-  var post = POSTS[id] || POSTS.classical;
-  renderRelated(post === POSTS.classical ? "classical" : id);
-  if (id !== "classical" && POSTS[id]) {
-    renderPost(POSTS[id]);
+  var id = params.get("post");
+  if (!id) id = sessionStorage.getItem("kdpa_last_post");
+  if (!id || !POSTS[id]) id = "classical";
+  var post = POSTS[id];
+  renderRelated(id);
+  if (id !== "classical") {
+    renderPost(post);
   } else {
     var heroCurrent = document.getElementById("hero-current");
-    var bcCurrent = document.getElementById("breadcrumb-current");
     if (heroCurrent) heroCurrent.textContent = POSTS.classical.shortTitle;
-    if (bcCurrent) bcCurrent.textContent = POSTS.classical.shortTitle;
   }
 })();
 </script>
