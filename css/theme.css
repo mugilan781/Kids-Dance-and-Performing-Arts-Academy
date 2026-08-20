@@ -39,6 +39,16 @@
   background: var(--champagne);
   color: var(--orchid);
 }
+[data-theme="dark"] .timeline-year {
+  color: var(--champagne);
+}
+[data-theme="dark"] .value-icon svg,
+[data-theme="dark"] .award-icon svg {
+  color: var(--champagne);
+}
+[data-theme="dark"] .value-title {
+  color: var(--champagne);
+}
 
 /* Theme icon visibility */
 .hidden { display: none !important; }
