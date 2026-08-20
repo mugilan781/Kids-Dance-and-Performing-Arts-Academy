@@ -73,10 +73,29 @@
     }
     .dashboard-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
     .dashboard-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-6); }
-    @media (max-width: 900px) {
+@media (max-width: 900px) {
       .dashboard-grid-2 { grid-template-columns: 1fr; }
       .dashboard-grid-3 { grid-template-columns: 1fr; }
     }
+    /* Enrollment application form */
+    .enroll-intro { color: var(--text-muted); font-size: var(--text-sm); margin-bottom: var(--space-6); }
+    .program-selector { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+    .program-check-item {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-4);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+    }
+    .program-check-item:has(input:checked) {
+      border-color: var(--orchid);
+      background: rgba(84,36,95,0.05);
+    }
+    .program-check-item input { accent-color: var(--orchid); }
+    .program-check-icon { display: flex; align-items: center; color: var(--orchid); flex-shrink: 0; }
+    .program-check-name { font-size: var(--text-sm); font-weight: var(--weight-semi); }
+    @media (max-width: 480px) { .program-selector { grid-template-columns: 1fr; } }
     /* Sidebar overlay for mobile */
     #sidebar-overlay {
       position: fixed; inset: 0;
@@ -340,9 +359,193 @@
           </div>
         </div>
 
-        <div style="margin-top:var(--space-8);">
-          <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-4);">Add Another Program</h3>
-          <a href="signup.html" class="btn btn-primary">+ Enroll in New Program</a>
+<!-- New Enrollment Application -->
+        <div class="widget-card" id="enroll-form-card" style="margin-top:var(--space-8);">
+          <div class="widget-header">
+            <h3 class="widget-title">New Enrollment Application</h3>
+            <span class="badge badge-orchid">Free Application</span>
+          </div>
+          <div class="widget-body">
+            <p class="enroll-intro">Enrolling a new child or adding another program? Complete the steps below — our admissions team will confirm your child's free trial class within 24 hours.</p>
+
+            <!-- Step Indicator -->
+            <div class="step-indicator" aria-label="Enrollment steps" role="list">
+              <div class="step-dot active" role="listitem" aria-current="step" aria-label="Step 1: Parent Info">1</div>
+              <div class="step-line"></div>
+              <div class="step-dot" role="listitem" aria-label="Step 2: Child Info">2</div>
+              <div class="step-line"></div>
+              <div class="step-dot" role="listitem" aria-label="Step 3: Program">3</div>
+              <div class="step-line"></div>
+              <div class="step-dot" role="listitem" aria-label="Step 4: Confirm">4</div>
+            </div>
+
+            <form id="enrollment-form" data-multistep data-on-success="handleEnrollmentSuccess" novalidate aria-label="Enrollment form">
+
+              <!-- Step 1: Parent Info -->
+              <div data-step="1" aria-label="Step 1: Parent Information">
+                <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-2);">Parent Information</h3>
+                <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">Tell us about yourself so we can reach out to confirm the enrollment.</p>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+                  <div class="form-group">
+                    <label class="form-label" for="enf-parent-fname">First Name *</label>
+                    <input type="text" id="enf-parent-fname" class="form-control" placeholder="Priya"
+                           data-validate="required,minLength:2" autocomplete="given-name">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="enf-parent-lname">Last Name *</label>
+                    <input type="text" id="enf-parent-lname" class="form-control" placeholder="Sharma"
+                           data-validate="required,minLength:2" autocomplete="family-name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="enf-parent-email">Email Address *</label>
+                  <input type="email" id="enf-parent-email" class="form-control" placeholder="priya@email.com"
+                         data-validate="required,email" autocomplete="email">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="enf-parent-phone">Phone Number *</label>
+                  <input type="tel" id="enf-parent-phone" class="form-control" placeholder="+91 98765 43210"
+                         data-validate="required,phone" autocomplete="tel">
+                </div>
+              </div>
+
+              <!-- Step 2: Child Info -->
+              <div data-step="2" aria-label="Step 2: Child Information" hidden>
+                <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-2);">Your Child's Details</h3>
+                <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">We use this to assign the right batch and program for your child.</p>
+
+                <div class="form-group">
+                  <label class="form-label" for="enf-child-name">Child's Full Name *</label>
+                  <input type="text" id="enf-child-name" class="form-control" placeholder="Meera Sharma"
+                         data-validate="required,minLength:2">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+                  <div class="form-group">
+                    <label class="form-label" for="enf-child-dob">Date of Birth *</label>
+                    <input type="date" id="enf-child-dob" class="form-control" data-validate="required">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="enf-child-gender">Gender</label>
+                    <select id="enf-child-gender" class="form-control">
+                      <option value="">Select</option>
+                      <option>Girl</option>
+                      <option>Boy</option>
+                      <option>Prefer not to say</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="enf-child-experience">Prior Dance/Arts Experience</label>
+                  <select id="enf-child-experience" class="form-control">
+                    <option value="none">None — Complete Beginner</option>
+                    <option value="some">Some — 1 year or less</option>
+                    <option value="intermediate">Intermediate — 2–4 years</option>
+                    <option value="advanced">Advanced — 5+ years</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="enf-child-notes">Any special requirements or health notes?</label>
+                  <textarea id="enf-child-notes" class="form-control" rows="3" placeholder="Allergies, medical conditions, or any other information we should know..."></textarea>
+                </div>
+              </div>
+
+              <!-- Step 3: Program Selection -->
+              <div data-step="3" aria-label="Step 3: Program Selection" hidden>
+                <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-2);">Choose Programs</h3>
+                <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">Select one or more programs you'd like your child to try. You can always add more later.</p>
+
+                <div class="program-selector" role="group" aria-label="Program selection">
+                  <label class="program-check-item">
+                    <input type="checkbox" name="enf-program" value="classical">
+                    <span class="program-check-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-1.8 3.2-4.5 6-8 7 3.2 2 5.2 5.5 5.2 9.5h5.6c0-4 2-7.5 5.2-9.5-3.5-1-6.2-3.8-8-7z"/><path d="M12 8.5c-1 2-2.2 3.8-4.2 4.8 2 1.2 3.2 3 3.2 5.2h2c0-2.2 1.2-4 3.2-5.2-2-1-3.2-2.8-4.2-4.8z"/><path d="M6 21.5h12"/></svg></span>
+                    <span class="program-check-name">Classical Dance</span>
+                  </label>
+                  <label class="program-check-item">
+                    <input type="checkbox" name="enf-program" value="western">
+                    <span class="program-check-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+                    <span class="program-check-name">Western Dance</span>
+                  </label>
+                  <label class="program-check-item">
+                    <input type="checkbox" name="enf-program" value="hiphop">
+                    <span class="program-check-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M6 7V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><circle cx="8" cy="14" r="3"/><circle cx="16" cy="14" r="3"/><line x1="12" y1="11" x2="12" y2="17"/></svg></span>
+                    <span class="program-check-name">Hip-Hop</span>
+                  </label>
+                  <label class="program-check-item">
+                    <input type="checkbox" name="enf-program" value="ballet">
+                    <span class="program-check-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18l-2-10-5 5-2-9-2 9-5-5-2 10z"/><circle cx="12" cy="4" r="1" fill="currentColor"/><circle cx="4" cy="8" r="1" fill="currentColor"/><circle cx="20" cy="8" r="1" fill="currentColor"/><path d="M3 20h18"/></svg></span>
+                    <span class="program-check-name">Ballet</span>
+                  </label>
+                  <label class="program-check-item">
+                    <input type="checkbox" name="enf-program" value="drama">
+                    <span class="program-check-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3C5.13 3 2 6.13 2 10c0 4.5 4 8 7 8 1.13 0 2.2-.4 3-1.07"/><path d="M5.5 8.5c.5-.5 1.5-.5 2 0"/><path d="M10.5 8.5c.5-.5 1.5-.5 2 0"/><path d="M6 13c1.5 2 4.5 2 6 0"/><path d="M15 6.5C18.87 6.5 22 9.63 22 13.5c0 4.5-4 8-7 8-1.5 0-2.8-.5-3.8-1.4"/><path d="M14 12c.5.5 1.5.5 2 0"/><path d="M18.5 12c.5.5 1.5.5 2 0"/><path d="M14 17.5c1.5-1.5 4.5-1.5 6 0"/></svg></span>
+                    <span class="program-check-name">Drama &amp; Theater</span>
+                  </label>
+                  <label class="program-check-item">
+                    <input type="checkbox" name="enf-program" value="music">
+                    <span class="program-check-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+                    <span class="program-check-name">Music</span>
+                  </label>
+                </div>
+
+                <div class="form-group" style="margin-top:var(--space-6);">
+                  <label class="form-label" for="enf-batch">Preferred Batch Timing</label>
+                  <select id="enf-batch" class="form-control">
+                    <option value="">Select preferred timing</option>
+                    <option>Weekday Mornings (9 AM – 12 PM)</option>
+                    <option>Weekday Evenings (4 PM – 7 PM)</option>
+                    <option>Weekend Mornings (9 AM – 1 PM)</option>
+                    <option>Weekend Evenings (4 PM – 7 PM)</option>
+                    <option>Flexible</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Step 4: Confirmation -->
+              <div data-step="4" aria-label="Step 4: Confirmation" hidden>
+                <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-2);">Almost Done!</h3>
+                <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">Review your details and confirm your enrollment application.</p>
+
+                <div style="background:rgba(84,36,95,0.05);border:1px solid var(--border-card);border-radius:var(--radius-lg);padding:var(--space-6);margin-bottom:var(--space-6);">
+                  <div style="display:flex;gap:var(--space-4);margin-bottom:var(--space-4);">
+                    <div style="width:40px;height:40px;color:var(--orchid);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3C5.13 3 2 6.13 2 10c0 4.5 4 8 7 8 1.13 0 2.2-.4 3-1.07"/><path d="M5.5 8.5c.5-.5 1.5-.5 2 0"/><path d="M10.5 8.5c.5-.5 1.5-.5 2 0"/><path d="M6 13c1.5 2 4.5 2 6 0"/><path d="M15 6.5C18.87 6.5 22 9.63 22 13.5c0 4.5-4 8-7 8-1.5 0-2.8-.5-3.8-1.4"/><path d="M14 12c.5.5 1.5.5 2 0"/><path d="M18.5 12c.5.5 1.5.5 2 0"/><path d="M14 17.5c1.5-1.5 4.5-1.5 6 0"/></svg></div>
+                    <div>
+                      <div style="font-weight:700;font-size:var(--text-base);">Free Trial Class Included</div>
+                      <div style="font-size:var(--text-sm);color:var(--text-muted);">Your child will attend a free trial before committing to enrollment.</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:var(--space-4);">
+                    <div style="width:40px;height:40px;color:var(--rose-gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                    <div>
+                      <div style="font-weight:700;font-size:var(--text-base);">We Contact You Within 24 Hours</div>
+                      <div style="font-size:var(--text-sm);color:var(--text-muted);">Our admissions team will reach out to confirm your details and schedule.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="margin-bottom:var(--space-6);">
+                  <label class="form-check" style="cursor:pointer;align-items:flex-start;">
+                    <input type="checkbox" id="enf-terms" data-validate="required">
+                    <span class="form-check-label">
+                      I agree to the <a href="terms.html" style="color:var(--orchid);">Terms &amp; Conditions</a>
+                      and <a href="privacy-policy.html" style="color:var(--orchid);">Privacy Policy</a> of Artiste Academy. *
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Navigation Buttons -->
+              <div style="display:flex;justify-content:space-between;gap:var(--space-4);margin-top:var(--space-8);">
+                <button type="button" data-step-prev class="btn btn-secondary" hidden><span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span> Previous</button>
+                <div style="flex:1;"></div>
+                <button type="button" data-step-next class="btn btn-primary">Next Step <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></button>
+                <button type="submit" data-step-submit class="btn btn-primary" hidden>
+                  Submit Enrollment Application
+                </button>
+              </div>
+
+            </form>
+          </div>
         </div>
       </section>
 

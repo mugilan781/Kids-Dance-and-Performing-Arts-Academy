@@ -196,6 +196,12 @@ const MultiStepForm = (() => {
     form.addEventListener('submit', e => {
       e.preventDefault();
       if (validateCurrentStep()) {
+        // Custom success handler (e.g. dashboard enrollment)
+        const onSuccess = form.dataset.onSuccess;
+        if (onSuccess && window[onSuccess]) {
+          window[onSuccess](form);
+          return;
+        }
         // Show success
         form.innerHTML = `
           <div style="text-align:center; padding: 3rem; animation: scaleIn 0.5s var(--ease-spring);">
