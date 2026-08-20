@@ -1,11 +1,10 @@
 /* ============================================================
-   NAVBAR.JS — Sticky, Mobile Drawer, Scroll Hide
+   NAVBAR.JS — Sticky, Mobile Drawer
    ============================================================ */
 
 'use strict';
 
 const Navbar = (() => {
-  let lastScroll = 0;
   let navbar, drawer, drawerOverlay, hamburger;
 
   function onScroll() {
@@ -21,15 +20,6 @@ const Navbar = (() => {
         navbar.classList.add('transparent');
       }
     }
-
-    // Hide on scroll down, show on scroll up
-    if (current > lastScroll && current > 300) {
-      navbar.classList.add('hide');
-    } else {
-      navbar.classList.remove('hide');
-    }
-
-    lastScroll = current <= 0 ? 0 : current;
   }
 
   function openDrawer() {

@@ -26,7 +26,6 @@
   background: rgba(26,21,32,0.9);
   border-bottom-color: rgba(217,203,232,0.08);
 }
-.navbar.hide { transform: translateY(-100%); }
 
 .navbar .container {
   display: flex;
