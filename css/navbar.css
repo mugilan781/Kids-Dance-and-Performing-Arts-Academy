@@ -145,6 +145,45 @@
 }
 .dropdown-item:hover { background: rgba(84,36,95,0.06); color: var(--orchid); }
 
+/* RTL/LTR text toggle */
+.icon-btn.rtl-toggle-btn {
+  width: auto;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semi);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Profile dropdown */
+.profile-menu {
+  position: relative;
+}
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  min-width: 210px;
+  padding: var(--space-2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity var(--duration-base), transform var(--duration-base) var(--ease-out);
+  z-index: 10;
+}
+.profile-menu:hover .profile-dropdown,
+.profile-menu:focus-within .profile-dropdown {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+[dir="rtl"] .profile-dropdown { right: auto; left: 0; }
+
 /* Nav Actions */
 .nav-actions {
   display: flex;
