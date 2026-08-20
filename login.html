@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
-  <meta name="description" content="Parent Login — Access your Artiste Academy Parent Dashboard to track your child's progress, attendance and recitals.">
+  <meta name="description" content="Parent Login — Sign in to your Artiste Academy parent dashboard.">
   <title>Parent Login | Artiste Academy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,247 +16,337 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/theme.css">
   <style>
-    body { background: var(--bg-primary); }
-    .auth-layout { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
-    .auth-art-panel {
-      background: var(--grad-brand);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
-      padding: var(--space-16);
-    }
-    .auth-art-panel img {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0.3;
-    }
-    .auth-art-panel .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(84,36,95,0.95) 0%, rgba(84,36,95,0.4) 100%);
-    }
-    .auth-art-content { position: relative; z-index: 1; color: #fff; }
-    .auth-art-quote {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-style: italic;
-      line-height: 1.3;
-      margin-bottom: var(--space-4);
-    }
-    .auth-art-author { font-size: var(--text-sm); color: rgba(255,255,255,0.65); }
-    .auth-art-logo {
-      position: absolute;
-      top: var(--space-8);
-      left: var(--space-8);
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      text-decoration: none;
-    }
-    .auth-logo-icon { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(255,255,255,0.2); }
-    .auth-logo-name { font-family: var(--font-display); font-size: var(--text-base); font-weight: var(--weight-bold); color: #fff; }
-    .auth-logo-sub { font-size: 0.65rem; color: rgba(255,255,255,0.65); letter-spacing: 0.1em; text-transform: uppercase; }
+    /* ═══════════ LOGIN PAGE (standalone auth card) ═══════════ */
 
-    .auth-form-panel {
+    /* Background — warm ivory with soft brand glows */
+    body {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--space-12) var(--space-10);
-      background: var(--bg-primary);
-      overflow-y: auto;
+      padding: var(--space-6);
+      background: #FBF7F1;
+      overflow-x: hidden;
     }
-    .auth-form-wrap { width: 100%; max-width: 420px; }
-    .auth-back-link {
-      display: inline-flex; align-items: center; gap: var(--space-2);
-      font-size: var(--text-sm); color: var(--text-muted);
-      text-decoration: none; margin-bottom: var(--space-8);
-      transition: color var(--duration-fast);
+    .login-glows {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
     }
-    .auth-back-link:hover { color: var(--orchid); }
+    .login-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+    }
+    .login-glow-lavender {
+      width: 520px; height: 520px;
+      top: -140px; right: -100px;
+      background: rgba(217, 203, 232, 0.55);
+    }
+    .login-glow-peach {
+      width: 480px; height: 480px;
+      left: -120px; top: 22%;
+      background: rgba(231, 207, 167, 0.5);
+    }
+    .login-glow-green {
+      width: 460px; height: 460px;
+      left: 12%; bottom: -160px;
+      background: rgba(176, 208, 198, 0.42);
+    }
 
-    .auth-title { font-family: var(--font-display); font-size: var(--text-4xl); margin-bottom: var(--space-2); }
-    .auth-subtitle { color: var(--text-muted); font-size: var(--text-base); margin-bottom: var(--space-8); }
+    /* Card */
+    .login-card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 520px;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: var(--shadow-xl);
+      padding: var(--space-10);
+      animation: fadeUp 0.6s var(--ease-out);
+    }
 
-    .social-auth { display: flex; gap: var(--space-3); margin-bottom: var(--space-6); }
-    .social-auth-btn {
-      flex: 1;
-      display: flex; align-items: center; justify-content: center; gap: var(--space-2);
-      padding: var(--space-3) var(--space-4);
-      border: 1.5px solid var(--border-color);
-      border-radius: var(--radius-md);
+    /* Branding */
+    .login-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-8);
+    }
+    .login-brand-logo {
+      width: 46px; height: 46px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(84, 36, 95, 0.07);
+      border: 1px solid rgba(84, 36, 95, 0.12);
+      border-radius: 13px;
+      padding: 3px;
+    }
+    .login-brand-logo img {
+      width: 40px; height: 40px;
+      object-fit: contain;
+      display: block;
+    }
+    .login-brand-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: var(--weight-bold);
+      color: var(--charcoal);
+      letter-spacing: 0.01em;
+    }
+
+    /* Heading */
+    .login-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.1rem);
+      font-weight: var(--weight-black);
+      color: var(--charcoal);
+      text-align: center;
+      margin-bottom: var(--space-2);
+    }
+    .login-subtitle {
+      text-align: center;
+      font-size: var(--text-base);
+      color: var(--text-muted);
+      margin-bottom: var(--space-8);
+    }
+
+    /* Inputs — page-scoped overrides */
+    .login-card .form-group { margin-bottom: var(--space-5); }
+    .login-card .form-label {
       font-size: var(--text-sm);
-      font-weight: var(--weight-medium);
-      color: var(--text-primary);
-      background: var(--bg-card);
+      font-weight: var(--weight-semi);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-2);
+    }
+    .login-card .form-control {
+      background: #ffffff;
+      border: 1px solid rgba(84, 36, 95, 0.18);
+      border-radius: 13px;
+      padding: 0.9375rem 1.125rem;
+      font-size: var(--text-base);
+      color: var(--charcoal);
+    }
+    .login-card .form-control:focus {
+      border-color: var(--orchid);
+      box-shadow: 0 0 0 4px rgba(84, 36, 95, 0.1);
+    }
+    .login-card .form-control::placeholder { color: var(--text-muted); }
+
+    /* Password eye */
+    .password-field { position: relative; }
+    .password-toggle {
+      position: absolute;
+      right: 0.9375rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    .password-toggle:hover { color: var(--orchid); }
+
+    /* Remember / Forgot row */
+    .login-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin: var(--space-1) 0 var(--space-6);
+    }
+    .login-remember { margin: 0; }
+    .login-forgot {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semi);
+      color: var(--orchid);
+      text-decoration: none;
+    }
+    .login-forgot:hover { text-decoration: underline; }
+
+    /* Sign In button */
+    .login-submit {
+      width: 100%;
+      height: 60px;
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      border-radius: var(--radius-full);
+      box-shadow: 0 14px 30px rgba(84, 36, 95, 0.28);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+    .login-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(84, 36, 95, 0.34);
+    }
+
+    /* Divider */
+    .login-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin: var(--space-6) 0;
+    }
+    .login-divider::before,
+    .login-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(84, 36, 95, 0.12);
+    }
+    .login-divider span {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Social buttons */
+    .login-social { display: flex; gap: var(--space-3); }
+    .login-social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: 0.875rem 1rem;
+      background: #ffffff;
+      border: 1.5px solid rgba(84, 36, 95, 0.3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semi);
+      color: var(--charcoal);
       cursor: pointer;
       transition: all var(--duration-fast);
     }
-    .social-auth-btn:hover { border-color: var(--orchid); background: rgba(84,36,95,0.04); }
-
-    .auth-divider {
-      display: flex; align-items: center; gap: var(--space-4);
-      margin-bottom: var(--space-6);
+    .login-social-btn:hover {
+      border-color: var(--orchid);
+      background: rgba(84, 36, 95, 0.04);
     }
-    .auth-divider::before, .auth-divider::after {
-      content: ''; flex: 1; height: 1px; background: var(--border-color);
-    }
-    .auth-divider span { font-size: var(--text-xs); color: var(--text-muted); white-space: nowrap; }
+    .login-social-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
-    .password-field { position: relative; }
-    .password-toggle {
-      position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
-      background: none; border: none; cursor: pointer; color: var(--text-muted);
-      font-size: 1.1rem; padding: 0;
-    }
-    .forgot-link { font-size: var(--text-sm); color: var(--orchid); float: right; margin-top: var(--space-2); }
-    .forgot-link:hover { text-decoration: underline; }
-    .auth-footer-text { text-align: center; margin-top: var(--space-6); font-size: var(--text-sm); color: var(--text-muted); }
-    .auth-footer-text a { color: var(--orchid); font-weight: var(--weight-semi); }
-
-    .trust-badges {
-      display: flex; gap: var(--space-4); justify-content: center;
+    /* Footer link */
+    .login-footer {
+      text-align: center;
       margin-top: var(--space-6);
-      flex-wrap: wrap;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
     }
-    .trust-badge {
-      display: flex; align-items: center; gap: var(--space-2);
-      font-size: var(--text-xs); color: var(--text-muted);
+    .login-footer a {
+      color: var(--orchid);
+      font-weight: var(--weight-bold);
+      text-decoration: none;
     }
-    @media (max-width: 900px) {
-      .auth-layout { grid-template-columns: 1fr; }
-      .auth-art-panel { min-height: 240px; padding: var(--space-8); }
-      .auth-form-panel { padding: var(--space-10) var(--space-6); }
+    .login-footer a:hover { text-decoration: underline; }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      body { padding: var(--space-4); }
+      .login-card { padding: var(--space-6); border-radius: 24px; }
+      .login-brand { margin-bottom: var(--space-6); }
+      .login-subtitle { margin-bottom: var(--space-6); }
+    }
+    @media (max-width: 360px) {
+      .login-social { gap: var(--space-2); }
+      .login-social-btn { padding: 0.75rem 0.75rem; gap: 0.375rem; font-size: 0.8125rem; }
+      .login-card .form-control { padding: 0.875rem 1rem; }
+    }
+    @media (max-height: 720px) {
+      body { align-items: flex-start; padding-top: var(--space-8); padding-bottom: var(--space-8); }
     }
   </style>
 </head>
 <body>
 <div class="page-transition" aria-hidden="true"></div>
-<div class="auth-layout">
 
-  <!-- ART PANEL -->
-  <div class="auth-art-panel" aria-hidden="true">
-    <img src="assets/images/hero_slide_1.jpg" alt="">
-    <div class="overlay"></div>
-    <a href="index.html" class="auth-art-logo">
-      <img class="logo-img auth-logo-img" src="assets/images/logo.png" alt="" aria-hidden="true" width="44" height="44">
-      <div>
-        <div class="auth-logo-name">Artiste Academy</div><div class="auth-logo-sub">Born to Shine</div>
-      </div>
-    </a>
-    <div class="auth-art-content">
-      <p class="auth-art-quote">"Every great dancer was once a beginner who refused to give up."</p>
-      <div class="auth-art-author">— The Artiste Academy Philosophy</div>
-      <div style="display:flex;gap:var(--space-4);margin-top:var(--space-8);">
-        <div style="text-align:center;">
-          <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--champagne);">500+</div>
-          <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.06em;">Students</div>
-        </div>
-        <div style="width:1px;background:rgba(255,255,255,0.2);"></div>
-        <div style="text-align:center;">
-          <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--champagne);">25+</div>
-          <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.06em;">Faculty</div>
-        </div>
-        <div style="width:1px;background:rgba(255,255,255,0.2);"></div>
-        <div style="text-align:center;">
-          <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--champagne);">20+</div>
-          <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.06em;">Years</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FORM PANEL -->
-  <div class="auth-form-panel">
-    <div class="auth-form-wrap">
-
-      <a href="index.html" class="auth-back-link"><span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span> Back to Website</a>
-
-      <div style="margin-bottom:var(--space-8);">
-        <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark/light mode"><svg class="icon-svg theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-svg theme-icon-sun hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
-        <button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL" title="Toggle RTL/LTR"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></button>
-      </div>
-
-      <h1 class="auth-title">Welcome Back</h1>
-      <p class="auth-subtitle">Sign in to your Parent Dashboard</p>
-
-      <!-- Social Login -->
-      <div class="social-auth">
-        <button class="social-auth-btn" onclick="alert('Google Sign-In — connect OAuth.')">
-          <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg> Google
-        </button>
-        <button class="social-auth-btn" onclick="alert('Apple Sign-In — connect OAuth.')">
-          <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.66-1.06 1.73-.93 2.76 1.01.08 2.03-.51 2.64-1.26z"/></svg> Apple
-        </button>
-      </div>
-
-      <div class="auth-divider"><span>or continue with email</span></div>
-
-      <!-- Login Form -->
-      <form id="login-form" data-form data-on-success="handleLoginSuccess" novalidate aria-label="Login form">
-        <div class="form-group">
-          <label class="form-label" for="login-email">Email Address</label>
-          <div class="form-control-icon">
-            <span class="input-icon" aria-hidden="true" style="display:flex;align-items:center;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
-            <input type="email" id="login-email" class="form-control"
-                   placeholder="parent@email.com"
-                   data-validate="required,email"
-                   autocomplete="email"
-                   aria-required="true">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="login-password">Password</label>
-          <div class="password-field">
-            <input type="password" id="login-password" class="form-control"
-                   placeholder="Enter your password"
-                   data-validate="required,minLength:6"
-                   autocomplete="current-password"
-                   aria-required="true"
-                   style="padding-right:3rem;">
-            <button type="button" class="password-toggle" data-password-toggle="login-password" aria-label="Show password" style="display:flex;align-items:center;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg></button>
-          </div>
-          <a href="#forgot" class="forgot-link" onclick="alert('Password reset email sent to your registered address.')">
-            Forgot password?
-          </a>
-        </div>
-
-        <div style="clear:both;margin-top:var(--space-4);margin-bottom:var(--space-6);">
-          <label class="form-check" style="cursor:pointer;">
-            <input type="checkbox" id="remember-me"> 
-            <span class="form-check-label">Remember me for 30 days</span>
-          </label>
-        </div>
-
-        <button type="submit" class="btn btn-primary w-full btn-lg" id="login-submit-btn" style="display:flex;justify-content:center;">
-          Sign In to Dashboard
-        </button>
-      </form>
-
-      <!-- Trust badges -->
-      <div class="trust-badges">
-        <div class="trust-badge"><span aria-hidden="true" style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> SSL Secured</div>
-        <div class="trust-badge"><span aria-hidden="true" style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8c-1.5-1.5-4 0-2.5 2.5L12 13l2.5-2.5C16 8 13.5 6.5 12 8z" fill="currentColor"/></svg></span> 256-bit Encryption</div>
-        <div class="trust-badge"><span aria-hidden="true" style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span> Data Protected</div>
-      </div>
-
-      <p class="auth-footer-text">
-        New parent? <a href="signup.html">Create an account <span style="display:inline-flex;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
-      </p>
-      <p style="text-align:center;margin-top:var(--space-3);font-size:var(--text-xs);color:var(--text-muted);">
-        By signing in you agree to our <a href="privacy-policy.html" style="color:var(--orchid);">Privacy Policy</a>
-        and <a href="terms.html" style="color:var(--orchid);">Terms of Use</a>.
-      </p>
-    </div>
-  </div>
-
+<!-- Soft background glows -->
+<div class="login-glows" aria-hidden="true">
+  <div class="login-glow login-glow-lavender"></div>
+  <div class="login-glow login-glow-peach"></div>
+  <div class="login-glow login-glow-green"></div>
 </div>
+
+<!-- Login Card -->
+<main class="login-card" role="main" aria-labelledby="login-title">
+
+  <!-- Branding -->
+  <div class="login-brand">
+    <div class="login-brand-logo">
+      <img src="assets/images/logo.png" alt="Artiste Academy" width="40" height="40">
+    </div>
+    <span class="login-brand-name">Artiste Academy</span>
+  </div>
+
+  <!-- Heading -->
+  <h1 class="login-title" id="login-title">Welcome Back</h1>
+  <p class="login-subtitle">Sign in to your parent dashboard</p>
+
+  <!-- Login Form -->
+  <form id="login-form" data-form data-on-success="handleLoginSuccess" novalidate aria-label="Login form">
+    <div class="form-group">
+      <label class="form-label" for="login-email">Email Address</label>
+      <input type="email" id="login-email" class="form-control"
+             placeholder="parent@example.com"
+             data-validate="required,email"
+             autocomplete="email"
+             aria-required="true">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="login-password">Password</label>
+      <div class="password-field">
+        <input type="password" id="login-password" class="form-control"
+               placeholder="Enter your password"
+               data-validate="required,minLength:6"
+               autocomplete="current-password"
+               aria-required="true"
+               style="padding-right:3rem;">
+        <button type="button" class="password-toggle" data-password-toggle="login-password" aria-label="Show password" title="Show password" style="display:flex;align-items:center;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      </div>
+    </div>
+
+    <div class="login-options">
+      <label class="form-check login-remember" style="cursor:pointer;">
+        <input type="checkbox" id="remember-me">
+        <span class="form-check-label">Remember me</span>
+      </label>
+      <a href="#forgot" class="login-forgot" onclick="alert('Password reset email sent to your registered address.')">
+        Forgot password?
+      </a>
+    </div>
+
+    <button type="submit" class="btn btn-primary login-submit" id="login-submit-btn">
+      Sign In
+    </button>
+  </form>
+
+  <!-- Divider -->
+  <div class="login-divider" role="separator" aria-label="or continue with">
+    <span>or continue with</span>
+  </div>
+
+  <!-- Social Login -->
+  <div class="login-social">
+    <button type="button" class="login-social-btn" onclick="alert('Google Sign-In — connect OAuth.')">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
+      Google
+    </button>
+    <button type="button" class="login-social-btn" onclick="alert('Facebook Sign-In — connect OAuth.')">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/></svg>
+      Facebook
+    </button>
+  </div>
+
+  <!-- Footer link -->
+  <p class="login-footer">Don't have an account? <a href="signup.html">Sign Up</a></p>
+</main>
 
 <script src="js/main.js"></script>
 <script src="js/forms.js"></script>
@@ -266,6 +356,10 @@ function handleLoginSuccess(form) {
   window.Artiste.Toast.show('Login successful! Redirecting to dashboard...', 'success');
   setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
 }
+// Force light theme for this auth page (matches the reference design)
+document.addEventListener('DOMContentLoaded', () => {
+  document.documentElement.setAttribute('data-theme', 'light');
+});
 </script>
 </body>
 </html>
