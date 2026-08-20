@@ -4,6 +4,22 @@
 
 'use strict';
 
+// ── Theme-aware colors (dark-mode contrast) ─────────────────────
+function themeIsDark() {
+  return document.documentElement.getAttribute('data-theme') === 'dark';
+}
+function cssVarValue(name, fallback) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+}
+function barPalette() {
+  return themeIsDark()
+    ? { color1: cssVarValue('--rose-gold', '#C78B9B'), color2: cssVarValue('--rose-gold-lt', '#D9A8B5') }
+    : { color1: cssVarValue('--orchid', '#54245F'), color2: cssVarValue('--rose-gold', '#C78B9B') };
+}
+function ringColor() {
+  return themeIsDark() ? cssVarValue('--rose-gold-lt', '#D9A8B5') : cssVarValue('--orchid', '#54245F');
+}
+
 // ── Sidebar Toggle (Mobile) ────────────────────────────────────
 const DashboardSidebar = (() => {
   function init() {
@@ -33,8 +49,8 @@ const AttendanceChart = (() => {
     if (!container) return;
 
     const {
-      color1 = '#54245F',
-      color2 = '#C78B9B',
+      color1 = barPalette().color1,
+      color2 = barPalette().color2,
       maxValue = 100
     } = options;
 
@@ -173,7 +189,7 @@ const DashboardTabs = (() => {
 
 // ── Donut Chart (SVG) ──────────────────────────────────────────
 const DonutChart = (() => {
-  function render(containerId, percentage, color = '#54245F') {
+  function render(containerId, percentage, color = ringColor()) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
@@ -232,18 +248,18 @@ function handleEnrollmentSuccess(form) {
 
   form.innerHTML = `
     <div style="text-align:center;padding:3rem 1rem;animation:scaleIn 0.5s var(--ease-spring);">
-      <div style="width:76px;height:76px;border-radius:50%;background:rgba(84,36,95,0.1);color:var(--orchid);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
+      <div class="success-icon" style="width:76px;height:76px;border-radius:50%;background:rgba(84,36,95,0.1);color:var(--orchid);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
         <svg class="icon-svg" style="width:38px;height:38px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
         </svg>
       </div>
-      <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:0.5rem;color:var(--orchid);">
+      <h3 class="success-title" style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:0.5rem;color:var(--orchid);">
         Application Submitted!
       </h3>
       <p style="color:var(--text-muted);font-size:var(--text-sm);text-align:center;max-width:68ch;margin:0 auto var(--space-6);">
         Thank you! Our admissions team will contact you within 24 hours to confirm your child's free trial class.
       </p>
-      <div style="display:inline-block;padding:var(--space-2) var(--space-5);border:1.5px dashed var(--orchid);border-radius:var(--radius-lg);font-weight:700;color:var(--orchid);letter-spacing:0.05em;margin-bottom:var(--space-6);">
+      <div class="success-ref" style="display:inline-block;padding:var(--space-2) var(--space-5);border:1.5px dashed var(--orchid);border-radius:var(--radius-lg);font-weight:700;color:var(--orchid);letter-spacing:0.05em;margin-bottom:var(--space-6);">
         Application Reference: ${ref}
       </div>
       <div style="display:flex;flex-direction:column;gap:var(--space-3);max-width:420px;margin:0 auto var(--space-8);text-align:left;font-size:var(--text-sm);">
@@ -252,7 +268,7 @@ function handleEnrollmentSuccess(form) {
           <span style="color:var(--text-secondary);">Free trial class will be scheduled at your preferred batch timing.</span>
         </div>
         <div style="display:flex;gap:var(--space-3);align-items:flex-start;">
-          <span style="color:var(--orchid);display:inline-flex;margin-top:2px;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="success-phone" style="color:var(--orchid);display:inline-flex;margin-top:2px;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
           <span style="color:var(--text-secondary);">Questions? Call admissions at <strong>+91 44 1234 5678</strong>.</span>
         </div>
       </div>
@@ -268,6 +284,15 @@ function handleEnrollmentSuccess(form) {
   form.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+// ── Theme Sync: re-render charts when dark/light toggles ───────
+function initThemeSync() {
+  const observer = new MutationObserver(() => {
+    if (document.getElementById('attendance-chart')) AttendanceChart.init();
+    if (document.getElementById('donut-chart')) DonutChart.render('donut-chart', 87);
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   DashboardSidebar.init();
   AttendanceChart.init();
@@ -276,6 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render donut chart if exists
   DonutChart.render('donut-chart', 87);
+
+  initThemeSync();
 });
 
 window.Artiste_Dashboard = window.KDPA_Dashboard = { AttendanceChart, MiniCalendar, DonutChart };
