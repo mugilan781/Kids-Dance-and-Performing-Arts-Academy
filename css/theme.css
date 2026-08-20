@@ -30,6 +30,15 @@
 [data-theme="dark"] .footer {
   background: linear-gradient(160deg, #100c14 0%, #1d1225 100%);
 }
+[data-theme="dark"] .social-link:not(.dark) {
+  background: rgba(217,203,232,0.14);
+  color: var(--champagne);
+  border-color: rgba(217,203,232,0.2);
+}
+[data-theme="dark"] .social-link:not(.dark):hover {
+  background: var(--champagne);
+  color: var(--orchid);
+}
 
 /* Theme icon visibility */
 .hidden { display: none !important; }
