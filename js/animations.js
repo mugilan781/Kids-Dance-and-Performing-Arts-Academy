@@ -135,12 +135,16 @@ const Lightbox = (() => {
     currentIndex = idx;
     overlay.querySelector('.lightbox-img').src = src;
     overlay.querySelector('.lightbox-img').alt = alt || '';
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'all';
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     updateCounter();
   }
 
   function close() {
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
     overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
@@ -245,8 +249,6 @@ const Lightbox = (() => {
       images.push({ src: el.querySelector('img')?.src || el.src, alt: el.alt || el.dataset.alt || '' });
       el.style.cursor = 'zoom-in';
       el.addEventListener('click', () => {
-        overlay.style.opacity = '1';
-        overlay.style.pointerEvents = 'all';
         open(images[idx].src, images[idx].alt, idx);
       });
     });
