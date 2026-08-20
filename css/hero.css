@@ -7,6 +7,7 @@
   height: 100svh;
   min-height: 600px;
   overflow: hidden;
+  background: var(--charcoal);
 }
 
 /* Slides */
@@ -40,9 +41,9 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(84, 36, 95, 0.82) 0%,
-    rgba(84, 36, 95, 0.45) 50%,
-    rgba(41, 35, 45, 0.6) 100%
+    rgba(84, 36, 95, 0.88) 0%,
+    rgba(84, 36, 95, 0.55) 50%,
+    rgba(41, 35, 45, 0.68) 100%
   );
 }
 
@@ -191,39 +192,6 @@
   transform: scale(1.1);
 }
 
-/* Scroll Indicator */
-.hero-scroll-hint {
-  position: absolute;
-  bottom: var(--space-8);
-  right: var(--space-8);
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  color: rgba(255,255,255,0.5);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.scroll-mouse {
-  width: 24px; height: 38px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-radius: 12px;
-  position: relative;
-}
-.scroll-mouse::after {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 3px; height: 8px;
-  background: rgba(255,255,255,0.6);
-  border-radius: var(--radius-full);
-  animation: float 2s ease-in-out infinite;
-}
-
 /* Floating badge on hero */
 .hero-float-badge {
   position: absolute;
@@ -252,6 +220,5 @@
 
 @media (max-width: 768px) {
   .hero-arrows { display: none; }
-  .hero-scroll-hint { display: none; }
   .hero-float-badge { display: none; }
 }
