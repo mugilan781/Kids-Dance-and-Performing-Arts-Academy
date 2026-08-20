@@ -72,6 +72,8 @@ const RTLManager = (() => {
       btn.setAttribute('aria-pressed', dir === 'rtl' ? 'true' : 'false');
       btn.setAttribute('aria-label', dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
       btn.title = dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
+      const label = btn.querySelector('.rtl-label');
+      if (label) label.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
     });
   }
 
