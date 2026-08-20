@@ -26,6 +26,25 @@
   background: rgba(26,21,32,0.9);
   border-bottom-color: rgba(217,203,232,0.08);
 }
+[data-theme="dark"] .navbar:not(.transparent) .nav-link.active {
+  color: var(--champagne);
+}
+[data-theme="dark"] .navbar:not(.transparent) .nav-link:hover {
+  color: var(--champagne);
+  background: rgba(217,203,232,0.12);
+}
+[data-theme="dark"] .dropdown-item:hover {
+  background: rgba(217,203,232,0.1);
+  color: var(--champagne);
+}
+[data-theme="dark"] .drawer-link:hover {
+  background: rgba(217,203,232,0.1);
+  color: var(--champagne);
+}
+[data-theme="dark"] .drawer-link.active {
+  background: rgba(217,203,232,0.14);
+  color: var(--champagne);
+}
 
 .navbar .container {
   display: flex;
