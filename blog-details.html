@@ -40,6 +40,7 @@
     [data-theme="dark"] .article-tag { background: rgba(217,203,232,0.14); color: #e3d7f0; }
     [data-theme="dark"] .article-tag:hover { background: var(--orchid-light); color: #fff; }
     [data-theme="dark"] .blog-cat-tag { background: rgba(217,203,232,0.14) !important; color: #e3d7f0 !important; }
+    .newsletter-field .form-error { justify-content: center; }
     .share-buttons { display: flex; gap: var(--space-3); }
     .share-btn { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border: 1.5px solid var(--border-color); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-secondary); background: transparent; cursor: pointer; transition: all var(--duration-fast); }
     .share-btn:hover { border-color: var(--orchid); color: var(--orchid); }
@@ -313,9 +314,11 @@
         <div class="sidebar-widget">
           <h3 class="sidebar-widget-title">Newsletter</h3>
           <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-4);">Get weekly arts education insights delivered to your inbox.</p>
-          <form data-form style="display:flex;flex-direction:column;gap:var(--space-3);" novalidate>
-            <input type="email" class="form-control" placeholder="your@email.com" data-validate="required,email">
-            <button type="submit" class="btn btn-primary w-full" style="display:flex;justify-content:center;">Subscribe</button>
+<form data-form novalidate>
+            <div class="newsletter-field" style="display:flex;flex-direction:column;gap:var(--space-3);">
+              <input type="email" class="form-control" placeholder="your@email.com" data-validate="required,email">
+              <button type="submit" class="btn btn-primary w-full" style="display:flex;justify-content:center;">Subscribe</button>
+            </div>
           </form>
         </div>
 

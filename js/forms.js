@@ -24,6 +24,9 @@ const FormValidation = (() => {
   // Fields placed directly inside a <form> (e.g. footer newsletter pill)
   // host the error message next to the form so it cannot break the layout.
   function errorHost(field) {
+    if (field.parentElement.classList.contains('subscribe-field') || field.parentElement.classList.contains('input-group')) {
+      return field.parentElement.parentElement;
+    }
     return field.parentElement.tagName === 'FORM'
       ? field.parentElement.parentElement
       : field.parentElement;
@@ -42,7 +45,9 @@ const FormValidation = (() => {
     }
     errEl.innerHTML = `<svg class="icon-svg form-err-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> ${message}`;
     errEl.classList.add('visible');
-    if (field.parentElement.tagName === 'FORM') field.parentElement.classList.add('error-state');
+    if (field.parentElement.tagName === 'FORM' || field.parentElement.classList.contains('subscribe-field')) {
+      field.parentElement.classList.add('error-state');
+    }
   }
 
   function showSuccess(field) {
@@ -50,14 +55,18 @@ const FormValidation = (() => {
     field.classList.add('success');
     const errEl = errorHost(field).querySelector('.form-error');
     if (errEl) errEl.classList.remove('visible');
-    if (field.parentElement.tagName === 'FORM') field.parentElement.classList.remove('error-state');
+    if (field.parentElement.tagName === 'FORM' || field.parentElement.classList.contains('subscribe-field')) {
+      field.parentElement.classList.remove('error-state');
+    }
   }
 
   function clearState(field) {
     field.classList.remove('error', 'success');
     const errEl = errorHost(field).querySelector('.form-error');
     if (errEl) errEl.classList.remove('visible');
-    if (field.parentElement.tagName === 'FORM') field.parentElement.classList.remove('error-state');
+    if (field.parentElement.tagName === 'FORM' || field.parentElement.classList.contains('subscribe-field')) {
+      field.parentElement.classList.remove('error-state');
+    }
   }
 
   function validateField(field) {

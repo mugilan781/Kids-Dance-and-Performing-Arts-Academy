@@ -119,10 +119,20 @@
       cursor: pointer;
       transition: all var(--duration-fast);
     }
-    .filter-btn:hover, .filter-btn.active {
+.filter-btn:hover, .filter-btn.active {
       background: var(--orchid);
       border-color: var(--orchid);
       color: #fff;
+    }
+    .subscribe-field + .form-error,
+    .cta-banner .form-error {
+      margin-top: var(--space-3);
+      justify-content: center;
+      color: #fca5a5;
+    }
+    .subscribe-field + .form-error .form-err-icon,
+    .cta-banner .form-error .form-err-icon {
+      stroke: #fca5a5;
     }
 
 @media (max-width: 900px) {
@@ -342,10 +352,12 @@
   <div class="container" style="position:relative;z-index:1;">
     <h2 id="blog-cta" style="font-size:clamp(1.75rem,4vw,3rem);color:#fff;margin-bottom:var(--space-4);">Subscribe to the Artiste Academy Journal</h2>
     <p style="color:rgba(255,255,255,0.8);max-width:50ch;margin:0 auto var(--space-8);">Get weekly articles on dance, arts education and parenting delivered to your inbox.</p>
-    <form style="display:flex;max-width:440px;margin:0 auto;gap:0;" data-form novalidate>
-      <input type="email" class="form-control" placeholder="your@email.com" data-validate="required,email"
-             style="border-radius:var(--radius-full) 0 0 var(--radius-full);border-right:none;flex:1;">
-      <button type="submit" class="btn btn-champagne" style="border-radius:0 var(--radius-full) var(--radius-full) 0;color:var(--orchid);white-space:nowrap;">Subscribe</button>
+<form style="max-width:440px;margin:0 auto;" data-form novalidate>
+      <div class="subscribe-field" style="display:flex;gap:0;">
+        <input type="email" class="form-control" placeholder="your@email.com" data-validate="required,email"
+               style="border-radius:var(--radius-full) 0 0 var(--radius-full);border-right:none;flex:1;min-width:0;">
+        <button type="submit" class="btn btn-champagne" style="border-radius:0 var(--radius-full) var(--radius-full) 0;color:var(--orchid);white-space:nowrap;">Subscribe</button>
+      </div>
     </form>
   </div>
 </section>
