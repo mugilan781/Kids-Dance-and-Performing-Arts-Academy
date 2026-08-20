@@ -20,8 +20,10 @@
   <link rel="stylesheet" href="css/theme.css">
   <style>
     /* ── Hero 2: Full-width split ── */
-    .hero2 {
-      min-height: 100svh;
+.hero2 {
+      height: 100vh;
+      height: 100svh;
+      min-height: 560px;
       background: var(--grad-brand);
       display: flex;
       align-items: stretch;
@@ -33,7 +35,7 @@
       flex: 1;
       display: flex;
       align-items: center;
-      padding: var(--space-24) clamp(2rem,6vw,6rem);
+      padding: clamp(1.5rem, 4vw, 4rem) clamp(2rem, 6vw, 6rem);
       position: relative;
       z-index: 2;
     }
@@ -48,14 +50,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.7;
     }
-    .hero2-right-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(84,36,95,0.8) 0%, transparent 60%);
-    }
-    .hero2-tag {
+.hero2-tag {
       display: inline-flex;
       align-items: center;
       gap: var(--space-2);
@@ -68,13 +64,13 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       font-weight: var(--weight-semi);
-      margin-bottom: var(--space-6);
+      margin-bottom: var(--space-5);
     }
     .hero2-title {
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-size: clamp(2.2rem, 4.8vw, 4.75rem);
       color: #fff;
       line-height: 1.05;
-      margin-bottom: var(--space-5);
+      margin-bottom: var(--space-4);
     }
     .hero2-title .highlight {
       display: block;
@@ -83,17 +79,20 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .hero2-desc { color: rgba(255,255,255,0.8); font-size: var(--text-lg); line-height: var(--leading-loose); max-width: 48ch; margin-bottom: var(--space-8); }
-    .hero2-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-10); }
+    .hero2-desc { color: rgba(255,255,255,0.8); font-size: var(--text-base); line-height: var(--leading-normal); max-width: 46ch; margin-bottom: var(--space-6); }
+    .hero2-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-6); }
     .hero2-social { display: flex; gap: var(--space-3); align-items: center; }
     .hero2-social-label { font-size: var(--text-xs); color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
     .hero2-social a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: #fff; transition: all var(--duration-fast); font-size: 1rem; }
     .hero2-social a:hover { background: rgba(255,255,255,0.25); transform: scale(1.1); }
-    @media (max-width: 900px) {
-      .hero2 { flex-direction: column; }
-      .hero2-right { min-height: 300px; flex: none; }
-      .hero2-right-overlay { background: linear-gradient(to bottom, rgba(84,36,95,0.8) 0%, transparent 60%); }
-      .hero2-left { padding: var(--space-12) var(--space-6); }
+@media (max-width: 900px) {
+      .hero2 { height: auto; min-height: 100svh; flex-direction: column; }
+      .hero2-right { min-height: 220px; flex: none; }
+      .hero2-left { padding: var(--space-10) var(--space-6); }
+      .hero2-title { font-size: clamp(2.1rem, 8vw, 3rem); }
+      .hero2-tag { margin-bottom: var(--space-4); }
+      .hero2-desc { margin-bottom: var(--space-5); }
+      .hero2-actions { margin-bottom: var(--space-5); }
     }
 
     /* ── Mosaic Gallery ── */
@@ -209,22 +208,10 @@
         <a href="#" aria-label="YouTube"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9"/></svg></a>
         <a href="#" aria-label="Facebook"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
       </div>
-    </div>
+</div>
   </div>
   <div class="hero2-right" aria-hidden="true">
     <img src="assets/images/hero_home2.jpg" alt="Children performing ballet and performing arts on stage" class="hero2-right-img">
-    <div class="hero2-right-overlay"></div>
-    <!-- Floating stats -->
-    <div style="position:absolute;bottom:10%;right:8%;z-index:2;display:flex;flex-direction:column;gap:var(--space-4);">
-      <div class="hero-float-badge" style="position:static;animation:floatSlow 6s ease-in-out infinite;">
-        <div class="badge-num">500+</div>
-        <div class="badge-lbl">Students</div>
-      </div>
-      <div class="hero-float-badge" style="position:static;animation:floatSlow 6s 2s ease-in-out infinite;">
-        <div class="badge-num">6</div>
-        <div class="badge-lbl">Art Forms</div>
-      </div>
-    </div>
   </div>
 </section>
 
