@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Enroll your child at KDPA — Fill in our easy multi-step enrollment form and get your child started in their artistic journey.">
+  <title>Enroll Now | Kids Dance &amp; Performing Arts Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    body { background: var(--bg-secondary); }
+    .signup-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: var(--space-12) var(--space-4);
+    }
+    .signup-card {
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+    }
+    .signup-header {
+      background: var(--grad-brand);
+      padding: var(--space-10) var(--space-10) var(--space-8);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .signup-header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    }
+    .signup-header .back-link {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-sm); color: rgba(255,255,255,0.7);
+      text-decoration: none; margin-bottom: var(--space-6);
+    }
+    .signup-header .back-link:hover { color: #fff; }
+    .signup-header h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: #fff;
+      margin-bottom: var(--space-2);
+    }
+    .signup-header p { color: rgba(255,255,255,0.8); font-size: var(--text-base); }
+    .signup-body { padding: var(--space-10); }
+
+    /* Program checkboxes */
+    .program-selector { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+    .program-check-item {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-4);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+    }
+    .program-check-item:has(input:checked) {
+      border-color: var(--orchid);
+      background: rgba(84,36,95,0.05);
+    }
+    .program-check-item input { accent-color: var(--orchid); }
+    .program-check-emoji { font-size: 1.5rem; }
+    .program-check-name { font-size: var(--text-sm); font-weight: var(--weight-semi); }
+
+    @media (max-width: 480px) {
+      .signup-body { padding: var(--space-6); }
+      .signup-header { padding: var(--space-8) var(--space-6) var(--space-6); }
+      .program-selector { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition" aria-hidden="true"></div>
+
+<div class="signup-wrap">
+  <div class="signup-card animate-float-slow" style="animation:none;">
+    
+    <!-- Header -->
+    <div class="signup-header">
+      <a href="index.html" class="back-link">← Back to Website</a>
+      <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-5);">
+        <div style="width:48px;height:48px;background:rgba(255,255,255,0.15);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🎭</div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:var(--text-base);font-weight:700;">KDPA Enrollment</div>
+          <div style="font-size:var(--text-xs);opacity:0.75;letter-spacing:0.08em;">FREE APPLICATION</div>
+        </div>
+      </div>
+      <h1>Enroll Your Child</h1>
+      <p>Complete the form below. We'll contact you within 24 hours to confirm your trial class!</p>
+    </div>
+
+    <!-- Multi-Step Form -->
+    <div class="signup-body">
+
+      <!-- Step Indicator -->
+      <div class="step-indicator" aria-label="Enrollment steps" role="list">
+        <div class="step-dot active" role="listitem" aria-current="step" aria-label="Step 1: Parent Info">1</div>
+        <div class="step-line"></div>
+        <div class="step-dot" role="listitem" aria-label="Step 2: Child Info">2</div>
+        <div class="step-line"></div>
+        <div class="step-dot" role="listitem" aria-label="Step 3: Program">3</div>
+        <div class="step-line"></div>
+        <div class="step-dot" role="listitem" aria-label="Step 4: Confirm">4</div>
+      </div>
+
+      <form id="enrollment-form" data-multistep novalidate aria-label="Enrollment form">
+
+        <!-- Step 1: Parent Info -->
+        <div data-step="1" aria-label="Step 1: Parent Information">
+          <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-2);">Parent Information</h3>
+          <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">Tell us about yourself so we can reach out to confirm the enrollment.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label" for="parent-fname">First Name *</label>
+              <input type="text" id="parent-fname" class="form-control" placeholder="Priya"
+                     data-validate="required,minLength:2" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="parent-lname">Last Name *</label>
+              <input type="text" id="parent-lname" class="form-control" placeholder="Sharma"
+                     data-validate="required,minLength:2" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="parent-email">Email Address *</label>
+            <input type="email" id="parent-email" class="form-control" placeholder="priya@email.com"
+                   data-validate="required,email" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="parent-phone">Phone Number *</label>
+            <input type="tel" id="parent-phone" class="form-control" placeholder="+91 98765 43210"
+                   data-validate="required,phone" autocomplete="tel">
+          </div>
+        </div>
+
+        <!-- Step 2: Child Info -->
+        <div data-step="2" aria-label="Step 2: Child Information" hidden>
+          <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-2);">Your Child's Details</h3>
+          <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">We use this to assign the right batch and program for your child.</p>
+
+          <div class="form-group">
+            <label class="form-label" for="child-name">Child's Full Name *</label>
+            <input type="text" id="child-name" class="form-control" placeholder="Meera Sharma"
+                   data-validate="required,minLength:2">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+            <div class="form-group">
+              <label class="form-label" for="child-dob">Date of Birth *</label>
+              <input type="date" id="child-dob" class="form-control" data-validate="required">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="child-gender">Gender</label>
+              <select id="child-gender" class="form-control">
+                <option value="">Select</option>
+                <option>Girl</option>
+                <option>Boy</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="child-experience">Prior Dance/Arts Experience</label>
+            <select id="child-experience" class="form-control">
+              <option value="none">None — Complete Beginner</option>
+              <option value="some">Some — 1 year or less</option>
+              <option value="intermediate">Intermediate — 2–4 years</option>
+              <option value="advanced">Advanced — 5+ years</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="child-notes">Any special requirements or health notes?</label>
+            <textarea id="child-notes" class="form-control" rows="3" placeholder="Allergies, medical conditions, or any other information we should know..."></textarea>
+          </div>
+        </div>
+
+        <!-- Step 3: Program Selection -->
+        <div data-step="3" aria-label="Step 3: Program Selection" hidden>
+          <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-2);">Choose Programs</h3>
+          <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">Select one or more programs you'd like your child to try. You can always add more later.</p>
+
+          <div class="program-selector" role="group" aria-label="Program selection">
+            <label class="program-check-item">
+              <input type="checkbox" name="program" value="classical">
+              <span class="program-check-emoji" aria-hidden="true">💃</span>
+              <span class="program-check-name">Classical Dance</span>
+            </label>
+            <label class="program-check-item">
+              <input type="checkbox" name="program" value="western">
+              <span class="program-check-emoji" aria-hidden="true">🕺</span>
+              <span class="program-check-name">Western Dance</span>
+            </label>
+            <label class="program-check-item">
+              <input type="checkbox" name="program" value="hiphop">
+              <span class="program-check-emoji" aria-hidden="true">🎤</span>
+              <span class="program-check-name">Hip-Hop</span>
+            </label>
+            <label class="program-check-item">
+              <input type="checkbox" name="program" value="ballet">
+              <span class="program-check-emoji" aria-hidden="true">🩰</span>
+              <span class="program-check-name">Ballet</span>
+            </label>
+            <label class="program-check-item">
+              <input type="checkbox" name="program" value="drama">
+              <span class="program-check-emoji" aria-hidden="true">🎭</span>
+              <span class="program-check-name">Drama &amp; Theater</span>
+            </label>
+            <label class="program-check-item">
+              <input type="checkbox" name="program" value="music">
+              <span class="program-check-emoji" aria-hidden="true">🎵</span>
+              <span class="program-check-name">Music</span>
+            </label>
+          </div>
+
+          <div class="form-group" style="margin-top:var(--space-6);">
+            <label class="form-label" for="preferred-batch">Preferred Batch Timing</label>
+            <select id="preferred-batch" class="form-control">
+              <option value="">Select preferred timing</option>
+              <option>Weekday Mornings (9 AM – 12 PM)</option>
+              <option>Weekday Evenings (4 PM – 7 PM)</option>
+              <option>Weekend Mornings (9 AM – 1 PM)</option>
+              <option>Weekend Evenings (4 PM – 7 PM)</option>
+              <option>Flexible</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 4: Confirmation -->
+        <div data-step="4" aria-label="Step 4: Confirmation" hidden>
+          <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-2);">Almost Done!</h3>
+          <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">Review your details and confirm your enrollment application.</p>
+
+          <div style="background:rgba(84,36,95,0.05);border:1px solid var(--border-card);border-radius:var(--radius-lg);padding:var(--space-6);margin-bottom:var(--space-6);">
+            <div style="display:flex;gap:var(--space-4);margin-bottom:var(--space-4);">
+              <div style="font-size:2rem;" aria-hidden="true">🎭</div>
+              <div>
+                <div style="font-weight:700;font-size:var(--text-base);">Free Trial Class Included</div>
+                <div style="font-size:var(--text-sm);color:var(--text-muted);">Your child will attend a free trial before committing to enrollment.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:var(--space-4);">
+              <div style="font-size:2rem;" aria-hidden="true">⚡</div>
+              <div>
+                <div style="font-weight:700;font-size:var(--text-base);">We Contact You Within 24 Hours</div>
+                <div style="font-size:var(--text-sm);color:var(--text-muted);">Our admissions team will reach out to confirm your details and schedule.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:var(--space-6);">
+            <label class="form-check" style="cursor:pointer;align-items:flex-start;">
+              <input type="checkbox" id="terms-agree" data-validate="required">
+              <span class="form-check-label">
+                I agree to the <a href="terms.html" style="color:var(--orchid);">Terms &amp; Conditions</a>
+                and <a href="privacy-policy.html" style="color:var(--orchid);">Privacy Policy</a> of KDPA. *
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div style="display:flex;justify-content:space-between;gap:var(--space-4);margin-top:var(--space-8);">
+          <button type="button" data-step-prev class="btn btn-secondary" hidden>← Previous</button>
+          <div style="flex:1;"></div>
+          <button type="button" data-step-next class="btn btn-primary">Next Step →</button>
+          <button type="submit" data-step-submit class="btn btn-primary" hidden>
+            🎭 Submit Enrollment Application
+          </button>
+        </div>
+
+      </form>
+
+      <p style="text-align:center;margin-top:var(--space-6);font-size:var(--text-sm);color:var(--text-muted);">
+        Already enrolled? <a href="login.html" style="color:var(--orchid);">Sign in to Parent Dashboard →</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/forms.js"></script>
+</body>
+</html>

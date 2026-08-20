@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Kids Dance & Performing Arts Academy — visit our studio, call us, or send a message to our team.">
+  <title>Contact Us | Kids Dance &amp; Performing Arts Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    .contact-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
+    .contact-icon-box {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-lg);
+      background: rgba(84,36,95,0.08);
+      color: var(--orchid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      transition: background var(--duration-base), color var(--duration-base), transform var(--duration-base);
+    }
+    .contact-item:hover .contact-icon-box {
+      background: var(--orchid);
+      color: #fff;
+      transform: scale(1.08) rotate(-5deg);
+    }
+    .contact-label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .contact-value { font-weight: var(--weight-semi); color: var(--text-primary); font-size: var(--text-base); }
+    .contact-sub { font-size: var(--text-sm); color: var(--text-muted); margin-top: 2px; }
+
+    .contact-form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: var(--space-10);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .map-wrap {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      height: 400px;
+      background: linear-gradient(135deg, var(--orchid-dark), var(--orchid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      gap: var(--space-4);
+    }
+
+    .office-hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+    .office-day {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: var(--space-3) var(--space-4);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+    }
+    .office-day .day-name { font-weight: var(--weight-semi); }
+    .office-day .day-time { color: var(--text-muted); }
+    .office-day.closed .day-time { color: var(--rose-gold); }
+  </style>
+</head>
+<body>
+<div class="page-transition" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div style="width:100%;max-width:100%;padding-inline:clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🎭</div><div class="nav-logo-text"><span class="nav-logo-name">KDPA</span><span class="nav-logo-tagline">Performing Arts</span></div></a>
+    <ul class="nav-links"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="services.html" class="nav-link">Programs</a></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="contact.html" class="nav-link active">Contact</a></li><li><a href="dashboard.html" class="nav-link">Parent Portal</a></li></ul>
+    <div class="nav-actions"><button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">🌙</button><button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL">⇄</button><a href="signup.html" class="btn btn-primary btn-sm">Enroll Now</a><button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div>
+  </div>
+</nav>
+<div id="drawer-overlay" class="drawer-overlay"></div>
+<aside id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="drawer-header"><a href="index.html" class="sidebar-logo"><div class="sidebar-logo-icon">🎭</div><div><div class="sidebar-logo-name">KDPA</div><div class="sidebar-logo-sub">Performing Arts</div></div></a><button id="drawer-close" class="drawer-close" aria-label="Close">✕</button></div>
+  <nav class="drawer-nav"><a href="index.html" class="drawer-link">🏠 Home</a><a href="about.html" class="drawer-link">🎭 About</a><a href="services.html" class="drawer-link">💃 Programs</a><a href="blog.html" class="drawer-link">📝 Blog</a><a href="contact.html" class="drawer-link active">📞 Contact</a><a href="dashboard.html" class="drawer-link">📊 Parent Portal</a></nav>
+  <div class="drawer-footer"><div class="drawer-actions"><a href="signup.html" class="btn btn-primary">Enroll Now</a></div></div>
+</aside>
+
+<!-- PAGE HERO -->
+<header class="page-hero" aria-labelledby="contact-heading">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span aria-current="page">Contact</span></nav>
+    <div class="section-tag" style="background:rgba(255,255,255,0.15);color:var(--champagne);">📞 Get in Touch</div>
+    <h1 id="contact-heading" class="page-hero-title">We'd Love to Hear<br>From You</h1>
+    <p class="page-hero-subtitle">Have questions about our programs? Book a visit. We'll get back to you within 24 hours.</p>
+  </div>
+</header>
+
+<!-- SECTION 1: CONTACT INFO + FORM -->
+<section class="section" aria-labelledby="contact-form-heading">
+  <div class="container">
+    <div class="split-layout ratio-4-6 gap-12 items-start">
+
+      <!-- Contact Info -->
+      <div class="reveal from-left">
+        <h2 id="contact-form-heading" class="section-title plain" style="text-align:left;max-width:none;font-size:var(--text-3xl);margin-bottom:var(--space-6);">Contact Information</h2>
+
+        <div class="contact-info-card">
+          <div class="contact-item">
+            <div class="contact-icon-box" aria-hidden="true">📍</div>
+            <div>
+              <div class="contact-label">Studio Address</div>
+              <div class="contact-value">12 Arts Lane, Nungambakkam</div>
+              <div class="contact-sub">Chennai, Tamil Nadu 600034, India</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon-box" aria-hidden="true">📞</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value"><a href="tel:+914412345678" style="color:inherit;">+91 44 1234 5678</a></div>
+              <div class="contact-sub">Mon–Sat, 9 AM – 7 PM</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon-box" aria-hidden="true">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value"><a href="mailto:hello@kdpa.in" style="color:inherit;">hello@kdpa.in</a></div>
+              <div class="contact-sub">We reply within 24 hours</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon-box" aria-hidden="true">💬</div>
+            <div>
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value"><a href="https://wa.me/914412345678" style="color:inherit;">+91 44 1234 5678</a></div>
+              <div class="contact-sub">Quick response via WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Office Hours -->
+        <div style="margin-top:var(--space-6);">
+          <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-4);">Studio Hours</h3>
+          <div class="office-hours-grid">
+            <div class="office-day"><span class="day-name">Mon – Fri</span><span class="day-time">4 PM – 8 PM</span></div>
+            <div class="office-day"><span class="day-name">Saturday</span><span class="day-time">9 AM – 7 PM</span></div>
+            <div class="office-day"><span class="day-name">Sunday</span><span class="day-time">9 AM – 5 PM</span></div>
+            <div class="office-day closed"><span class="day-name">Public Holidays</span><span class="day-time">Closed</span></div>
+          </div>
+        </div>
+
+        <!-- Social links -->
+        <div style="margin-top:var(--space-6);">
+          <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-4);">Follow Us</h3>
+          <div class="social-links" aria-label="Social media">
+            <a href="#" class="social-link" aria-label="Instagram">📸</a>
+            <a href="#" class="social-link" aria-label="Facebook">👥</a>
+            <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+            <a href="#" class="social-link" aria-label="TikTok">🎵</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="reveal delay-2">
+        <div class="contact-form-card">
+          <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-2);">Send Us a Message</h3>
+          <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-8);">Fill in the form and our team will get back to you promptly.</p>
+
+          <form data-form aria-label="Contact form" novalidate>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+              <div class="form-group">
+                <label class="form-label" for="contact-fname">First Name *</label>
+                <input type="text" id="contact-fname" class="form-control" placeholder="Priya" data-validate="required,minLength:2">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-lname">Last Name *</label>
+                <input type="text" id="contact-lname" class="form-control" placeholder="Sharma" data-validate="required,minLength:2">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address *</label>
+              <input type="email" id="contact-email" class="form-control" placeholder="priya@email.com" data-validate="required,email">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-phone">Phone Number</label>
+              <input type="tel" id="contact-phone" class="form-control" placeholder="+91 98765 43210" data-validate="phone">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-subject">Subject *</label>
+              <select id="contact-subject" class="form-control" data-validate="required">
+                <option value="">Select a topic</option>
+                <option>General Inquiry</option>
+                <option>Enrollment &amp; Admissions</option>
+                <option>Schedule &amp; Batches</option>
+                <option>Fee Payment</option>
+                <option>Recital &amp; Events</option>
+                <option>Book a Studio Visit</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message *</label>
+              <textarea id="contact-message" class="form-control" rows="5"
+                        placeholder="Tell us how we can help..."
+                        data-validate="required,minLength:20"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-check" style="cursor:pointer;">
+                <input type="checkbox" id="newsletter-opt" checked>
+                <span class="form-check-label">Subscribe to our newsletter for updates &amp; events</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary w-full btn-lg" style="display:flex;justify-content:center;">
+              Send Message 🎭
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: QUICK CONTACT CARDS -->
+<section class="section bg-secondary-custom" aria-labelledby="quick-contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 id="quick-contact" class="section-title">Other Ways to Reach Us</h2>
+    </div>
+    <div class="grid grid-3 gap-6 stagger-children">
+      <div class="card" style="text-align:center;padding:var(--space-8);">
+        <div style="font-size:3rem;margin-bottom:var(--space-4);" aria-hidden="true">📞</div>
+        <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-2);">Call Us</h3>
+        <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-5);">Speak directly with our admissions team Mon–Sat, 9 AM – 7 PM.</p>
+        <a href="tel:+914412345678" class="btn btn-primary">+91 44 1234 5678</a>
+      </div>
+      <div class="card" style="text-align:center;padding:var(--space-8);">
+        <div style="font-size:3rem;margin-bottom:var(--space-4);" aria-hidden="true">💬</div>
+        <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-2);">WhatsApp Us</h3>
+        <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-5);">Send us a quick WhatsApp message and we'll respond within the hour.</p>
+        <a href="https://wa.me/914412345678" class="btn btn-primary" target="_blank" rel="noopener">Open WhatsApp</a>
+      </div>
+      <div class="card" style="text-align:center;padding:var(--space-8);">
+        <div style="font-size:3rem;margin-bottom:var(--space-4);" aria-hidden="true">🎭</div>
+        <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-2);">Visit Studio</h3>
+        <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-5);">Book a free studio tour and watch a live class — no commitment required!</p>
+        <a href="signup.html" class="btn btn-primary">Book a Visit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: MAP -->
+<section class="section" aria-labelledby="map-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">📍 Find Us</div>
+      <h2 id="map-heading" class="section-title">Our Studio Location</h2>
+      <p class="section-subtitle">Conveniently located in the heart of Nungambakkam, Chennai — with easy parking and metro access.</p>
+    </div>
+
+    <div class="map-wrap reveal" role="img" aria-label="Map showing KDPA studio location in Nungambakkam, Chennai">
+      <div style="font-size:5rem;" aria-hidden="true">🗺️</div>
+      <div style="font-family:var(--font-display);font-size:var(--text-3xl);">12 Arts Lane</div>
+      <div style="font-size:var(--text-base);opacity:0.8;">Nungambakkam, Chennai, Tamil Nadu 600034</div>
+      <a href="https://maps.google.com/?q=Nungambakkam,Chennai" target="_blank" rel="noopener" class="btn btn-champagne" style="color:var(--orchid);" aria-label="Open in Google Maps">Open in Google Maps →</a>
+    </div>
+
+    <div class="grid grid-3 gap-6" style="margin-top:var(--space-8);">
+      <div class="card" style="display:flex;align-items:flex-start;gap:var(--space-4);padding:var(--space-6);">
+        <span style="font-size:1.75rem;" aria-hidden="true">🚇</span>
+        <div>
+          <div style="font-weight:700;margin-bottom:4px;">Metro Access</div>
+          <div style="font-size:var(--text-sm);color:var(--text-muted);">Nungambakkam Metro — 5 min walk</div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;align-items:flex-start;gap:var(--space-4);padding:var(--space-6);">
+        <span style="font-size:1.75rem;" aria-hidden="true">🅿️</span>
+        <div>
+          <div style="font-weight:700;margin-bottom:4px;">Free Parking</div>
+          <div style="font-size:var(--text-sm);color:var(--text-muted);">50+ free parking spaces in the compound</div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;align-items:flex-start;gap:var(--space-4);padding:var(--space-6);">
+        <span style="font-size:1.75rem;" aria-hidden="true">♿</span>
+        <div>
+          <div style="font-weight:700;margin-bottom:4px;">Fully Accessible</div>
+          <div style="font-size:var(--text-sm);color:var(--text-muted);">Wheelchair ramps and accessible facilities</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: FAQ -->
+<section class="section bg-secondary-custom" aria-labelledby="contact-faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">❓ FAQ</div>
+      <h2 id="contact-faq" class="section-title">Common Questions</h2>
+    </div>
+    <div style="max-width:760px;margin:0 auto;" class="reveal">
+      <div class="accordion-item">
+        <button class="accordion-header"><span class="accordion-question">How quickly do you respond to inquiries?</span><span class="accordion-icon">+</span></button>
+        <div class="accordion-body"><div class="accordion-content">We respond to all email inquiries within 24 hours. For urgent matters, please call us directly or send a WhatsApp message — we typically respond within the hour during business hours.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header"><span class="accordion-question">Can I visit the studio before enrolling?</span><span class="accordion-icon">+</span></button>
+        <div class="accordion-body"><div class="accordion-content">Absolutely! We encourage all prospective families to book a free studio visit. You can observe an ongoing class, meet the faculty and tour our facilities. Book via the form above or call us.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header"><span class="accordion-question">Do you offer trial classes?</span><span class="accordion-icon">+</span></button>
+        <div class="accordion-body"><div class="accordion-content">Yes! Every new student receives one complimentary trial class before enrollment. This lets your child experience the program without any commitment.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: CTA -->
+<section class="cta-banner" aria-labelledby="contact-cta">
+  <div class="container" style="position:relative;z-index:1;">
+    <h2 id="contact-cta" style="font-size:clamp(2rem,5vw,3.5rem);color:#fff;margin-bottom:var(--space-5);">Ready to Begin the Artistic Journey?</h2>
+    <p style="font-size:var(--text-xl);color:rgba(255,255,255,0.82);max-width:56ch;margin:0 auto var(--space-10);">Enroll today and give your child the gift of lifelong artistic expression.</p>
+    <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+      <a href="signup.html" class="btn btn-champagne btn-xl">Enroll Now — Free Application</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="footer-logo"><div class="logo-icon">🎭</div><div><div class="logo-name">Kids Dance &amp; Performing Arts Academy</div><div class="logo-sub">Est. 2004</div></div></a><p class="footer-desc">A premier destination for children's performing arts education.</p><div class="social-links" style="margin-bottom:var(--space-6);"><a href="#" class="social-link dark" aria-label="Instagram">📸</a><a href="#" class="social-link dark" aria-label="Facebook">👥</a><a href="#" class="social-link dark" aria-label="YouTube">▶️</a></div></div>
+    <div><h3 class="footer-col-title">Quick Links</h3><ul class="footer-links"><li><a href="index.html" class="footer-link"><span class="link-dot"></span>Home</a></li><li><a href="about.html" class="footer-link"><span class="link-dot"></span>About</a></li><li><a href="services.html" class="footer-link"><span class="link-dot"></span>Programs</a></li><li><a href="blog.html" class="footer-link"><span class="link-dot"></span>Blog</a></li><li><a href="contact.html" class="footer-link"><span class="link-dot"></span>Contact</a></li></ul></div>
+    <div><h3 class="footer-col-title">Programs</h3><ul class="footer-links"><li><a href="services.html#classical" class="footer-link"><span class="link-dot"></span>Classical Dance</a></li><li><a href="services.html#ballet" class="footer-link"><span class="link-dot"></span>Ballet</a></li><li><a href="services.html#hiphop" class="footer-link"><span class="link-dot"></span>Hip-Hop</a></li><li><a href="services.html#drama" class="footer-link"><span class="link-dot"></span>Drama</a></li><li><a href="services.html#music" class="footer-link"><span class="link-dot"></span>Music</a></li></ul></div>
+    <div><h3 class="footer-col-title">Contact</h3><div class="footer-contact-item"><div class="footer-contact-icon">📍</div><div><span class="footer-contact-label">Address</span><div class="footer-contact-text">12 Arts Lane, Chennai 600034</div></div></div><div class="footer-contact-item"><div class="footer-contact-icon">📞</div><div><span class="footer-contact-label">Phone</span><div class="footer-contact-text"><a href="tel:+914412345678" style="color:inherit">+91 44 1234 5678</a></div></div></div></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container"><p class="footer-copy">&copy; 2025 Kids Dance &amp; Performing Arts Academy.</p><nav class="footer-legal"><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.html">Sitemap</a></nav></div></div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner" role="alertdialog"><p class="cookie-text">We use cookies. <a href="privacy-policy.html">Learn more</a>.</p><div class="cookie-actions"><button id="cookie-accept" class="btn btn-champagne btn-sm">Accept</button><button id="cookie-decline" class="btn btn-ghost btn-sm">Decline</button></div></div>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/forms.js"></script>
+</body>
+</html>

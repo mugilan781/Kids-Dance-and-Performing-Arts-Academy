@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kids Dance & Performing Arts Academy — where young artists discover their passion through Classical Dance, Western Dance, Ballet, Drama and Music in a luxurious, nurturing environment.">
+  <meta name="keywords" content="kids dance academy, performing arts, classical dance, ballet, drama, music, children">
+  <meta name="author" content="Kids Dance & Performing Arts Academy">
+  <meta property="og:title" content="Kids Dance & Performing Arts Academy">
+  <meta property="og:description" content="Where Every Child Finds Their Stage. Premium performing arts education for children.">
+  <meta property="og:type" content="website">
+  <title>Kids Dance &amp; Performing Arts Academy — Where Every Child Finds Their Stage</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/theme.css">
+
+  <style>
+    /* ── HOME PAGE — PAGE-SPECIFIC STYLES ── */
+
+    /* Marquee Strip */
+    .marquee-strip {
+      background: var(--orchid);
+      padding: var(--space-3) 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      gap: var(--space-10);
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      color: rgba(255,255,255,0.9);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semi);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .marquee-item span { font-size: 1.2rem; }
+    .marquee-sep { color: var(--champagne); opacity: 0.5; }
+
+    /* About Teaser */
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-main-img {
+      border-radius: var(--radius-xl);
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      box-shadow: var(--shadow-xl);
+    }
+    .about-accent-img {
+      position: absolute;
+      bottom: -32px;
+      right: -32px;
+      width: 48%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      border: 6px solid var(--bg-primary);
+      box-shadow: var(--shadow-lg);
+    }
+    .about-badge-float {
+      position: absolute;
+      top: 32px;
+      left: -24px;
+      background: var(--orchid);
+      color: #fff;
+      padding: var(--space-4) var(--space-5);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      animation: floatSlow 5s ease-in-out infinite;
+    }
+    .about-badge-float .badge-num {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-black);
+      line-height: 1;
+    }
+    .about-badge-float .badge-lbl {
+      font-size: var(--text-xs);
+      opacity: 0.85;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-8);
+    }
+    .stat-mini {
+      padding: var(--space-5);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-card);
+      text-align: center;
+      transition: transform var(--duration-base), box-shadow var(--duration-base);
+    }
+    .stat-mini:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Programs Grid */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    /* Art program BG fills */
+    .prog-bg-classical { background: linear-gradient(145deg, #54245F, #7a3d8a); }
+    .prog-bg-western   { background: linear-gradient(145deg, #C78B9B, #a0566a); }
+    .prog-bg-hiphop    { background: linear-gradient(145deg, #29232D, #54245F); }
+    .prog-bg-drama     { background: linear-gradient(145deg, #8a4a20, #c27840); }
+    .prog-bg-music     { background: linear-gradient(145deg, #1a3a5a, #2a6090); }
+    .prog-bg-ballet    { background: linear-gradient(145deg, #D9CBE8, #C78B9B); }
+
+    /* Testimonials Slider */
+    .testimonials-section {
+      background: var(--bg-secondary);
+    }
+    .testimonials-track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: var(--grad-brand);
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: var(--space-20) 0;
+    }
+    .cta-banner .blob {
+      width: 400px; height: 400px;
+      top: -100px; right: -100px;
+      opacity: 0.2;
+    }
+    .cta-banner-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: #fff;
+      margin-bottom: var(--space-5);
+    }
+    .cta-banner-subtitle {
+      font-size: var(--text-xl);
+      color: rgba(255,255,255,0.82);
+      max-width: 56ch;
+      margin: 0 auto var(--space-10);
+    }
+
+    /* Testimonial avatar fallback (gradient circles) */
+    .avatar-grad {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: var(--weight-bold);
+      font-size: var(--text-lg);
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    /* Welcome note section */
+    .welcome-note {
+      padding: var(--space-24) 0;
+    }
+    .welcome-note-img-wrap {
+      position: relative;
+      padding: var(--space-6);
+    }
+    .welcome-note-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+    }
+    .welcome-blob {
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      border-radius: var(--radius-xl);
+      background: var(--lavender);
+      top: 0; left: 0;
+      z-index: -1;
+    }
+    .check-list {
+      list-style: none;
+      margin-top: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+    }
+    .check-icon {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--orchid);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 1024px) {
+      .programs-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-track { grid-template-columns: 1fr; }
+      .about-accent-img { display: none; }
+    }
+    @media (max-width: 768px) {
+      .programs-grid { grid-template-columns: 1fr 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .programs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ PAGE TRANSITION ═══════ -->
+<div class="page-transition" id="page-transition" aria-hidden="true"></div>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<nav class="navbar" id="navbar" data-transparent="true" role="navigation" aria-label="Main navigation">
+  <div style="width:100%;max-width:100%;padding-inline:clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;">
+
+    <a href="index.html" class="nav-logo" aria-label="Kids Dance Academy Home">
+      <div class="nav-logo-icon" aria-hidden="true">🎭</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">KDPA</span>
+        <span class="nav-logo-tagline">Performing Arts</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link active">Home</a></li>
+      <li class="has-dropdown">
+        <a href="about.html" class="nav-link">About ▾</a>
+        <div class="dropdown-menu" role="menu">
+          <a href="about.html" class="dropdown-item" role="menuitem">About Us</a>
+          <a href="about.html#faculty" class="dropdown-item" role="menuitem">Faculty</a>
+          <a href="about.html#awards" class="dropdown-item" role="menuitem">Awards</a>
+        </div>
+      </li>
+      <li><a href="services.html" class="nav-link">Programs</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-link">Parent Portal</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle id="theme-toggle-main" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+        <span class="theme-icon-moon">🌙</span>
+        <span class="theme-icon-sun hidden">☀️</span>
+      </button>
+      <button class="icon-btn" data-rtl-toggle id="rtl-toggle-main" aria-label="Toggle RTL" title="Toggle RTL/LTR">⇄</button>
+      <a href="signup.html" class="btn btn-champagne btn-sm">Enroll Now</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ MOBILE DRAWER ═══════ -->
+<div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
+<aside id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="drawer-header">
+    <a href="index.html" class="sidebar-logo">
+      <div class="sidebar-logo-icon">🎭</div>
+      <div>
+        <div class="sidebar-logo-name">KDPA</div>
+        <div class="sidebar-logo-sub">Performing Arts</div>
+      </div>
+    </a>
+    <button id="drawer-close" class="drawer-close" aria-label="Close navigation">✕</button>
+  </div>
+  <nav class="drawer-nav" aria-label="Mobile navigation">
+    <a href="index.html" class="drawer-link"><span class="drawer-link-icon">🏠</span> Home</a>
+    <a href="home2.html" class="drawer-link"><span class="drawer-link-icon">✨</span> Home 2</a>
+    <a href="about.html" class="drawer-link"><span class="drawer-link-icon">🎭</span> About Us</a>
+    <a href="services.html" class="drawer-link"><span class="drawer-link-icon">💃</span> Programs</a>
+    <a href="blog.html" class="drawer-link"><span class="drawer-link-icon">📝</span> Blog</a>
+    <a href="contact.html" class="drawer-link"><span class="drawer-link-icon">📞</span> Contact</a>
+    <a href="dashboard.html" class="drawer-link"><span class="drawer-link-icon">📊</span> Parent Portal</a>
+  </nav>
+  <div class="drawer-footer">
+    <div class="drawer-actions">
+      <a href="signup.html" class="btn btn-primary">Enroll Now</a>
+      <a href="login.html" class="btn btn-secondary">Parent Login</a>
+    </div>
+    <div style="display:flex;gap:var(--space-3);margin-top:var(--space-4);justify-content:center;">
+      <button class="icon-btn" data-theme-toggle aria-label="Toggle theme">🌙</button>
+      <button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL">⇄</button>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══════ HERO SLIDER ═══════ -->
+<section class="hero" aria-label="Hero slider">
+  <div class="hero-slider">
+
+    <!-- Slide 1 — Classical Dance -->
+    <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="Slide 1: Classical Dance">
+      <img src="assets/images/hero_slide_1.jpg" alt="Young girl performing classical Bharatanatyam dance" class="hero-slide-bg" loading="eager">
+      <div class="hero-slide-overlay"></div>
+    </div>
+
+    <!-- Slide 2 — Drama -->
+    <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="Slide 2: Drama Performance">
+      <img src="assets/images/hero_slide_2.jpg" alt="Children performing theater drama on stage" class="hero-slide-bg" loading="lazy">
+      <div class="hero-slide-overlay"></div>
+    </div>
+
+    <!-- Slide 3 — Music -->
+    <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="Slide 3: Music Academy">
+      <img src="assets/images/hero_slide_3.jpg" alt="Children playing instruments in elegant music academy" class="hero-slide-bg" loading="lazy">
+      <div class="hero-slide-overlay"></div>
+    </div>
+
+  </div>
+
+  <!-- Hero Content -->
+  <div class="hero-content-wrapper">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">🎭 Premier Performing Arts Academy</div>
+        <h1 class="hero-title">
+          Where Every Child<br>
+          Finds Their <span>Stage</span>
+        </h1>
+        <p class="hero-subtitle">
+          Nurturing young artists through classical dance, western dance, hip-hop, drama and music in a luxurious, world-class learning environment.
+        </p>
+        <div class="hero-actions">
+          <a href="signup.html" class="btn btn-primary btn-lg" id="hero-enroll-btn">
+            Enroll Your Child ✦
+          </a>
+          <a href="services.html" class="btn btn-ghost btn-lg">
+            Explore Programs
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating badge -->
+  <div class="hero-float-badge" style="bottom:15%;right:8%;" aria-label="500+ students enrolled">
+    <div class="badge-num">500+</div>
+    <div class="badge-lbl">Students Enrolled</div>
+  </div>
+  <div class="hero-float-badge animate-float" style="top:28%;right:6%;animation-delay:1s;" aria-label="15+ years of excellence">
+    <div class="badge-num">15+</div>
+    <div class="badge-lbl">Years of Excellence</div>
+  </div>
+
+  <!-- Arrows -->
+  <div class="hero-arrows" aria-label="Slider navigation">
+    <button class="hero-arrow hero-arrow-prev" aria-label="Previous slide">&#8592;</button>
+    <button class="hero-arrow hero-arrow-next" aria-label="Next slide">&#8594;</button>
+  </div>
+
+  <!-- Dots -->
+  <div class="hero-controls" role="tablist" aria-label="Slide navigation">
+    <button class="hero-dot" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+    <button class="hero-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+    <button class="hero-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="scroll-mouse"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════ MARQUEE STRIP ═══════ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track" role="presentation">
+    <div class="marquee-item"><span>💃</span> Classical Dance</div>
+    <div class="marquee-sep">✦</div>
+    <div class="marquee-item"><span>🕺</span> Western Dance</div>
+    <div class="marquee-sep">✦</div>
+    <div class="marquee-item"><span>🎤</span> Hip-Hop</div>
+    <div class="marquee-sep">✦</div>
+    <div class="marquee-item"><span>🎭</span> Drama & Theater</div>
+    <div class="marquee-sep">✦</div>
+    <div class="marquee-item"><span>🎵</span> Music</div>
+    <div class="marquee-sep">✦</div>
+    <div class="marquee-item"><span>🩰</span> Ballet</div>
+    <div class="marquee-sep">✦</div>
+    <div class="marquee-item"><span>🏆</span> Recitals</div>
+    <div class="marquee-sep">✦</div>
+    <div class="marquee-item"><span>🌟</span> Award-Winning Faculty</div>
+    <div class="marquee-sep">✦</div>
+  </div>
+</div>
+
+<!-- ═══════ ABOUT TEASER ═══════ -->
+<section class="section welcome-note" id="about-teaser" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="split-layout ratio-5-5 gap-16 items-center">
+
+      <div class="about-image-wrap reveal from-left">
+        <div class="welcome-blob" aria-hidden="true"></div>
+        <img src="assets/images/about_academy.jpg"
+             alt="Kids Dance & Performing Arts Academy building"
+             class="welcome-note-img" loading="lazy">
+        <div class="about-badge-float" aria-label="20+ years of excellence">
+          <div class="badge-num">20+</div>
+          <div class="badge-lbl">Years of Excellence</div>
+        </div>
+      </div>
+
+      <div class="reveal delay-2">
+        <div class="section-tag">🎭 Our Story</div>
+        <h2 id="about-heading" class="section-title plain" style="text-align:left;max-width:none;">
+          Cultivating Artistry.<br>
+          <em style="color:var(--rose-gold);">Building Confidence.</em>
+        </h2>
+        <p style="max-width:none;margin-bottom:var(--space-5);">
+          For over two decades, the Kids Dance & Performing Arts Academy has been the most celebrated center for children's artistic education in the region. We believe every child carries an artist within — we simply help them discover it.
+        </p>
+        <p style="max-width:none;">
+          Our globally trained faculty, state-of-the-art studios, and holistic curriculum blend classical traditions with contemporary forms, ensuring every student flourishes at their own unique pace.
+        </p>
+
+        <ul class="check-list" aria-label="Academy highlights">
+          <li><div class="check-icon" aria-hidden="true">✓</div> World-class certified instructors from leading conservatories</li>
+          <li><div class="check-icon" aria-hidden="true">✓</div> Age-appropriate batches from 3 years to 17 years</li>
+          <li><div class="check-icon" aria-hidden="true">✓</div> Annual grand recitals at premiere performance venues</li>
+          <li><div class="check-icon" aria-hidden="true">✓</div> Parent dashboard for real-time progress tracking</li>
+        </ul>
+
+        <div class="stats-row stagger-children" aria-label="Academy statistics">
+          <div class="stat-mini">
+            <div class="stat-number" data-counter data-target="500" data-suffix="+">0+</div>
+            <div class="stat-label">Students</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-number" data-counter data-target="25" data-suffix="+">0+</div>
+            <div class="stat-label">Expert Faculty</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-number" data-counter data-target="20" data-suffix="+">0+</div>
+            <div class="stat-label">Years Active</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-number" data-counter data-target="100" data-suffix="+">0+</div>
+            <div class="stat-label">Recitals Hosted</div>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-8);display:flex;gap:var(--space-4);flex-wrap:wrap;">
+          <a href="about.html" class="btn btn-primary">Discover Our Story</a>
+          <a href="services.html" class="btn btn-secondary">View Programs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROGRAMS GRID ═══════ -->
+<section class="section bg-secondary-custom" id="programs" aria-labelledby="programs-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">💃 Our Disciplines</div>
+      <h2 id="programs-heading" class="section-title">Premium Programs for Every Young Artist</h2>
+      <p class="section-subtitle">
+        From the grace of classical dance to the energy of hip-hop, we offer six world-class programs tailored to every personality and age group.
+      </p>
+    </div>
+
+    <div class="programs-grid stagger-children" role="list">
+
+      <article class="program-card" role="listitem" aria-label="Classical Dance program">
+        <img src="assets/images/program_classical.jpg" alt="Classical Indian dance class" class="card-bg" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <span class="card-icon" aria-hidden="true">💃</span>
+          <h3 class="card-title">Classical Dance</h3>
+          <p class="card-desc">Master the ancient art of Bharatanatyam and Kuchipudi. Ages 4–16.</p>
+          <a href="services.html#classical" class="btn btn-ghost btn-sm" style="margin-top:var(--space-4);">
+            Learn More →
+          </a>
+        </div>
+      </article>
+
+      <article class="program-card" role="listitem" aria-label="Western Dance program">
+        <img src="assets/images/program_western.jpg" alt="Western contemporary dance class" class="card-bg" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <span class="card-icon" aria-hidden="true">🕺</span>
+          <h3 class="card-title">Western Dance</h3>
+          <p class="card-desc">Contemporary, jazz and freestyle. Dynamic movement for all ages.</p>
+          <a href="services.html#western" class="btn btn-ghost btn-sm" style="margin-top:var(--space-4);">
+            Learn More →
+          </a>
+        </div>
+      </article>
+
+      <article class="program-card" role="listitem" aria-label="Hip-Hop Dance program">
+        <img src="assets/images/program_hiphop.jpg" alt="Hip-hop breakdance class for children" class="card-bg" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <span class="card-icon" aria-hidden="true">🎤</span>
+          <h3 class="card-title">Hip-Hop</h3>
+          <p class="card-desc">Urban beats, b-boy moves and freestyle. Ages 6–17.</p>
+          <a href="services.html#hiphop" class="btn btn-ghost btn-sm" style="margin-top:var(--space-4);">
+            Learn More →
+          </a>
+        </div>
+      </article>
+
+      <article class="program-card" role="listitem" aria-label="Drama program">
+        <img src="assets/images/program_drama.jpg" alt="Children drama and theater class" class="card-bg" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <span class="card-icon" aria-hidden="true">🎭</span>
+          <h3 class="card-title">Drama &amp; Theater</h3>
+          <p class="card-desc">Acting, storytelling and stage presence. Build confidence through performance.</p>
+          <a href="services.html#drama" class="btn btn-ghost btn-sm" style="margin-top:var(--space-4);">
+            Learn More →
+          </a>
+        </div>
+      </article>
+
+      <article class="program-card" role="listitem" aria-label="Music program">
+        <div class="card-bg prog-bg-music" style="position:absolute;inset:0;" aria-hidden="true"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <span class="card-icon" aria-hidden="true">🎵</span>
+          <h3 class="card-title">Music</h3>
+          <p class="card-desc">Piano, violin, vocals and music theory from master musicians.</p>
+          <a href="services.html#music" class="btn btn-ghost btn-sm" style="margin-top:var(--space-4);">
+            Learn More →
+          </a>
+        </div>
+      </article>
+
+      <article class="program-card" role="listitem" aria-label="Ballet program">
+        <img src="assets/images/program_ballet.jpg" alt="Ballet class with young girls in tutus" class="card-bg" loading="lazy">
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <span class="card-icon" aria-hidden="true">🩰</span>
+          <h3 class="card-title">Ballet</h3>
+          <p class="card-desc">Classical ballet technique with grace, poise and elegance. Ages 3–15.</p>
+          <a href="services.html#ballet" class="btn btn-ghost btn-sm" style="margin-top:var(--space-4);">
+            Learn More →
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <div style="text-align:center;margin-top:var(--space-12);">
+      <a href="services.html" class="btn btn-primary btn-lg">View All Programs &amp; Schedules</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FACULTY SPOTLIGHT ═══════ -->
+<section class="section" id="faculty" aria-labelledby="faculty-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">👩‍🏫 Meet Our Faculty</div>
+      <h2 id="faculty-heading" class="section-title">World-Class Instructors</h2>
+      <p class="section-subtitle">
+        Our award-winning teachers bring decades of professional performance and teaching experience from leading academies worldwide.
+      </p>
+    </div>
+
+    <div class="grid grid-4 gap-6 stagger-children">
+
+      <div class="card faculty-card">
+        <img src="assets/images/faculty_1.jpg" alt="Priya Ramaswamy — Classical Dance instructor" class="faculty-img" loading="lazy">
+        <h3 class="faculty-name">Priya Ramaswamy</h3>
+        <div class="faculty-role">Classical Dance Director</div>
+        <p class="faculty-bio">30+ years in Bharatanatyam. Arangetram faculty at Kalakshetra Foundation.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+
+      <div class="card faculty-card">
+        <img src="assets/images/faculty_2.jpg" alt="Elena Mikhailova — Ballet instructor" class="faculty-img" loading="lazy">
+        <h3 class="faculty-name">Elena Mikhailova</h3>
+        <div class="faculty-role">Ballet Principal</div>
+        <p class="faculty-bio">Former Bolshoi Ballet soloist. Royal Academy of Dance certified examiner.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+
+      <div class="card faculty-card">
+        <img src="assets/images/faculty_3.jpg" alt="James Hartley — Music instructor" class="faculty-img" loading="lazy">
+        <h3 class="faculty-name">James Hartley</h3>
+        <div class="faculty-role">Music Department Head</div>
+        <p class="faculty-bio">Juilliard graduate. Principal pianist with international orchestras for 15 years.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+
+      <div class="card faculty-card">
+        <img src="assets/images/faculty_4.jpg" alt="Kayla Williams — Hip-Hop Dance instructor" class="faculty-img" loading="lazy">
+        <h3 class="faculty-name">Kayla Williams</h3>
+        <div class="faculty-role">Hip-Hop & Urban Dance</div>
+        <p class="faculty-bio">MTV choreographer. Street dance champion with 12+ national titles.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:var(--space-10);">
+      <a href="about.html#faculty" class="btn btn-secondary">Meet All Faculty Members</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TESTIMONIALS ═══════ -->
+<section class="section testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">💬 Parent Voices</div>
+      <h2 id="testimonials-heading" class="section-title">What Our Families Say</h2>
+    </div>
+
+    <div class="testimonials-track stagger-children">
+
+      <div class="card testimonial-card">
+        <div class="stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          "My daughter joined at age 5 for ballet. Three years later, she performed as the lead in the annual recital. The faculty's dedication is unmatched — this academy changed her life."
+        </p>
+        <div class="author">
+          <div class="avatar-grad" style="background: linear-gradient(135deg, var(--orchid), var(--rose-gold));" aria-hidden="true">A</div>
+          <div>
+            <div class="author-name">Ananya Krishnan</div>
+            <div class="author-role">Parent of Divya, Age 8 — Ballet</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card testimonial-card">
+        <div class="stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          "The Parent Dashboard is a game changer! I can track attendance, see upcoming recitals and pay fees all in one place. The academy truly thinks of everything."
+        </p>
+        <div class="author">
+          <div class="avatar-grad" style="background: linear-gradient(135deg, #1a3a5a, #2a6090);" aria-hidden="true">R</div>
+          <div>
+            <div class="author-name">Rahul Mehta</div>
+            <div class="author-role">Parent of Arjun, Age 11 — Hip-Hop</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card testimonial-card">
+        <div class="stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">
+          "My shy, introverted son is now performing Shakespeare scenes on stage! The drama program didn't just teach him acting — it gave him confidence for life."
+        </p>
+        <div class="author">
+          <div class="avatar-grad" style="background: linear-gradient(135deg, #8a4a20, #c27840);" aria-hidden="true">S</div>
+          <div>
+            <div class="author-name">Sarah Thompson</div>
+            <div class="author-role">Parent of Oliver, Age 10 — Drama</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA BANNER ═══════ -->
+<section class="cta-banner" id="enroll-cta" aria-labelledby="cta-heading">
+  <div class="blob blob-champagne" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal">
+      <div class="section-tag" style="background:rgba(255,255,255,0.15);color:var(--champagne);">✨ Begin the Journey</div>
+      <h2 id="cta-heading" class="cta-banner-title">
+        Give Your Child the Gift<br>of Artistic Excellence
+      </h2>
+      <p class="cta-banner-subtitle">
+        Enroll today and watch your child blossom into a confident, creative performer. Limited seats available per batch.
+      </p>
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+        <a href="signup.html" class="btn btn-champagne btn-xl" id="cta-enroll-btn">
+          Enroll Now — It's Free to Apply
+        </a>
+        <a href="contact.html" class="btn btn-ghost btn-xl">
+          Book a Free Trial Class
+        </a>
+      </div>
+      <p style="margin-top:var(--space-6);color:rgba(255,255,255,0.6);font-size:var(--text-sm);">
+        🔒 No payment required to apply. We'll contact you within 24 hours.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="logo-icon" aria-hidden="true">🎭</div>
+            <div>
+              <div class="logo-name">Kids Dance &amp; Performing Arts Academy</div>
+              <div class="logo-sub">Est. 2004</div>
+            </div>
+          </a>
+          <p class="footer-desc">
+            A premier destination for children's performing arts education. Nurturing talent, building confidence, inspiring excellence.
+          </p>
+          <div class="social-links" style="margin-bottom:var(--space-6);" aria-label="Social media links">
+            <a href="#" class="social-link dark" aria-label="Follow us on Instagram">📸</a>
+            <a href="#" class="social-link dark" aria-label="Follow us on Facebook">👥</a>
+            <a href="#" class="social-link dark" aria-label="Follow us on YouTube">▶️</a>
+            <a href="#" class="social-link dark" aria-label="Follow us on TikTok">🎵</a>
+          </div>
+          <div class="footer-newsletter-label">📬 Join our newsletter</div>
+          <form class="footer-newsletter-form" data-form aria-label="Newsletter subscription">
+            <input type="email" class="footer-newsletter-input"
+                   placeholder="your@email.com"
+                   data-validate="required,email"
+                   aria-label="Email address for newsletter">
+            <button type="submit" class="footer-newsletter-btn" aria-label="Subscribe">
+              Subscribe
+            </button>
+          </form>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Quick Links</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html" class="footer-link"><span class="link-dot"></span>Home</a></li>
+            <li><a href="home2.html" class="footer-link"><span class="link-dot"></span>Home 2</a></li>
+            <li><a href="about.html" class="footer-link"><span class="link-dot"></span>About Us</a></li>
+            <li><a href="services.html" class="footer-link"><span class="link-dot"></span>Programs</a></li>
+            <li><a href="blog.html" class="footer-link"><span class="link-dot"></span>Blog</a></li>
+            <li><a href="contact.html" class="footer-link"><span class="link-dot"></span>Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html#classical" class="footer-link"><span class="link-dot"></span>Classical Dance</a></li>
+            <li><a href="services.html#western" class="footer-link"><span class="link-dot"></span>Western Dance</a></li>
+            <li><a href="services.html#hiphop" class="footer-link"><span class="link-dot"></span>Hip-Hop</a></li>
+            <li><a href="services.html#drama" class="footer-link"><span class="link-dot"></span>Drama &amp; Theater</a></li>
+            <li><a href="services.html#music" class="footer-link"><span class="link-dot"></span>Music</a></li>
+            <li><a href="services.html#ballet" class="footer-link"><span class="link-dot"></span>Ballet</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Contact Us</h3>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon" aria-hidden="true">📍</div>
+            <div>
+              <span class="footer-contact-label">Address</span>
+              <div class="footer-contact-text">12 Arts Lane, Nungambakkam<br>Chennai, Tamil Nadu 600034</div>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon" aria-hidden="true">📞</div>
+            <div>
+              <span class="footer-contact-label">Phone</span>
+              <div class="footer-contact-text">
+                <a href="tel:+914412345678" style="color:inherit;">+91 44 1234 5678</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon" aria-hidden="true">📧</div>
+            <div>
+              <span class="footer-contact-label">Email</span>
+              <div class="footer-contact-text">
+                <a href="mailto:hello@kdpa.in" style="color:inherit;">hello@kdpa.in</a>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:var(--space-5);">
+            <a href="dashboard.html" class="btn btn-champagne btn-sm" style="color:var(--orchid);">
+              🎓 Parent Portal
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="footer-copy">
+        &copy; 2025 Kids Dance &amp; Performing Arts Academy. All rights reserved.
+      </p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="sitemap.html">Sitemap</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════ COOKIE BANNER ═══════ -->
+<div id="cookie-banner" class="cookie-banner" role="alertdialog" aria-live="polite" aria-label="Cookie consent">
+  <p class="cookie-text">
+    We use cookies to enhance your experience and analyze site traffic.
+    By continuing, you agree to our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.
+  </p>
+  <div class="cookie-actions">
+    <button id="cookie-accept" class="btn btn-champagne btn-sm">Accept All</button>
+    <button id="cookie-decline" class="btn btn-ghost btn-sm">Decline</button>
+  </div>
+</div>
+
+<!-- ═══════ SCRIPTS ═══════ -->
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/hero-slider.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/forms.js"></script>
+</body>
+</html>

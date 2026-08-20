@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Kids Dance & Performing Arts Academy — our story, faculty, mission, values, awards and photo gallery.">
+  <title>About Us | Kids Dance &amp; Performing Arts Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--duration-base), box-shadow var(--duration-base);
+    }
+    .value-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .value-icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .value-title { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--orchid); }
+    .awards-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+      justify-content: center;
+      align-items: center;
+    }
+    .award-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-8);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      min-width: 150px;
+      transition: transform var(--duration-base), box-shadow var(--duration-base);
+    }
+    .award-badge:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .award-icon { font-size: 2rem; margin-bottom: var(--space-2); display: block; }
+    .award-name { font-size: var(--text-xs); color: var(--text-muted); font-weight: var(--weight-semi); }
+    .gallery-strip {
+      display: flex;
+      gap: var(--space-4);
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: var(--space-4);
+    }
+    .gallery-strip::-webkit-scrollbar { display: none; }
+    .gallery-strip-item {
+      flex-shrink: 0;
+      width: 280px;
+      height: 360px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      cursor: zoom-in;
+      position: relative;
+    }
+    .gallery-strip-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+    .gallery-strip-item:hover img { transform: scale(1.06); }
+    @media (max-width: 768px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-transition" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div style="width:100%;max-width:100%;padding-inline:clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;">
+    <a href="index.html" class="nav-logo" aria-label="KDPA Home">
+      <div class="nav-logo-icon" aria-hidden="true">🎭</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">KDPA</span>
+        <span class="nav-logo-tagline">Performing Arts</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link active">About</a></li>
+      <li><a href="services.html" class="nav-link">Programs</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-link">Parent Portal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+      <button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL">⇄</button>
+      <a href="signup.html" class="btn btn-primary btn-sm">Enroll Now</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div id="drawer-overlay" class="drawer-overlay"></div>
+<aside id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="drawer-header">
+    <a href="index.html" class="sidebar-logo">
+      <div class="sidebar-logo-icon">🎭</div>
+      <div><div class="sidebar-logo-name">KDPA</div><div class="sidebar-logo-sub">Performing Arts</div></div>
+    </a>
+    <button id="drawer-close" class="drawer-close" aria-label="Close">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="index.html" class="drawer-link">🏠 Home</a>
+    <a href="about.html" class="drawer-link active">🎭 About Us</a>
+    <a href="services.html" class="drawer-link">💃 Programs</a>
+    <a href="blog.html" class="drawer-link">📝 Blog</a>
+    <a href="contact.html" class="drawer-link">📞 Contact</a>
+    <a href="dashboard.html" class="drawer-link">📊 Parent Portal</a>
+  </nav>
+  <div class="drawer-footer">
+    <div class="drawer-actions">
+      <a href="signup.html" class="btn btn-primary">Enroll Now</a>
+    </div>
+  </div>
+</aside>
+
+<!-- PAGE HERO -->
+<header class="page-hero" aria-labelledby="about-page-heading">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span aria-current="page">About Us</span>
+    </nav>
+    <div class="section-tag" style="background:rgba(255,255,255,0.15);color:var(--champagne);">🎭 Our Academy</div>
+    <h1 id="about-page-heading" class="page-hero-title">
+      Where Artistry<br>Meets Excellence
+    </h1>
+    <p class="page-hero-subtitle">
+      Two decades of nurturing young performers into confident, creative artists.
+    </p>
+  </div>
+</header>
+
+<!-- SECTION 1: OUR STORY TIMELINE -->
+<section class="section" aria-labelledby="story-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">📖 Our Journey</div>
+      <h2 id="story-heading" class="section-title">The KDPA Story</h2>
+      <p class="section-subtitle">From a single studio to the region's most celebrated performing arts academy.</p>
+    </div>
+
+    <div class="split-layout ratio-4-6 gap-16 items-start">
+      <div class="art-frame reveal from-left" style="height:500px;">
+        <img src="assets/images/about_academy.jpg" alt="KDPA Academy building" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+
+      <div class="reveal delay-2">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2004 — The Beginning</div>
+            <h3 class="timeline-title">A Dream Takes the Stage</h3>
+            <p class="timeline-desc">Founded by visionary educator Dr. Meena Subramaniam, KDPA opened its doors with just 12 students and a passionate belief that every child deserves artistic education.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2009 — Expansion</div>
+            <h3 class="timeline-title">Growing Into Greatness</h3>
+            <p class="timeline-desc">Expanded to a 10,000 sq ft facility with dedicated studios for ballet, western dance, and drama. Faculty grew to 15 internationally trained instructors.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2015 — Recognition</div>
+            <h3 class="timeline-title">National Award for Excellence</h3>
+            <p class="timeline-desc">Recognized by the Ministry of Culture as the "Best Performing Arts Academy for Children" — a milestone that validated our holistic approach.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-year">2024 — Today</div>
+            <h3 class="timeline-title">A Legacy of 500+ Alumni</h3>
+            <p class="timeline-desc">Over 500 active students, 25 faculty members, and alumni performing on international stages. The journey continues — and the best is yet to come.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: MISSION & VALUES -->
+<section class="section bg-secondary-custom" id="values" aria-labelledby="values-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">💫 What We Stand For</div>
+      <h2 id="values-heading" class="section-title">Our Mission &amp; Values</h2>
+      <p class="section-subtitle">Every decision we make is guided by our commitment to artistic excellence and child wellbeing.</p>
+    </div>
+
+    <div class="values-grid stagger-children">
+      <div class="value-card">
+        <span class="value-icon" aria-hidden="true">🌟</span>
+        <h3 class="value-title">Excellence in Every Step</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm);">We set the highest standards for artistic instruction while ensuring every child progresses at their own pace without pressure.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon" aria-hidden="true">❤️</span>
+        <h3 class="value-title">Nurturing Environment</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm);">Our studios are safe, joyful spaces where children build confidence, friendship, and a lifelong love of the arts.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon" aria-hidden="true">🌍</span>
+        <h3 class="value-title">Cultural Celebration</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm);">We honor both classical traditions and contemporary forms, celebrating the rich diversity of performing arts from around the world.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon" aria-hidden="true">🎯</span>
+        <h3 class="value-title">Personalized Learning</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm);">Age-appropriate batches, small class sizes (max 12 per batch) and individualized attention ensure every child shines.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon" aria-hidden="true">🏆</span>
+        <h3 class="value-title">Performance Opportunities</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm);">Annual recitals, inter-academy competitions, and festival showcases give every student the thrill of performing for a real audience.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon" aria-hidden="true">👨‍👩‍👧</span>
+        <h3 class="value-title">Family Partnership</h3>
+        <p style="color:var(--text-secondary);font-size:var(--text-sm);">Our Parent Dashboard keeps families informed and involved. We believe the best outcomes happen when parents are partners in the journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: FACULTY TEAM -->
+<section class="section" id="faculty" aria-labelledby="faculty-page-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">👩‍🏫 Our Team</div>
+      <h2 id="faculty-page-heading" class="section-title">Meet Our Expert Faculty</h2>
+      <p class="section-subtitle">Internationally trained, nationally recognized, and deeply passionate about every child's growth.</p>
+    </div>
+
+    <div class="grid grid-3 gap-6 stagger-children">
+      <div class="card faculty-card">
+        <img src="assets/images/faculty_1.jpg" alt="Priya Ramaswamy" class="faculty-img" loading="lazy">
+        <h3 class="faculty-name">Priya Ramaswamy</h3>
+        <div class="faculty-role">Classical Dance Director</div>
+        <p class="faculty-bio">30+ years in Bharatanatyam. Arangetram faculty at Kalakshetra. Padma Shri nominee 2022.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a><a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="card faculty-card">
+        <img src="assets/images/faculty_2.jpg" alt="Elena Mikhailova" class="faculty-img" loading="lazy">
+        <h3 class="faculty-name">Elena Mikhailova</h3>
+        <div class="faculty-role">Ballet Principal</div>
+        <p class="faculty-bio">Former Bolshoi Ballet soloist. Royal Academy of Dance certified examiner. 20 years of teaching excellence.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a><a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="card faculty-card">
+        <img src="assets/images/faculty_3.jpg" alt="James Hartley" class="faculty-img" loading="lazy">
+        <h3 class="faculty-name">James Hartley</h3>
+        <div class="faculty-role">Music Department Head</div>
+        <p class="faculty-bio">Juilliard graduate. Principal pianist with 6 international orchestras. Grammy-nominated composer.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a><a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="card faculty-card">
+        <img src="assets/images/faculty_4.jpg" alt="Kayla Williams" class="faculty-img" loading="lazy">
+        <h3 class="faculty-name">Kayla Williams</h3>
+        <div class="faculty-role">Hip-Hop &amp; Urban Dance</div>
+        <p class="faculty-bio">MTV choreographer. 12 national street dance titles. "Best Youth Instructor" — Dance India Awards 2023.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a><a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="card faculty-card">
+        <div class="faculty-img" style="width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#8a4a20,#c27840);display:flex;align-items:center;justify-content:center;font-size:3rem;margin:0 auto var(--space-5);border:4px solid var(--champagne);">🎭</div>
+        <h3 class="faculty-name">Ranjini Nair</h3>
+        <div class="faculty-role">Drama &amp; Theater Director</div>
+        <p class="faculty-bio">National School of Drama alumna. Director of 50+ children's stage productions. Child psychology specialist.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a><a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="card faculty-card">
+        <div class="faculty-img" style="width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#54245F,#C78B9B);display:flex;align-items:center;justify-content:center;font-size:3rem;margin:0 auto var(--space-5);border:4px solid var(--champagne);">🕺</div>
+        <h3 class="faculty-name">Marcus Chen</h3>
+        <div class="faculty-role">Western Dance Coach</div>
+        <p class="faculty-bio">Contemporary dance graduate from London Contemporary Dance School. Choreographer for 3 national tours.</p>
+        <div class="social-links" style="justify-content:center;margin-top:var(--space-4);">
+          <a href="#" class="social-link" aria-label="Instagram">📸</a><a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: AWARDS -->
+<section class="section bg-secondary-custom" id="awards" aria-labelledby="awards-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">🏆 Recognitions</div>
+      <h2 id="awards-heading" class="section-title">Awards &amp; Certifications</h2>
+      <p class="section-subtitle">Our commitment to excellence has been recognized by leading arts bodies and institutions worldwide.</p>
+    </div>
+
+    <div class="awards-strip stagger-children">
+      <div class="award-badge">
+        <span class="award-icon" aria-hidden="true">🥇</span>
+        <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">National Arts Award</div>
+        <div class="award-name">Ministry of Culture • 2015</div>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon" aria-hidden="true">🎖️</span>
+        <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Best Academy</div>
+        <div class="award-name">Dance India Awards • 2023</div>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon" aria-hidden="true">📜</span>
+        <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">RAD Certified</div>
+        <div class="award-name">Royal Academy of Dance</div>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon" aria-hidden="true">🌐</span>
+        <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">ISO 9001:2015</div>
+        <div class="award-name">Quality Management</div>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon" aria-hidden="true">⭐</span>
+        <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">5-Star Rating</div>
+        <div class="award-name">Parent Satisfaction • 2024</div>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon" aria-hidden="true">🎗️</span>
+        <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">Cultural Heritage</div>
+        <div class="award-name">Sangeet Natak Akademi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: STATS -->
+<section class="section" style="background:var(--grad-brand);" aria-label="Academy statistics">
+  <div class="container">
+    <div class="grid grid-4 gap-6 stagger-children">
+      <div style="text-align:center;color:#fff;">
+        <div style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--champagne);line-height:1;" data-counter data-target="500" data-suffix="+">0+</div>
+        <div style="font-size:var(--text-sm);letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-top:8px;">Happy Students</div>
+      </div>
+      <div style="text-align:center;color:#fff;">
+        <div style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--champagne);line-height:1;" data-counter data-target="25" data-suffix="+">0+</div>
+        <div style="font-size:var(--text-sm);letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-top:8px;">Expert Faculty</div>
+      </div>
+      <div style="text-align:center;color:#fff;">
+        <div style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--champagne);line-height:1;" data-counter data-target="20" data-suffix="+">0+</div>
+        <div style="font-size:var(--text-sm);letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-top:8px;">Years of Excellence</div>
+      </div>
+      <div style="text-align:center;color:#fff;">
+        <div style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--champagne);line-height:1;" data-counter data-target="100" data-suffix="+">0+</div>
+        <div style="font-size:var(--text-sm);letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-top:8px;">Grand Recitals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: GALLERY STRIP -->
+<section class="section" id="gallery" aria-labelledby="gallery-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">📸 Moments</div>
+      <h2 id="gallery-heading" class="section-title">Life at KDPA</h2>
+      <p class="section-subtitle">A glimpse into the joy, passion and artistry that fills our studios every day.</p>
+    </div>
+
+    <div class="gallery-strip reveal">
+      <div class="gallery-strip-item" data-lightbox data-alt="Classical dance rehearsal">
+        <img src="assets/images/program_classical.jpg" alt="Classical dance rehearsal at KDPA" loading="lazy">
+      </div>
+      <div class="gallery-strip-item" data-lightbox data-alt="Ballet practice">
+        <img src="assets/images/program_ballet.jpg" alt="Ballet practice session" loading="lazy">
+      </div>
+      <div class="gallery-strip-item" data-lightbox data-alt="Hip-hop dance class">
+        <img src="assets/images/program_hiphop.jpg" alt="Hip-hop breakdance class" loading="lazy">
+      </div>
+      <div class="gallery-strip-item" data-lightbox data-alt="Drama class rehearsal">
+        <img src="assets/images/program_drama.jpg" alt="Drama class rehearsal" loading="lazy">
+      </div>
+      <div class="gallery-strip-item" data-lightbox data-alt="Music academy session">
+        <img src="assets/images/hero_slide_3.jpg" alt="Music academy session" loading="lazy">
+      </div>
+      <div class="gallery-strip-item" data-lightbox data-alt="Theatre performance">
+        <img src="assets/images/hero_slide_2.jpg" alt="Children theatre performance" loading="lazy">
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:var(--space-8);">
+      <a href="contact.html" class="btn btn-primary">Book a Studio Visit</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <div class="logo-icon" aria-hidden="true">🎭</div>
+        <div><div class="logo-name">Kids Dance &amp; Performing Arts Academy</div><div class="logo-sub">Est. 2004</div></div>
+      </a>
+      <p class="footer-desc">A premier destination for children's performing arts education.</p>
+      <div class="social-links" style="margin-bottom:var(--space-6);" aria-label="Social media">
+        <a href="#" class="social-link dark" aria-label="Instagram">📸</a>
+        <a href="#" class="social-link dark" aria-label="Facebook">👥</a>
+        <a href="#" class="social-link dark" aria-label="YouTube">▶️</a>
+      </div>
+    </div>
+    <div>
+      <h3 class="footer-col-title">Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="index.html" class="footer-link"><span class="link-dot"></span>Home</a></li>
+        <li><a href="about.html" class="footer-link"><span class="link-dot"></span>About</a></li>
+        <li><a href="services.html" class="footer-link"><span class="link-dot"></span>Programs</a></li>
+        <li><a href="blog.html" class="footer-link"><span class="link-dot"></span>Blog</a></li>
+        <li><a href="contact.html" class="footer-link"><span class="link-dot"></span>Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="footer-col-title">Programs</h3>
+      <ul class="footer-links">
+        <li><a href="services.html#classical" class="footer-link"><span class="link-dot"></span>Classical Dance</a></li>
+        <li><a href="services.html#ballet" class="footer-link"><span class="link-dot"></span>Ballet</a></li>
+        <li><a href="services.html#hiphop" class="footer-link"><span class="link-dot"></span>Hip-Hop</a></li>
+        <li><a href="services.html#drama" class="footer-link"><span class="link-dot"></span>Drama</a></li>
+        <li><a href="services.html#music" class="footer-link"><span class="link-dot"></span>Music</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="footer-col-title">Contact</h3>
+      <div class="footer-contact-item">
+        <div class="footer-contact-icon">📍</div>
+        <div><span class="footer-contact-label">Address</span><div class="footer-contact-text">12 Arts Lane, Chennai 600034</div></div>
+      </div>
+      <div class="footer-contact-item">
+        <div class="footer-contact-icon">📞</div>
+        <div><span class="footer-contact-label">Phone</span><div class="footer-contact-text"><a href="tel:+914412345678" style="color:inherit">+91 44 1234 5678</a></div></div>
+      </div>
+    </div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container">
+    <p class="footer-copy">&copy; 2025 Kids Dance &amp; Performing Arts Academy.</p>
+    <nav class="footer-legal" aria-label="Legal">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="sitemap.html">Sitemap</a>
+    </nav>
+  </div></div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner" role="alertdialog">
+  <p class="cookie-text">We use cookies to enhance your experience. <a href="privacy-policy.html">Learn more</a>.</p>
+  <div class="cookie-actions">
+    <button id="cookie-accept" class="btn btn-champagne btn-sm">Accept</button>
+    <button id="cookie-decline" class="btn btn-ghost btn-sm">Decline</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>

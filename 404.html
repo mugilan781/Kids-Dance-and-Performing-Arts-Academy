@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="404 — Page not found. Let's get you back on stage at KDPA.">
+  <title>404 — Page Not Found | KDPA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    body { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--space-8) var(--space-4); background: var(--bg-primary); }
+    .error-code {
+      font-family: var(--font-display);
+      font-size: clamp(8rem, 20vw, 16rem);
+      font-weight: 900;
+      line-height: 0.85;
+      background: var(--grad-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-4);
+      position: relative;
+    }
+    .error-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; -webkit-text-fill-color: initial; animation: floatSlow 4s ease-in-out infinite; }
+    .error-wrap { text-align: center; max-width: 600px; }
+    .error-title { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 3rem); margin-bottom: var(--space-4); }
+    .error-desc { color: var(--text-secondary); font-size: var(--text-lg); line-height: var(--leading-loose); margin-bottom: var(--space-8); }
+    .error-links { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; margin-bottom: var(--space-8); }
+    .quick-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    .quick-nav-item { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-xl); padding: var(--space-6); text-align: center; text-decoration: none; color: var(--text-primary); transition: all var(--duration-base); box-shadow: var(--shadow-card); }
+    .quick-nav-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--orchid); color: var(--orchid); }
+    .quick-nav-icon { font-size: 2rem; display: block; margin-bottom: var(--space-3); }
+    .quick-nav-label { font-size: var(--text-sm); font-weight: var(--weight-semi); }
+    @media (max-width: 480px) { .quick-nav { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<div style="position:absolute;top:var(--space-6);left:var(--space-6);">
+  <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);text-decoration:none;">
+    <div style="width:42px;height:42px;background:var(--grad-brand);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.25rem;">🎭</div>
+    <div style="font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--text-primary);">KDPA</div>
+  </a>
+</div>
+
+<div style="position:absolute;top:var(--space-6);right:var(--space-6);display:flex;gap:var(--space-3);">
+  <button class="icon-btn" data-theme-toggle aria-label="Toggle theme">🌙</button>
+</div>
+
+<div class="error-wrap">
+  <div class="error-code" aria-hidden="true">
+    4<span class="error-icon">🎭</span>4
+  </div>
+
+  <h1 class="error-title">The Page Has Left the Stage</h1>
+  <p class="error-desc">
+    It seems the page you're looking for has taken an unscheduled bow. Perhaps it moved, was renamed, or simply went behind the curtain. Let's find your way back!
+  </p>
+
+  <div class="error-links">
+    <a href="index.html" class="btn btn-primary btn-lg">🏠 Back to Home</a>
+    <a href="contact.html" class="btn btn-secondary btn-lg">📞 Contact Us</a>
+  </div>
+
+  <h2 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--space-6);color:var(--text-secondary);">Or explore these pages:</h2>
+
+  <nav class="quick-nav" aria-label="Popular pages">
+    <a href="about.html" class="quick-nav-item">
+      <span class="quick-nav-icon" aria-hidden="true">🎭</span>
+      <span class="quick-nav-label">About Us</span>
+    </a>
+    <a href="services.html" class="quick-nav-item">
+      <span class="quick-nav-icon" aria-hidden="true">💃</span>
+      <span class="quick-nav-label">Programs</span>
+    </a>
+    <a href="blog.html" class="quick-nav-item">
+      <span class="quick-nav-icon" aria-hidden="true">📝</span>
+      <span class="quick-nav-label">Blog</span>
+    </a>
+    <a href="contact.html" class="quick-nav-item">
+      <span class="quick-nav-icon" aria-hidden="true">📞</span>
+      <span class="quick-nav-label">Contact</span>
+    </a>
+    <a href="signup.html" class="quick-nav-item">
+      <span class="quick-nav-icon" aria-hidden="true">✨</span>
+      <span class="quick-nav-label">Enroll Now</span>
+    </a>
+    <a href="dashboard.html" class="quick-nav-item">
+      <span class="quick-nav-icon" aria-hidden="true">📊</span>
+      <span class="quick-nav-label">Parent Portal</span>
+    </a>
+  </nav>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

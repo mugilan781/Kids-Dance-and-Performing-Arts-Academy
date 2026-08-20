@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore our premium performing arts programs — Classical Dance, Western Dance, Hip-Hop, Ballet, Drama and Music with age-based batches and expert faculty.">
+  <title>Programs &amp; Services | Kids Dance &amp; Performing Arts Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    .program-detail-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      margin-bottom: var(--space-8);
+    }
+    .program-detail-card.reverse { direction: rtl; }
+    .program-detail-card.reverse > * { direction: ltr; }
+    .program-detail-img {
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    .program-detail-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+    .program-detail-card:hover .program-detail-img img { transform: scale(1.05); }
+    .program-detail-body {
+      background: var(--bg-card);
+      padding: var(--space-12);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .program-emoji { font-size: 3.5rem; margin-bottom: var(--space-4); display: block; }
+    .program-name { font-family: var(--font-display); font-size: var(--text-3xl); margin-bottom: var(--space-3); }
+    .program-desc { color: var(--text-secondary); line-height: var(--leading-loose); margin-bottom: var(--space-5); }
+    .program-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+    @media (max-width: 768px) {
+      .program-detail-card { grid-template-columns: 1fr; direction: ltr; }
+      .program-detail-img { aspect-ratio: 16/9; }
+      .program-detail-body { padding: var(--space-8); }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div style="width:100%;max-width:100%;padding-inline:clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;">
+    <a href="index.html" class="nav-logo" aria-label="KDPA Home">
+      <div class="nav-logo-icon" aria-hidden="true">🎭</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">KDPA</span>
+        <span class="nav-logo-tagline">Performing Arts</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link active">Programs</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-link">Parent Portal</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+      <button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL">⇄</button>
+      <a href="signup.html" class="btn btn-primary btn-sm">Enroll Now</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div id="drawer-overlay" class="drawer-overlay"></div>
+<aside id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="drawer-header">
+    <a href="index.html" class="sidebar-logo">
+      <div class="sidebar-logo-icon">🎭</div>
+      <div><div class="sidebar-logo-name">KDPA</div><div class="sidebar-logo-sub">Performing Arts</div></div>
+    </a>
+    <button id="drawer-close" class="drawer-close" aria-label="Close">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="index.html" class="drawer-link">🏠 Home</a>
+    <a href="about.html" class="drawer-link">🎭 About</a>
+    <a href="services.html" class="drawer-link active">💃 Programs</a>
+    <a href="blog.html" class="drawer-link">📝 Blog</a>
+    <a href="contact.html" class="drawer-link">📞 Contact</a>
+    <a href="dashboard.html" class="drawer-link">📊 Parent Portal</a>
+  </nav>
+  <div class="drawer-footer"><div class="drawer-actions"><a href="signup.html" class="btn btn-primary">Enroll Now</a></div></div>
+</aside>
+
+<!-- PAGE HERO -->
+<header class="page-hero" aria-labelledby="services-heading">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span aria-current="page">Programs</span>
+    </nav>
+    <div class="section-tag" style="background:rgba(255,255,255,0.15);color:var(--champagne);">💃 Our Disciplines</div>
+    <h1 id="services-heading" class="page-hero-title">Premium Performing<br>Arts Programs</h1>
+    <p class="page-hero-subtitle">Six world-class disciplines tailored to every age, every passion, every dream.</p>
+  </div>
+</header>
+
+<!-- SECTION 1: PROGRAM DETAILS -->
+<section class="section" aria-labelledby="programs-detail-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">✨ Our Disciplines</div>
+      <h2 id="programs-detail-heading" class="section-title">Explore Every Art Form</h2>
+    </div>
+
+    <!-- Classical Dance -->
+    <div class="program-detail-card reveal" id="classical">
+      <div class="program-detail-img">
+        <img src="assets/images/program_classical.jpg" alt="Classical Bharatanatyam dance class" loading="lazy">
+      </div>
+      <div class="program-detail-body">
+        <span class="program-emoji" aria-hidden="true">💃</span>
+        <h3 class="program-name">Classical Dance</h3>
+        <p class="program-desc">Immerse your child in the timeless beauty of Bharatanatyam and Kuchipudi — India's most revered classical dance forms. Our curriculum follows the traditional Kalakshetra method while incorporating modern pedagogical techniques for young learners.</p>
+        <div class="program-meta">
+          <span class="badge badge-orchid">Ages 4–16</span>
+          <span class="badge badge-lavender">Sat & Sun Batches</span>
+          <span class="badge badge-champagne">Beginner to Advanced</span>
+        </div>
+        <a href="signup.html" class="btn btn-primary">Enroll in Classical Dance</a>
+      </div>
+    </div>
+
+    <!-- Western Dance -->
+    <div class="program-detail-card reverse reveal delay-1" id="western">
+      <div class="program-detail-img">
+        <img src="assets/images/program_western.jpg" alt="Western contemporary dance class" loading="lazy">
+      </div>
+      <div class="program-detail-body">
+        <span class="program-emoji" aria-hidden="true">🕺</span>
+        <h3 class="program-name">Western Dance</h3>
+        <p class="program-desc">From contemporary to jazz, lyrical to freestyle — our Western Dance program embraces the full spectrum of modern movement. Students develop physical awareness, rhythmic precision and expressive freedom.</p>
+        <div class="program-meta">
+          <span class="badge badge-orchid">Ages 5–17</span>
+          <span class="badge badge-lavender">Weekday Batches</span>
+          <span class="badge badge-champagne">All Levels</span>
+        </div>
+        <a href="signup.html" class="btn btn-primary">Enroll in Western Dance</a>
+      </div>
+    </div>
+
+    <!-- Hip-Hop -->
+    <div class="program-detail-card reveal delay-2" id="hiphop">
+      <div class="program-detail-img">
+        <img src="assets/images/program_hiphop.jpg" alt="Hip-hop breakdance class" loading="lazy">
+      </div>
+      <div class="program-detail-body">
+        <span class="program-emoji" aria-hidden="true">🎤</span>
+        <h3 class="program-name">Hip-Hop &amp; Street Dance</h3>
+        <p class="program-desc">Groove to the rhythm of the streets! Our Hip-Hop program covers breaking, popping, locking, and freestyle. Kids develop musicality, coordination and most importantly — their own unique style.</p>
+        <div class="program-meta">
+          <span class="badge badge-orchid">Ages 6–17</span>
+          <span class="badge badge-lavender">Weekend Batches</span>
+          <span class="badge badge-rose">High Energy</span>
+        </div>
+        <a href="signup.html" class="btn btn-primary">Enroll in Hip-Hop</a>
+      </div>
+    </div>
+
+    <!-- Ballet -->
+    <div class="program-detail-card reverse reveal delay-1" id="ballet">
+      <div class="program-detail-img">
+        <img src="assets/images/program_ballet.jpg" alt="Ballet class with children" loading="lazy">
+      </div>
+      <div class="program-detail-body">
+        <span class="program-emoji" aria-hidden="true">🩰</span>
+        <h3 class="program-name">Classical Ballet</h3>
+        <p class="program-desc">Rooted in centuries of tradition, our Ballet program follows the Royal Academy of Dance syllabus. From first positions to pointe work, we nurture grace, strength and artistic expression at every stage.</p>
+        <div class="program-meta">
+          <span class="badge badge-orchid">Ages 3–15</span>
+          <span class="badge badge-lavender">Daily Batches</span>
+          <span class="badge badge-champagne">RAD Certified</span>
+        </div>
+        <a href="signup.html" class="btn btn-primary">Enroll in Ballet</a>
+      </div>
+    </div>
+
+    <!-- Drama -->
+    <div class="program-detail-card reveal delay-2" id="drama">
+      <div class="program-detail-img">
+        <img src="assets/images/program_drama.jpg" alt="Children drama class" loading="lazy">
+      </div>
+      <div class="program-detail-body">
+        <span class="program-emoji" aria-hidden="true">🎭</span>
+        <h3 class="program-name">Drama &amp; Theater</h3>
+        <p class="program-desc">Our Drama program uses method acting, improvisation and storytelling to build confidence, empathy and communication skills. Students stage two full productions per year at a professional theater.</p>
+        <div class="program-meta">
+          <span class="badge badge-orchid">Ages 6–16</span>
+          <span class="badge badge-lavender">Fri-Sun Batches</span>
+          <span class="badge badge-champagne">2 Productions/Year</span>
+        </div>
+        <a href="signup.html" class="btn btn-primary">Enroll in Drama</a>
+      </div>
+    </div>
+
+    <!-- Music -->
+    <div class="program-detail-card reverse reveal delay-1" id="music">
+      <div class="program-detail-img" style="background:linear-gradient(145deg,#1a3a5a,#2a6090);display:flex;align-items:center;justify-content:center;">
+        <div style="font-size:8rem;opacity:0.7;">🎵</div>
+      </div>
+      <div class="program-detail-body">
+        <span class="program-emoji" aria-hidden="true">🎵</span>
+        <h3 class="program-name">Music</h3>
+        <p class="program-desc">Piano, violin, guitar, vocals and music theory — our Music department is led by conservatory-trained musicians. We develop musical literacy alongside technical skill, fostering a deep love for music from an early age.</p>
+        <div class="program-meta">
+          <span class="badge badge-orchid">Ages 4–17</span>
+          <span class="badge badge-lavender">Flexible Timings</span>
+          <span class="badge badge-champagne">Individual & Group</span>
+        </div>
+        <a href="signup.html" class="btn btn-primary">Enroll in Music</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: AGE-BASED BATCHES -->
+<section class="section bg-secondary-custom" id="batches" aria-labelledby="batches-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">🗓️ Schedule</div>
+      <h2 id="batches-heading" class="section-title">Age-Based Batch Schedule</h2>
+      <p class="section-subtitle">Every batch is thoughtfully curated for the developmental stage of your child.</p>
+    </div>
+
+    <div class="batch-table-wrap reveal">
+      <table class="batch-table" aria-label="Batch schedule by age group">
+        <thead>
+          <tr>
+            <th scope="col">Batch Name</th>
+            <th scope="col">Age Group</th>
+            <th scope="col">Programs</th>
+            <th scope="col">Days</th>
+            <th scope="col">Timings</th>
+            <th scope="col">Seats</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tiny Tots</strong></td>
+            <td><span class="age-badge">3–5 yrs</span></td>
+            <td>Ballet, Music</td>
+            <td>Sat, Sun</td>
+            <td>9:00 – 10:00 AM</td>
+            <td><span class="badge badge-success">Open</span></td>
+          </tr>
+          <tr>
+            <td><strong>Juniors</strong></td>
+            <td><span class="age-badge">6–8 yrs</span></td>
+            <td>Classical, Ballet, Western</td>
+            <td>Mon, Wed, Fri</td>
+            <td>4:00 – 5:30 PM</td>
+            <td><span class="badge badge-success">Open</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mid-Stars</strong></td>
+            <td><span class="age-badge">9–11 yrs</span></td>
+            <td>Classical, Hip-Hop, Drama, Music</td>
+            <td>Tue, Thu, Sat</td>
+            <td>5:00 – 6:30 PM</td>
+            <td><span class="badge badge-warning">3 Left</span></td>
+          </tr>
+          <tr>
+            <td><strong>Rising Stars</strong></td>
+            <td><span class="age-badge">12–14 yrs</span></td>
+            <td>All Programs</td>
+            <td>Mon–Fri</td>
+            <td>6:00 – 7:30 PM</td>
+            <td><span class="badge badge-warning">2 Left</span></td>
+          </tr>
+          <tr>
+            <td><strong>Senior Artists</strong></td>
+            <td><span class="age-badge">15–17 yrs</span></td>
+            <td>All Programs + Advanced</td>
+            <td>Daily</td>
+            <td>7:00 – 9:00 PM</td>
+            <td><span class="badge badge-success">Open</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--text-muted);font-size:var(--text-sm);margin-top:var(--space-4);text-align:center;">
+      * Maximum 12 students per batch. Contact us for custom timings.
+    </p>
+  </div>
+</section>
+
+<!-- SECTION 3: ENROLLMENT PROCESS -->
+<section class="section" id="enrollment" aria-labelledby="enrollment-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">📝 Getting Started</div>
+      <h2 id="enrollment-heading" class="section-title">How to Enroll Your Child</h2>
+      <p class="section-subtitle">Our simple 4-step process gets your child on stage in no time.</p>
+    </div>
+
+    <div class="process-steps stagger-children">
+      <div class="process-step">
+        <div class="process-num" aria-label="Step 1">1</div>
+        <h3 class="process-title">Apply Online</h3>
+        <p class="process-desc">Fill out our simple enrollment form with your child's details and preferred program.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num" aria-label="Step 2">2</div>
+        <h3 class="process-title">Free Trial Class</h3>
+        <p class="process-desc">Your child attends a complimentary trial class with one of our expert instructors.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num" aria-label="Step 3">3</div>
+        <h3 class="process-title">Batch Assignment</h3>
+        <p class="process-desc">We place your child in the ideal batch based on age, skill level and schedule preference.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num" aria-label="Step 4">4</div>
+        <h3 class="process-title">Begin the Journey</h3>
+        <p class="process-desc">Classes begin! Access the Parent Dashboard to track progress, attendance and recital dates.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:var(--space-12);">
+      <a href="signup.html" class="btn btn-primary btn-xl">Start Free Application →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: PRICING -->
+<section class="section bg-secondary-custom" id="pricing" aria-labelledby="pricing-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">💰 Transparent Pricing</div>
+      <h2 id="pricing-heading" class="section-title">Simple, Honest Fees</h2>
+      <p class="section-subtitle">No hidden costs. No surprises. Just premium education at fair prices.</p>
+    </div>
+
+    <div class="grid grid-3 gap-6 stagger-children">
+      <div class="pricing-card">
+        <h3 class="pricing-name">Monthly</h3>
+        <div class="pricing-price">₹3,500</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features" aria-label="Monthly plan features">
+          <li><span class="check" aria-hidden="true">✓</span> 8 classes per month</li>
+          <li><span class="check" aria-hidden="true">✓</span> 1 discipline</li>
+          <li><span class="check" aria-hidden="true">✓</span> Parent Dashboard access</li>
+          <li><span class="check" aria-hidden="true">✓</span> Annual recital participation</li>
+          <li><span style="color:var(--text-muted);" aria-hidden="true">✗</span> Costume included</li>
+        </ul>
+        <a href="signup.html" class="btn btn-secondary w-full" style="display:flex;">Get Started</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <h3 class="pricing-name">Term</h3>
+        <div class="pricing-price">₹9,500</div>
+        <div class="pricing-period">per term (3 months)</div>
+        <ul class="pricing-features" aria-label="Term plan features">
+          <li><span class="check" aria-hidden="true">✓</span> 24 classes per term</li>
+          <li><span class="check" aria-hidden="true">✓</span> Up to 2 disciplines</li>
+          <li><span class="check" aria-hidden="true">✓</span> Parent Dashboard access</li>
+          <li><span class="check" aria-hidden="true">✓</span> Annual recital participation</li>
+          <li><span class="check" aria-hidden="true">✓</span> Performance costume included</li>
+        </ul>
+        <a href="signup.html" class="btn btn-primary w-full" style="display:flex;">Enroll for Term</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3 class="pricing-name">Annual</h3>
+        <div class="pricing-price">₹32,000</div>
+        <div class="pricing-period">per year — save 24%</div>
+        <ul class="pricing-features" aria-label="Annual plan features">
+          <li><span class="check" aria-hidden="true">✓</span> Unlimited classes</li>
+          <li><span class="check" aria-hidden="true">✓</span> All disciplines</li>
+          <li><span class="check" aria-hidden="true">✓</span> Parent Dashboard (premium)</li>
+          <li><span class="check" aria-hidden="true">✓</span> Grand recital lead roles</li>
+          <li><span class="check" aria-hidden="true">✓</span> Costumes + photo shoot</li>
+        </ul>
+        <a href="signup.html" class="btn btn-secondary w-full" style="display:flex;">Best Value</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: FAQ -->
+<section class="section" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">❓ FAQ</div>
+      <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
+    </div>
+
+    <div style="max-width:760px;margin:0 auto;" class="reveal">
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-question">What age can my child start classes?</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-body" role="region"><div class="accordion-content">We welcome children as young as 3 years for our Tiny Tots ballet and music programs. Each program has age-appropriate batches designed for optimal learning and enjoyment.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-question">Is there a free trial class available?</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-body" role="region"><div class="accordion-content">Absolutely! Every new student is invited for a complimentary trial class before enrollment. This helps us understand your child's interests and place them in the perfect batch.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-question">What if my child wants to learn more than one discipline?</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-body" role="region"><div class="accordion-content">We encourage multi-disciplinary learning! Our Term and Annual plans support up to 2 disciplines and unlimited disciplines respectively. Many of our students combine dance with drama or music.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-question">How do you handle missed classes?</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-body" role="region"><div class="accordion-content">We offer makeup classes for missed sessions (subject to availability). Simply inform us 24 hours in advance. Makeup classes can be scheduled within the same month.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-question">Are there performance opportunities?</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-body" role="region"><div class="accordion-content">Yes! We host two major recitals per year at premier venues, plus inter-academy competitions, festival showcases and community performances. Every student gets to shine on a real stage.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-question">What is included in the fee?</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-body" role="region"><div class="accordion-content">Tuition, access to the Parent Dashboard, and recital participation are included. Costumes are included from the Term plan onwards. There are no additional hidden charges.</div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span class="accordion-question">Do you have online classes?</span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-body" role="region"><div class="accordion-content">We offer hybrid options — in-studio classes with recorded online sessions for review. Full online learning is available for music theory and drama workshops.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: CTA -->
+<section class="cta-banner" aria-labelledby="services-cta">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal">
+      <div class="section-tag" style="background:rgba(255,255,255,0.15);color:var(--champagne);">🎭 Begin Today</div>
+      <h2 id="services-cta" style="font-size:clamp(2rem,5vw,3.5rem);color:#fff;margin-bottom:var(--space-5);">
+        Ready to Find Your Child's Program?
+      </h2>
+      <p style="font-size:var(--text-xl);color:rgba(255,255,255,0.82);max-width:56ch;margin:0 auto var(--space-10);">
+        Applications are open for all batches. Limited seats — enroll today!
+      </p>
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+        <a href="signup.html" class="btn btn-champagne btn-xl">Apply Now — It's Free</a>
+        <a href="contact.html" class="btn btn-ghost btn-xl">Book Trial Class</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <div class="logo-icon">🎭</div>
+        <div><div class="logo-name">Kids Dance &amp; Performing Arts Academy</div><div class="logo-sub">Est. 2004</div></div>
+      </a>
+      <p class="footer-desc">A premier destination for children's performing arts education.</p>
+      <div class="social-links" style="margin-bottom:var(--space-6);">
+        <a href="#" class="social-link dark" aria-label="Instagram">📸</a>
+        <a href="#" class="social-link dark" aria-label="Facebook">👥</a>
+        <a href="#" class="social-link dark" aria-label="YouTube">▶️</a>
+      </div>
+    </div>
+    <div><h3 class="footer-col-title">Quick Links</h3><ul class="footer-links">
+      <li><a href="index.html" class="footer-link"><span class="link-dot"></span>Home</a></li>
+      <li><a href="about.html" class="footer-link"><span class="link-dot"></span>About</a></li>
+      <li><a href="services.html" class="footer-link"><span class="link-dot"></span>Programs</a></li>
+      <li><a href="blog.html" class="footer-link"><span class="link-dot"></span>Blog</a></li>
+      <li><a href="contact.html" class="footer-link"><span class="link-dot"></span>Contact</a></li>
+    </ul></div>
+    <div><h3 class="footer-col-title">Programs</h3><ul class="footer-links">
+      <li><a href="#classical" class="footer-link"><span class="link-dot"></span>Classical Dance</a></li>
+      <li><a href="#ballet" class="footer-link"><span class="link-dot"></span>Ballet</a></li>
+      <li><a href="#western" class="footer-link"><span class="link-dot"></span>Western Dance</a></li>
+      <li><a href="#hiphop" class="footer-link"><span class="link-dot"></span>Hip-Hop</a></li>
+      <li><a href="#drama" class="footer-link"><span class="link-dot"></span>Drama</a></li>
+      <li><a href="#music" class="footer-link"><span class="link-dot"></span>Music</a></li>
+    </ul></div>
+    <div><h3 class="footer-col-title">Contact</h3>
+      <div class="footer-contact-item"><div class="footer-contact-icon">📍</div><div><span class="footer-contact-label">Address</span><div class="footer-contact-text">12 Arts Lane, Chennai 600034</div></div></div>
+      <div class="footer-contact-item"><div class="footer-contact-icon">📞</div><div><span class="footer-contact-label">Phone</span><div class="footer-contact-text"><a href="tel:+914412345678" style="color:inherit">+91 44 1234 5678</a></div></div></div>
+    </div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container">
+    <p class="footer-copy">&copy; 2025 Kids Dance &amp; Performing Arts Academy.</p>
+    <nav class="footer-legal"><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.html">Sitemap</a></nav>
+  </div></div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner" role="alertdialog">
+  <p class="cookie-text">We use cookies. <a href="privacy-policy.html">Learn more</a>.</p>
+  <div class="cookie-actions">
+    <button id="cookie-accept" class="btn btn-champagne btn-sm">Accept</button>
+    <button id="cookie-decline" class="btn btn-ghost btn-sm">Decline</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/forms.js"></script>
+</body>
+</html>

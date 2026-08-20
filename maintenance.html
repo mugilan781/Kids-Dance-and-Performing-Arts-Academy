@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KDPA Maintenance — We're working on something amazing. Check back soon!">
+  <title>Maintenance | Kids Dance &amp; Performing Arts Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    body { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--grad-brand); overflow: hidden; }
+    .maintenance-wrap { text-align: center; padding: var(--space-10) var(--space-4); max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+    .maintenance-icon { font-size: 6rem; margin-bottom: var(--space-6); animation: floatSlow 4s ease-in-out infinite; display: block; }
+    .maintenance-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5rem); color: #fff; margin-bottom: var(--space-5); line-height: 1.1; }
+    .maintenance-subtitle { font-size: var(--text-xl); color: rgba(255,255,255,0.8); max-width: 48ch; margin: 0 auto var(--space-10); line-height: var(--leading-loose); }
+    .blob-bg { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+    .blob-bg .blob { opacity: 0.15; }
+    .maintenance-notify { background: rgba(255,255,255,0.12); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-xl); padding: var(--space-8); max-width: 440px; margin: 0 auto var(--space-8); }
+    .maintenance-notify h3 { font-family: var(--font-display); font-size: var(--text-xl); color: #fff; margin-bottom: var(--space-4); }
+    .maintenance-notify p { font-size: var(--text-sm); color: rgba(255,255,255,0.75); margin-bottom: var(--space-5); }
+    .notify-form { display: flex; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-full); overflow: hidden; }
+    .notify-input { flex: 1; background: transparent; border: none; padding: 0.75rem 1rem; color: #fff; }
+    .notify-input::placeholder { color: rgba(255,255,255,0.5); }
+    .notify-input:focus { outline: none; }
+    .notify-btn { padding: 0.75rem 1.25rem; background: var(--champagne); color: var(--orchid); border: none; font-weight: 700; cursor: pointer; border-radius: 0 var(--radius-full) var(--radius-full) 0; }
+    .maintenance-links { display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; }
+    .maintenance-link { color: rgba(255,255,255,0.7); font-size: var(--text-sm); text-decoration: none; transition: color var(--duration-fast); }
+    .maintenance-link:hover { color: var(--champagne); }
+    .maintenance-social { display: flex; gap: var(--space-3); justify-content: center; margin-top: var(--space-8); }
+    .maintenance-social a { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: background var(--duration-fast); }
+    .maintenance-social a:hover { background: rgba(255,255,255,0.25); }
+  </style>
+</head>
+<body>
+<div class="blob-bg" aria-hidden="true">
+  <div class="blob blob-lavender" style="top:-200px;left:-200px;width:600px;height:600px;"></div>
+  <div class="blob blob-champagne" style="bottom:-200px;right:-200px;width:600px;height:600px;"></div>
+</div>
+
+<div class="maintenance-wrap">
+  <span class="maintenance-icon" aria-hidden="true">🎭</span>
+  <h1 class="maintenance-title">We're Rehearsing<br>Behind the Curtain</h1>
+  <p class="maintenance-subtitle">
+    Our website is undergoing a major upgrade to bring you an even more beautiful experience. We'll be back on stage very soon!
+  </p>
+
+  <!-- Countdown -->
+  <div class="countdown-timer" style="margin-bottom:var(--space-10);" aria-live="polite" aria-label="Time until site is back">
+    <div class="countdown-unit">
+      <div class="countdown-num" id="cnt-days">02</div>
+      <div class="countdown-lbl">Days</div>
+    </div>
+    <div class="countdown-unit">
+      <div class="countdown-num" id="cnt-hours">14</div>
+      <div class="countdown-lbl">Hours</div>
+    </div>
+    <div class="countdown-unit">
+      <div class="countdown-num" id="cnt-mins">30</div>
+      <div class="countdown-lbl">Minutes</div>
+    </div>
+    <div class="countdown-unit">
+      <div class="countdown-num" id="cnt-secs">00</div>
+      <div class="countdown-lbl">Seconds</div>
+    </div>
+  </div>
+
+  <!-- Notify form -->
+  <div class="maintenance-notify">
+    <h3>Get Notified When We're Back</h3>
+    <p>Enter your email and we'll let you know the moment we're live.</p>
+    <form class="notify-form" onsubmit="event.preventDefault();alert('Thank you! We\'ll notify you when we\'re back.')">
+      <input type="email" class="notify-input" placeholder="your@email.com" required aria-label="Email for notification">
+      <button type="submit" class="notify-btn">Notify Me</button>
+    </form>
+  </div>
+
+  <div class="maintenance-links">
+    <a href="mailto:hello@kdpa.in" class="maintenance-link">📧 hello@kdpa.in</a>
+    <span style="color:rgba(255,255,255,0.3);">|</span>
+    <a href="tel:+914412345678" class="maintenance-link">📞 +91 44 1234 5678</a>
+    <span style="color:rgba(255,255,255,0.3);">|</span>
+    <a href="index.html" class="maintenance-link">🏠 Enter Site Anyway</a>
+  </div>
+
+  <div class="maintenance-social" aria-label="Social media links">
+    <a href="#" aria-label="Instagram">📸</a>
+    <a href="#" aria-label="Facebook">👥</a>
+    <a href="#" aria-label="YouTube">▶️</a>
+    <a href="#" aria-label="WhatsApp">💬</a>
+  </div>
+
+  <div style="margin-top:var(--space-8);">
+    <button class="icon-btn" data-theme-toggle aria-label="Toggle theme" style="background:rgba(255,255,255,0.12);color:#fff;margin:0 auto;">🌙</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  // Countdown to target date
+  const target = new Date();
+  target.setDate(target.getDate() + 2);
+  target.setHours(target.getHours() + 14);
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = Math.max(0, target - now);
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+
+    document.getElementById('cnt-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cnt-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cnt-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cnt-secs').textContent = String(secs).padStart(2,'0');
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kids Dance & Performing Arts Academy — alternate home with gallery, countdown recital timer, and feature showcase.">
+  <title>Home 2 | Kids Dance &amp; Performing Arts Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    /* ── Hero 2: Full-width split ── */
+    .hero2 {
+      min-height: 100svh;
+      background: var(--grad-brand);
+      display: flex;
+      align-items: stretch;
+      padding-top: var(--nav-height);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero2-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: var(--space-24) clamp(2rem,6vw,6rem);
+      position: relative;
+      z-index: 2;
+    }
+    .hero2-right {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero2-right-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+    .hero2-right-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(84,36,95,0.8) 0%, transparent 60%);
+    }
+    .hero2-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-5);
+      font-size: var(--text-xs);
+      color: var(--champagne);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: var(--weight-semi);
+      margin-bottom: var(--space-6);
+    }
+    .hero2-title {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: var(--space-5);
+    }
+    .hero2-title .highlight {
+      display: block;
+      background: linear-gradient(135deg, var(--champagne), var(--rose-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero2-desc { color: rgba(255,255,255,0.8); font-size: var(--text-lg); line-height: var(--leading-loose); max-width: 48ch; margin-bottom: var(--space-8); }
+    .hero2-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-10); }
+    .hero2-social { display: flex; gap: var(--space-3); align-items: center; }
+    .hero2-social-label { font-size: var(--text-xs); color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
+    .hero2-social a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: #fff; transition: all var(--duration-fast); font-size: 1rem; }
+    .hero2-social a:hover { background: rgba(255,255,255,0.25); transform: scale(1.1); }
+    @media (max-width: 900px) {
+      .hero2 { flex-direction: column; }
+      .hero2-right { min-height: 300px; flex: none; }
+      .hero2-right-overlay { background: linear-gradient(to bottom, rgba(84,36,95,0.8) 0%, transparent 60%); }
+      .hero2-left { padding: var(--space-12) var(--space-6); }
+    }
+
+    /* ── Mosaic Gallery ── */
+    .home2-gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 240px 240px; gap: var(--space-4); }
+    .gallery-cell { border-radius: var(--radius-xl); overflow: hidden; cursor: zoom-in; }
+    .gallery-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration-slow) var(--ease-out); }
+    .gallery-cell:hover img { transform: scale(1.06); }
+    .gallery-cell-1 { grid-column: span 2; grid-row: span 2; }
+    .gallery-cell-2 { grid-column: span 1; }
+    .gallery-cell-3 { grid-column: span 1; }
+    @media (max-width: 768px) {
+      .home2-gallery { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .gallery-cell-1 { grid-column: span 2; aspect-ratio: 16/9; }
+    }
+
+    /* ── Why KDPA features ── */
+    .feature-list { display: flex; flex-direction: column; gap: var(--space-6); }
+    .feature-item { display: flex; gap: var(--space-5); align-items: flex-start; padding: var(--space-5); border-radius: var(--radius-xl); background: var(--bg-card); border: 1px solid var(--border-card); box-shadow: var(--shadow-card); transition: all var(--duration-base); }
+    .feature-item:hover { transform: translateX(8px); border-color: var(--orchid); box-shadow: var(--shadow-md); }
+    [dir="rtl"] .feature-item:hover { transform: translateX(-8px); }
+    .feature-icon-box { width: 56px; height: 56px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+    .feature-num { font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: rgba(84,36,95,0.12); position: absolute; top: -8px; right: 12px; }
+    .feature-title { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-2); }
+    .feature-desc { color: var(--text-secondary); font-size: var(--text-sm); line-height: var(--leading-loose); }
+
+    /* ── Recital countdown ── */
+    .recital-countdown { background: var(--grad-brand); border-radius: var(--radius-2xl); padding: var(--space-16); text-align: center; position: relative; overflow: hidden; }
+    .recital-countdown .blob { opacity: 0.12; }
+  </style>
+</head>
+<body>
+<div class="page-transition" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar" data-transparent="true" role="navigation" aria-label="Main navigation">
+  <div style="width:100%;max-width:100%;padding-inline:clamp(1rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🎭</div><div class="nav-logo-text"><span class="nav-logo-name">KDPA</span><span class="nav-logo-tagline">Performing Arts</span></div></a>
+    <ul class="nav-links"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="home2.html" class="nav-link active">Home 2</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="services.html" class="nav-link">Programs</a></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul>
+    <div class="nav-actions"><button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">🌙</button><button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL">⇄</button><a href="signup.html" class="btn btn-champagne btn-sm">Enroll Now</a><button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div>
+  </div>
+</nav>
+<div id="drawer-overlay" class="drawer-overlay"></div>
+<aside id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="drawer-header"><a href="index.html" class="sidebar-logo"><div class="sidebar-logo-icon">🎭</div><div><div class="sidebar-logo-name">KDPA</div><div class="sidebar-logo-sub">Performing Arts</div></div></a><button id="drawer-close" class="drawer-close" aria-label="Close">✕</button></div>
+  <nav class="drawer-nav"><a href="index.html" class="drawer-link">🏠 Home</a><a href="home2.html" class="drawer-link active">✨ Home 2</a><a href="about.html" class="drawer-link">🎭 About</a><a href="services.html" class="drawer-link">💃 Programs</a><a href="blog.html" class="drawer-link">📝 Blog</a><a href="contact.html" class="drawer-link">📞 Contact</a><a href="dashboard.html" class="drawer-link">📊 Parent Portal</a></nav>
+  <div class="drawer-footer"><div class="drawer-actions"><a href="signup.html" class="btn btn-primary">Enroll Now</a></div></div>
+</aside>
+
+<!-- SECTION 1: HERO 2 — Split -->
+<section class="hero2" aria-labelledby="hero2-heading">
+  <div class="hero2-left">
+    <div>
+      <div class="hero2-tag" style="animation:fadeUp 0.8s 0.2s both;">🎭 Performing Arts for Children</div>
+      <h1 id="hero2-heading" class="hero2-title" style="animation:fadeUp 0.8s 0.4s both;">
+        Discover Your Child's
+        <span class="highlight">Artistic Soul</span>
+      </h1>
+      <p class="hero2-desc" style="animation:fadeUp 0.8s 0.6s both;">
+        Six world-class arts disciplines. Twenty years of excellence. One academy that changes lives — for children aged 3 to 17.
+      </p>
+      <div class="hero2-actions" style="animation:fadeUp 0.8s 0.8s both;">
+        <a href="signup.html" class="btn btn-champagne btn-lg" style="color:var(--orchid);">Apply Free Now ✦</a>
+        <a href="services.html" class="btn btn-ghost btn-lg">View All Programs</a>
+      </div>
+      <div class="hero2-social" style="animation:fadeUp 0.8s 1s both;">
+        <span class="hero2-social-label">Follow Us:</span>
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="YouTube">▶️</a>
+        <a href="#" aria-label="Facebook">👥</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero2-right" aria-hidden="true">
+    <img src="assets/images/hero_slide_1.jpg" alt="" class="hero2-right-img">
+    <div class="hero2-right-overlay"></div>
+    <!-- Floating stats -->
+    <div style="position:absolute;bottom:10%;right:8%;z-index:2;display:flex;flex-direction:column;gap:var(--space-4);">
+      <div class="hero-float-badge" style="position:static;animation:floatSlow 6s ease-in-out infinite;">
+        <div class="badge-num">500+</div>
+        <div class="badge-lbl">Students</div>
+      </div>
+      <div class="hero-float-badge" style="position:static;animation:floatSlow 6s 2s ease-in-out infinite;">
+        <div class="badge-num">6</div>
+        <div class="badge-lbl">Art Forms</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: GALLERY MOSAIC -->
+<section class="section" id="gallery2" aria-labelledby="gallery2-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">📸 Our Studio Life</div>
+      <h2 id="gallery2-heading" class="section-title">Life at KDPA — A Visual Story</h2>
+      <p class="section-subtitle">Every frame captures a moment of joy, growth and artistic discovery in our studios.</p>
+    </div>
+
+    <div class="home2-gallery reveal">
+      <div class="gallery-cell gallery-cell-1" data-lightbox data-alt="Classical dance performance">
+        <img src="assets/images/hero_slide_1.jpg" alt="Classical dance performance at KDPA" loading="lazy">
+      </div>
+      <div class="gallery-cell gallery-cell-2" data-lightbox data-alt="Ballet class">
+        <img src="assets/images/program_ballet.jpg" alt="Ballet class for young girls" loading="lazy">
+      </div>
+      <div class="gallery-cell gallery-cell-3" data-lightbox data-alt="Hip-hop class">
+        <img src="assets/images/program_hiphop.jpg" alt="Hip-hop dance class" loading="lazy">
+      </div>
+      <div class="gallery-cell" data-lightbox data-alt="Drama rehearsal">
+        <img src="assets/images/program_drama.jpg" alt="Drama rehearsal session" loading="lazy">
+      </div>
+      <div class="gallery-cell" data-lightbox data-alt="Western dance">
+        <img src="assets/images/program_western.jpg" alt="Western contemporary dance" loading="lazy">
+      </div>
+      <div class="gallery-cell" data-lightbox data-alt="Theatre performance">
+        <img src="assets/images/hero_slide_2.jpg" alt="Theatre performance" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: WHY KDPA -->
+<section class="section bg-secondary-custom" id="why-kdpa" aria-labelledby="why-heading">
+  <div class="container">
+    <div class="split-layout ratio-5-5 gap-16 items-center">
+
+      <div class="reveal">
+        <div class="section-tag">💎 Why Choose Us</div>
+        <h2 id="why-heading" class="section-title plain" style="text-align:left;max-width:none;">
+          What Makes KDPA<br>Truly Different
+        </h2>
+        <p style="color:var(--text-secondary);max-width:none;margin-bottom:var(--space-8);">
+          We are not just a dance school. We are a community of artists, educators and families committed to raising creative, confident, compassionate children.
+        </p>
+
+        <div style="text-align:left;margin-top:var(--space-6);">
+          <a href="about.html" class="btn btn-primary">Discover Our Story →</a>
+        </div>
+      </div>
+
+      <div class="feature-list reveal delay-2">
+        <div class="feature-item">
+          <div class="feature-icon-box" style="background:rgba(84,36,95,0.1);" aria-hidden="true">🏆</div>
+          <div>
+            <h3 class="feature-title">Award-Winning Faculty</h3>
+            <p class="feature-desc">25+ nationally and internationally recognized instructors, each with decades of professional performance and teaching excellence.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon-box" style="background:rgba(199,139,155,0.15);" aria-hidden="true">🎭</div>
+          <div>
+            <h3 class="feature-title">Real Stage Performances</h3>
+            <p class="feature-desc">Two grand recitals per year at premier venues. Every student performs on a real professional stage.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon-box" style="background:rgba(231,207,167,0.3);" aria-hidden="true">📊</div>
+          <div>
+            <h3 class="feature-title">Parent Dashboard</h3>
+            <p class="feature-desc">Real-time attendance tracking, fee payment, recital schedules and direct faculty communication — all in one place.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon-box" style="background:rgba(217,203,232,0.4);" aria-hidden="true">❤️</div>
+          <div>
+            <h3 class="feature-title">Small Batches, Big Impact</h3>
+            <p class="feature-desc">Maximum 12 students per batch ensures personalized attention and meaningful progress for every child.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: RECITAL COUNTDOWN -->
+<section class="section" id="recital-countdown" aria-labelledby="recital-heading">
+  <div class="container">
+    <div class="recital-countdown">
+      <div class="blob blob-lavender" style="top:-200px;right:-200px;" aria-hidden="true"></div>
+      <div style="position:relative;z-index:1;">
+        <div class="section-tag" style="background:rgba(255,255,255,0.15);color:var(--champagne);margin:0 auto var(--space-6);">🎭 Next Performance</div>
+        <h2 id="recital-heading" style="font-family:var(--font-display);font-size:clamp(1.75rem,4vw,3rem);color:#fff;margin-bottom:var(--space-4);">
+          Winter Grand Recital 2025
+        </h2>
+        <p style="color:rgba(255,255,255,0.8);font-size:var(--text-lg);margin-bottom:var(--space-10);">
+          December 15, 2025 • Music Academy Hall, Chennai • Doors open at 4:30 PM
+        </p>
+        <div class="countdown-timer" aria-live="polite" aria-label="Countdown to Winter Recital" id="recital-timer">
+          <div class="countdown-unit"><div class="countdown-num" id="r-days">18</div><div class="countdown-lbl">Days</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="r-hours">14</div><div class="countdown-lbl">Hours</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="r-mins">30</div><div class="countdown-lbl">Minutes</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="r-secs">00</div><div class="countdown-lbl">Seconds</div></div>
+        </div>
+        <div style="margin-top:var(--space-10);">
+          <a href="contact.html" class="btn btn-champagne btn-lg" style="color:var(--orchid);">Book Your Free Ticket</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: TESTIMONIALS SLIDER -->
+<section class="section bg-secondary-custom" id="reviews" aria-labelledby="reviews-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">💬 What Parents Say</div>
+      <h2 id="reviews-heading" class="section-title">Voices from Our Community</h2>
+    </div>
+    <div class="grid grid-3 gap-6 stagger-children">
+      <div class="card testimonial-card">
+        <div class="stars" aria-label="5 stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"The transformation in my son has been remarkable. From a shy boy to a confident performer — KDPA did that in one year."</p>
+        <div class="author">
+          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--orchid),var(--rose-gold));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0;" aria-hidden="true">V</div>
+          <div><div class="author-name">Vijay Kumar</div><div class="author-role">Father of Arjun, Age 10</div></div>
+        </div>
+      </div>
+      <div class="card testimonial-card">
+        <div class="stars" aria-label="5 stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"Priya Madam is extraordinary. She teaches with so much patience and passion. My daughter adores her classes."</p>
+        <div class="author">
+          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#1a3a5a,#2a6090);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0;" aria-hidden="true">M</div>
+          <div><div class="author-name">Meena Pillai</div><div class="author-role">Mother of Kavya, Age 8</div></div>
+        </div>
+      </div>
+      <div class="card testimonial-card">
+        <div class="stars" aria-label="5 stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"The Parent Dashboard is brilliant! I can see attendance, pay fees and know about recitals — all from my phone."</p>
+        <div class="author">
+          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#8a4a20,#c27840);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0;" aria-hidden="true">P</div>
+          <div><div class="author-name">Preethi Nair</div><div class="author-role">Parent, 2 children enrolled</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: CTA FINAL -->
+<section style="background:var(--grad-brand);padding:var(--space-24) 0;text-align:center;position:relative;overflow:hidden;" aria-labelledby="home2-cta">
+  <div class="blob blob-champagne" style="top:-120px;right:-120px;opacity:0.15;" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal">
+      <div class="section-tag" style="background:rgba(255,255,255,0.15);color:var(--champagne);margin:0 auto var(--space-5);">✦ Limited Seats Available</div>
+      <h2 id="home2-cta" style="font-family:var(--font-display);font-size:clamp(2rem,5vw,4rem);color:#fff;margin-bottom:var(--space-5);">
+        Your Child's Stage Awaits
+      </h2>
+      <p style="font-size:var(--text-xl);color:rgba(255,255,255,0.82);max-width:54ch;margin:0 auto var(--space-10);">
+        Apply today — enrollment is free and our team will reach you within 24 hours.
+      </p>
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+        <a href="signup.html" class="btn btn-champagne btn-xl" style="color:var(--orchid);">Enroll Now — Free Application</a>
+        <a href="contact.html" class="btn btn-ghost btn-xl">Book a Free Trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="footer-logo"><div class="logo-icon">🎭</div><div><div class="logo-name">Kids Dance &amp; Performing Arts Academy</div><div class="logo-sub">Est. 2004</div></div></a><p class="footer-desc">A premier destination for children's performing arts education.</p><div class="social-links" style="margin-bottom:var(--space-6);"><a href="#" class="social-link dark" aria-label="Instagram">📸</a><a href="#" class="social-link dark" aria-label="Facebook">👥</a><a href="#" class="social-link dark" aria-label="YouTube">▶️</a></div></div>
+    <div><h3 class="footer-col-title">Quick Links</h3><ul class="footer-links"><li><a href="index.html" class="footer-link"><span class="link-dot"></span>Home</a></li><li><a href="home2.html" class="footer-link"><span class="link-dot"></span>Home 2</a></li><li><a href="about.html" class="footer-link"><span class="link-dot"></span>About</a></li><li><a href="services.html" class="footer-link"><span class="link-dot"></span>Programs</a></li><li><a href="blog.html" class="footer-link"><span class="link-dot"></span>Blog</a></li><li><a href="contact.html" class="footer-link"><span class="link-dot"></span>Contact</a></li></ul></div>
+    <div><h3 class="footer-col-title">Programs</h3><ul class="footer-links"><li><a href="services.html#classical" class="footer-link"><span class="link-dot"></span>Classical Dance</a></li><li><a href="services.html#ballet" class="footer-link"><span class="link-dot"></span>Ballet</a></li><li><a href="services.html#hiphop" class="footer-link"><span class="link-dot"></span>Hip-Hop</a></li><li><a href="services.html#drama" class="footer-link"><span class="link-dot"></span>Drama</a></li><li><a href="services.html#music" class="footer-link"><span class="link-dot"></span>Music</a></li></ul></div>
+    <div><h3 class="footer-col-title">Contact</h3><div class="footer-contact-item"><div class="footer-contact-icon">📍</div><div><span class="footer-contact-label">Address</span><div class="footer-contact-text">12 Arts Lane, Chennai 600034</div></div></div><div class="footer-contact-item"><div class="footer-contact-icon">📞</div><div><span class="footer-contact-label">Phone</span><div class="footer-contact-text"><a href="tel:+914412345678" style="color:inherit">+91 44 1234 5678</a></div></div></div></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container"><p class="footer-copy">&copy; 2025 Kids Dance &amp; Performing Arts Academy.</p><nav class="footer-legal"><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.html">Sitemap</a></nav></div></div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner" role="alertdialog"><p class="cookie-text">We use cookies. <a href="privacy-policy.html">Learn more</a>.</p><div class="cookie-actions"><button id="cookie-accept" class="btn btn-champagne btn-sm">Accept</button><button id="cookie-decline" class="btn btn-ghost btn-sm">Decline</button></div></div>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/animations.js"></script>
+<script>
+  // Recital countdown
+  const recital = new Date('2025-12-15T17:00:00');
+  function updateRecital() {
+    const diff = Math.max(0, recital - new Date());
+    document.getElementById('r-days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('r-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('r-mins').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('r-secs').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  }
+  setInterval(updateRecital, 1000);
+  updateRecital();
+</script>
+</body>
+</html>

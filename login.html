@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Parent Login — Access your KDPA Parent Dashboard to track your child's progress, attendance and recitals.">
+  <title>Parent Login | Kids Dance &amp; Performing Arts Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    body { background: var(--bg-primary); }
+    .auth-layout { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+    .auth-art-panel {
+      background: var(--grad-brand);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: var(--space-16);
+    }
+    .auth-art-panel img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+    }
+    .auth-art-panel .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(84,36,95,0.95) 0%, rgba(84,36,95,0.4) 100%);
+    }
+    .auth-art-content { position: relative; z-index: 1; color: #fff; }
+    .auth-art-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-style: italic;
+      line-height: 1.3;
+      margin-bottom: var(--space-4);
+    }
+    .auth-art-author { font-size: var(--text-sm); color: rgba(255,255,255,0.65); }
+    .auth-art-logo {
+      position: absolute;
+      top: var(--space-8);
+      left: var(--space-8);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+    }
+    .auth-logo-icon { width: 44px; height: 44px; background: rgba(255,255,255,0.15); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 1px solid rgba(255,255,255,0.2); }
+    .auth-logo-name { font-family: var(--font-display); font-size: var(--text-base); font-weight: var(--weight-bold); color: #fff; }
+    .auth-logo-sub { font-size: 0.65rem; color: rgba(255,255,255,0.65); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .auth-form-panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-12) var(--space-10);
+      background: var(--bg-primary);
+      overflow-y: auto;
+    }
+    .auth-form-wrap { width: 100%; max-width: 420px; }
+    .auth-back-link {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-sm); color: var(--text-muted);
+      text-decoration: none; margin-bottom: var(--space-8);
+      transition: color var(--duration-fast);
+    }
+    .auth-back-link:hover { color: var(--orchid); }
+
+    .auth-title { font-family: var(--font-display); font-size: var(--text-4xl); margin-bottom: var(--space-2); }
+    .auth-subtitle { color: var(--text-muted); font-size: var(--text-base); margin-bottom: var(--space-8); }
+
+    .social-auth { display: flex; gap: var(--space-3); margin-bottom: var(--space-6); }
+    .social-auth-btn {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+    }
+    .social-auth-btn:hover { border-color: var(--orchid); background: rgba(84,36,95,0.04); }
+
+    .auth-divider {
+      display: flex; align-items: center; gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border-color);
+    }
+    .auth-divider span { font-size: var(--text-xs); color: var(--text-muted); white-space: nowrap; }
+
+    .password-field { position: relative; }
+    .password-toggle {
+      position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: var(--text-muted);
+      font-size: 1.1rem; padding: 0;
+    }
+    .forgot-link { font-size: var(--text-sm); color: var(--orchid); float: right; margin-top: var(--space-2); }
+    .forgot-link:hover { text-decoration: underline; }
+    .auth-footer-text { text-align: center; margin-top: var(--space-6); font-size: var(--text-sm); color: var(--text-muted); }
+    .auth-footer-text a { color: var(--orchid); font-weight: var(--weight-semi); }
+
+    .trust-badges {
+      display: flex; gap: var(--space-4); justify-content: center;
+      margin-top: var(--space-6);
+      flex-wrap: wrap;
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-xs); color: var(--text-muted);
+    }
+    @media (max-width: 900px) {
+      .auth-layout { grid-template-columns: 1fr; }
+      .auth-art-panel { min-height: 240px; padding: var(--space-8); }
+      .auth-form-panel { padding: var(--space-10) var(--space-6); }
+    }
+  </style>
+</head>
+<body>
+<div class="page-transition" aria-hidden="true"></div>
+<div class="auth-layout">
+
+  <!-- ART PANEL -->
+  <div class="auth-art-panel" aria-hidden="true">
+    <img src="assets/images/hero_slide_1.jpg" alt="">
+    <div class="overlay"></div>
+    <a href="index.html" class="auth-art-logo">
+      <div class="auth-logo-icon">🎭</div>
+      <div>
+        <div class="auth-logo-name">KDPA</div>
+        <div class="auth-logo-sub">Performing Arts</div>
+      </div>
+    </a>
+    <div class="auth-art-content">
+      <p class="auth-art-quote">"Every great dancer was once a beginner who refused to give up."</p>
+      <div class="auth-art-author">— The KDPA Philosophy</div>
+      <div style="display:flex;gap:var(--space-4);margin-top:var(--space-8);">
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--champagne);">500+</div>
+          <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.06em;">Students</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.2);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--champagne);">25+</div>
+          <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.06em;">Faculty</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.2);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--champagne);">20+</div>
+          <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.06em;">Years</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM PANEL -->
+  <div class="auth-form-panel">
+    <div class="auth-form-wrap">
+
+      <a href="index.html" class="auth-back-link">← Back to Website</a>
+
+      <div style="margin-bottom:var(--space-8);">
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode" style="float:right;">🌙</button>
+        <button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL" style="float:right;margin-right:8px;">⇄</button>
+      </div>
+
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-subtitle">Sign in to your Parent Dashboard</p>
+
+      <!-- Social Login -->
+      <div class="social-auth">
+        <button class="social-auth-btn" onclick="alert('Google Sign-In — connect OAuth.')">
+          <span aria-hidden="true">🔍</span> Google
+        </button>
+        <button class="social-auth-btn" onclick="alert('Apple Sign-In — connect OAuth.')">
+          <span aria-hidden="true">🍎</span> Apple
+        </button>
+      </div>
+
+      <div class="auth-divider"><span>or continue with email</span></div>
+
+      <!-- Login Form -->
+      <form id="login-form" data-form data-on-success="handleLoginSuccess" novalidate aria-label="Login form">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Email Address</label>
+          <div class="form-control-icon">
+            <span class="input-icon" aria-hidden="true">✉</span>
+            <input type="email" id="login-email" class="form-control"
+                   placeholder="parent@email.com"
+                   data-validate="required,email"
+                   autocomplete="email"
+                   aria-required="true">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password</label>
+          <div class="password-field">
+            <input type="password" id="login-password" class="form-control"
+                   placeholder="Enter your password"
+                   data-validate="required,minLength:6"
+                   autocomplete="current-password"
+                   aria-required="true"
+                   style="padding-right:3rem;">
+            <button type="button" class="password-toggle"
+                    data-password-toggle="login-password"
+                    aria-label="Show password">👁</button>
+          </div>
+          <a href="#forgot" class="forgot-link" onclick="alert('Password reset email sent to your registered address.')">
+            Forgot password?
+          </a>
+        </div>
+
+        <div style="clear:both;margin-top:var(--space-4);margin-bottom:var(--space-6);">
+          <label class="form-check" style="cursor:pointer;">
+            <input type="checkbox" id="remember-me"> 
+            <span class="form-check-label">Remember me for 30 days</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full btn-lg" id="login-submit-btn" style="display:flex;justify-content:center;">
+          Sign In to Dashboard
+        </button>
+      </form>
+
+      <!-- Trust badges -->
+      <div class="trust-badges">
+        <div class="trust-badge"><span aria-hidden="true">🔒</span> SSL Secured</div>
+        <div class="trust-badge"><span aria-hidden="true">🛡️</span> 256-bit Encryption</div>
+        <div class="trust-badge"><span aria-hidden="true">🔐</span> Data Protected</div>
+      </div>
+
+      <p class="auth-footer-text">
+        New parent? <a href="signup.html">Create an account →</a>
+      </p>
+      <p style="text-align:center;margin-top:var(--space-3);font-size:var(--text-xs);color:var(--text-muted);">
+        By signing in you agree to our <a href="privacy-policy.html" style="color:var(--orchid);">Privacy Policy</a>
+        and <a href="terms.html" style="color:var(--orchid);">Terms of Use</a>.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/forms.js"></script>
+<script>
+function handleLoginSuccess(form) {
+  localStorage.setItem('kdpa_logged_in', 'true');
+  window.KDPA.Toast.show('Login successful! Redirecting to dashboard...', 'success');
+  setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
+}
+</script>
+</body>
+</html>
