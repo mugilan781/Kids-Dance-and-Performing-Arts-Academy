@@ -223,16 +223,22 @@
 .program-card .card-icon {
   width: 56px;
   height: 56px;
-  border-radius: 18px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   color: var(--champagne);
-  background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08));
-  border: 1px solid rgba(255,255,255,0.28);
-  box-shadow: var(--shadow-sm);
+  background: var(--grad-brand);
+  border: 1.5px solid rgba(231, 207, 167, 0.45);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   margin-bottom: var(--space-3);
+  transition: transform var(--duration-base) var(--ease-spring), box-shadow var(--duration-base), border-color var(--duration-base);
+}
+.program-card:hover .card-icon {
+  transform: scale(1.08) translateY(-2px);
+  border-color: var(--champagne);
+  box-shadow: 0 12px 28px rgba(84, 36, 95, 0.6), 0 0 16px rgba(231, 207, 167, 0.35);
 }
 .program-card .card-icon .icon-svg { width: 26px; height: 26px; }
 .program-card .card-title {
