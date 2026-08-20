@@ -769,13 +769,15 @@
 
 /* Dark bg social */
 .social-link.dark {
-  background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.7);
-  border-color: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  border-color: rgba(255,255,255,0.2);
 }
 .social-link.dark:hover {
   background: var(--champagne);
   color: var(--orchid);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: var(--shadow-md);
 }
 
 /* ═══════════════════════════════════════════════
@@ -1360,6 +1362,14 @@ blockquote {
 .social-link.dark svg {
   width: 18px;
   height: 18px;
+}
+
+/* Footer brand glyphs: pure filled vectors, no inherited stroke,
+   edge-safe rendering (glyphs no longer touch the svg boundary) */
+.social-link.dark svg.icon-svg {
+  width: 20px;
+  height: 20px;
+  stroke: none;
 }
 
 /* Checkmarks and Crosses in lists */

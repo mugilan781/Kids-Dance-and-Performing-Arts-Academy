@@ -69,7 +69,7 @@
 }
 
 .footer-desc {
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.72);
   font-size: var(--text-sm);
   line-height: var(--leading-loose);
   max-width: 40ch;
@@ -84,7 +84,7 @@
 }
 .footer-newsletter-text {
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.7);
   line-height: var(--leading-normal);
   margin-bottom: var(--space-4);
 }
@@ -119,6 +119,18 @@
 }
 .footer-newsletter-btn:hover { background: var(--champagne-lt); }
 
+/* Newsletter validation state — pill stays intact, message below */
+.footer-newsletter-form.error-state {
+  border-color: rgba(248,113,113,0.55);
+}
+.footer-newsletter-form.error-state .footer-newsletter-input { color: #fecaca; }
+.footer-newsletter-form.error-state .footer-newsletter-input::placeholder { color: rgba(248,113,113,0.55); }
+.footer-newsletter-form + .form-error {
+  margin-top: var(--space-3);
+  color: #fca5a5;
+}
+.footer-newsletter-form + .form-error .form-err-icon { stroke: #fca5a5; }
+
 /* Columns */
 .footer-col-title {
   font-family: var(--font-display);
@@ -142,7 +154,7 @@
 .footer-links { display: flex; flex-direction: column; gap: var(--space-2); }
 .footer-link {
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.72);
   text-decoration: none;
   transition: color var(--duration-fast), padding-left var(--duration-fast);
   display: flex; align-items: center; gap: var(--space-2);
@@ -172,12 +184,12 @@
 }
 .footer-contact-text {
   font-size: var(--text-sm);
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.72);
   line-height: var(--leading-snug);
 }
 .footer-contact-label {
   font-size: var(--text-xs);
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.5);
   display: block;
   margin-bottom: 2px;
   text-transform: uppercase;
@@ -204,7 +216,7 @@
 }
 .footer-copy {
   font-size: var(--text-xs);
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.55);
 }
 .footer-legal {
   display: flex;
@@ -212,7 +224,7 @@
 }
 .footer-legal a {
   font-size: var(--text-xs);
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.55);
   transition: color var(--duration-fast);
 }
 .footer-legal a:hover { color: var(--champagne); }
