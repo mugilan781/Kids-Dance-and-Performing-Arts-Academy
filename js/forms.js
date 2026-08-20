@@ -139,6 +139,8 @@ const MultiStepForm = (() => {
   let form, steps, stepDots, stepLines, current = 0;
 
   function showStep(index) {
+    if (index < 0 || index >= steps.length) return;
+
     steps.forEach((s, i) => {
       s.hidden = i !== index;
       s.setAttribute('aria-hidden', i !== index);
@@ -213,7 +215,7 @@ const MultiStepForm = (() => {
             <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem; color: var(--orchid);">
               Enrollment Submitted!
             </h3>
-            <p style="color: var(--text-secondary);">
+            <p style="color: var(--text-secondary); margin: 0 auto;">
               Thank you! Our team will contact you within 24 hours to confirm your child's enrollment.
             </p>
             <a href="index.html" class="btn btn-primary" style="margin-top: 2rem; display: inline-flex;">

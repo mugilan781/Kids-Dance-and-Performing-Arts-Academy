@@ -38,6 +38,9 @@
 .btn:hover::after { opacity: 1; }
 .btn:active { transform: scale(0.97); }
 
+/* Respect the hidden attribute (UA style is overridden by .btn display) */
+.btn[hidden] { display: none !important; }
+
 /* Ripple */
 .btn .ripple-effect {
   position: absolute;
@@ -473,6 +476,7 @@
   transition: opacity var(--duration-fast), transform var(--duration-fast);
 }
 .form-error.visible { opacity: 1; transform: translateY(0); }
+.form-check .form-error { flex-basis: 100%; }
 
 .form-control-icon {
   position: relative;
@@ -816,6 +820,12 @@
   border-color: var(--rose-gold);
   background: var(--rose-gold);
   color: #fff;
+  font-size: 0;
+}
+.step-dot.done::after {
+  content: '✓';
+  font-size: var(--text-sm);
+  line-height: 1;
 }
 .step-line {
   flex: 1;

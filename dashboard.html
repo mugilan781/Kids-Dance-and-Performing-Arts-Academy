@@ -334,7 +334,7 @@
           </div>
         </div>
 
-        <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+<div id="current-enrollments" style="display:flex;flex-direction:column;gap:var(--space-4);">
           <div class="enrollment-card">
             <div class="enrollment-icon" style="background:rgba(84,36,95,0.1);color:var(--orchid);display:flex;align-items:center;justify-content:center;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-1.8 3.2-4.5 6-8 7 3.2 2 5.2 5.5 5.2 9.5h5.6c0-4 2-7.5 5.2-9.5-3.5-1-6.2-3.8-8-7z"/><path d="M12 8.5c-1 2-2.2 3.8-4.2 4.8 2 1.2 3.2 3 3.2 5.2h2c0-2.2 1.2-4 3.2-5.2-2-1-3.2-2.8-4.2-4.8z"/><path d="M6 21.5h12"/></svg></div>
             <div>
@@ -368,18 +368,18 @@
           <div class="widget-body">
             <p class="enroll-intro">Enrolling a new child or adding another program? Complete the steps below — our admissions team will confirm your child's free trial class within 24 hours.</p>
 
-            <!-- Step Indicator -->
-            <div class="step-indicator" aria-label="Enrollment steps" role="list">
-              <div class="step-dot active" role="listitem" aria-current="step" aria-label="Step 1: Parent Info">1</div>
-              <div class="step-line"></div>
-              <div class="step-dot" role="listitem" aria-label="Step 2: Child Info">2</div>
-              <div class="step-line"></div>
-              <div class="step-dot" role="listitem" aria-label="Step 3: Program">3</div>
-              <div class="step-line"></div>
-              <div class="step-dot" role="listitem" aria-label="Step 4: Confirm">4</div>
-            </div>
-
             <form id="enrollment-form" data-multistep data-on-success="handleEnrollmentSuccess" novalidate aria-label="Enrollment form">
+
+              <!-- Step Indicator -->
+              <div class="step-indicator" aria-label="Enrollment steps" role="list">
+                <div class="step-dot active" role="listitem" aria-current="step" aria-label="Step 1: Parent Info">1</div>
+                <div class="step-line"></div>
+                <div class="step-dot" role="listitem" aria-label="Step 2: Child Info">2</div>
+                <div class="step-line"></div>
+                <div class="step-dot" role="listitem" aria-label="Step 3: Program">3</div>
+                <div class="step-line"></div>
+                <div class="step-dot" role="listitem" aria-label="Step 4: Confirm">4</div>
+              </div>
 
               <!-- Step 1: Parent Info -->
               <div data-step="1" aria-label="Step 1: Parent Information">

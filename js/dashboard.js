@@ -201,6 +201,35 @@ const DonutChart = (() => {
 // ── Enrollment Application Success ──────────────────────────────
 function handleEnrollmentSuccess(form) {
   const ref = 'ENR-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+
+  // Add the new application to the Current Programs list
+  const list = document.getElementById('current-enrollments');
+  const programNames = {
+    classical: 'Classical Dance', western: 'Western Dance', hiphop: 'Hip-Hop',
+    ballet: 'Ballet', drama: 'Drama & Theater', music: 'Music'
+  };
+  const selected = Array.from(form.querySelectorAll('input[name="enf-program"]:checked'))
+    .map(cb => programNames[cb.value] || cb.value);
+  const childName = (document.getElementById('enf-child-name')?.value || '').trim() || 'New Student';
+  const batch = document.getElementById('enf-batch')?.value || 'Batch TBD';
+
+  if (list && selected.length) {
+    const card = document.createElement('div');
+    card.className = 'enrollment-card';
+    card.style.animation = 'scaleIn 0.5s var(--ease-spring)';
+    card.innerHTML = `
+      <div class="enrollment-icon" style="background:rgba(199,139,155,0.15);color:var(--rose-gold);display:flex;align-items:center;justify-content:center;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></div>
+      <div>
+        <h4 style="font-family:var(--font-display);font-size:var(--text-lg);margin-bottom:4px;">${selected.join(', ')}</h4>
+        <p style="font-size:var(--text-sm);color:var(--text-muted);">${childName} • ${batch}</p>
+        <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+          <span class="badge badge-warning">Pending Confirmation</span>
+          <span class="badge badge-orchid">Free Trial Class</span>
+        </div>
+      </div>`;
+    list.prepend(card);
+  }
+
   form.innerHTML = `
     <div style="text-align:center;padding:3rem 1rem;animation:scaleIn 0.5s var(--ease-spring);">
       <div style="width:76px;height:76px;border-radius:50%;background:rgba(84,36,95,0.1);color:var(--orchid);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
@@ -211,7 +240,7 @@ function handleEnrollmentSuccess(form) {
       <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:0.5rem;color:var(--orchid);">
         Application Submitted!
       </h3>
-      <p style="color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">
+      <p style="color:var(--text-muted);font-size:var(--text-sm);text-align:center;max-width:68ch;margin:0 auto var(--space-6);">
         Thank you! Our admissions team will contact you within 24 hours to confirm your child's free trial class.
       </p>
       <div style="display:inline-block;padding:var(--space-2) var(--space-5);border:1.5px dashed var(--orchid);border-radius:var(--radius-lg);font-weight:700;color:var(--orchid);letter-spacing:0.05em;margin-bottom:var(--space-6);">
