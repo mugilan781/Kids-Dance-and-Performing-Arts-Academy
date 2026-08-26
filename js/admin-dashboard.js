@@ -390,7 +390,10 @@ const Applications = (() => {
     const list = $('#applications-list');
     list.innerHTML = state.applications.length
       ? state.applications.map(a => card(a)).join('')
-      : '<div class="widget-card"><div class="widget-body" style="text-align:center;color:var(--text-muted);">🎉 No pending applications. All caught up!</div></div>';
+      : `<div class="widget-card"><div class="widget-body" style="text-align:center;color:var(--text-muted);">
+          <span style="display:inline-flex;margin-bottom:var(--space-3);color:#16a34a;"><svg class="icon-svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+          <p>No pending applications — all caught up!</p>
+        </div></div>`;
 
     const preview = state.applications.slice(0, 3);
     $('#overview-applications').innerHTML = preview.length
@@ -469,8 +472,10 @@ const Batches = (() => {
           </div>
           <span class="badge ${pct >= 90 ? 'badge-warning' : 'badge-success'}">${pct >= 90 ? 'Almost Full' : 'Open'}</span>
         </div>
-        <div style="font-size:var(--text-sm);color:var(--text-secondary);margin-top:var(--space-4);line-height:1.9;">
-          👩‍🏫 ${b.instructor}<br>🗓 ${b.days}<br>⏰ ${b.time}
+        <div style="font-size:var(--text-sm);color:var(--text-secondary);margin-top:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);">
+          <span class="icon-line"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> ${b.instructor}</span>
+          <span class="icon-line"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${b.days}</span>
+          <span class="icon-line"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${b.time}</span>
         </div>
         <div class="capacity-bar" aria-hidden="true"><div class="capacity-fill" data-fill="${pct}"></div></div>
         <div class="capacity-label"><span>Enrolled</span><span>${b.enrolled}/${b.capacity} (${pct}%)</span></div>
@@ -545,8 +550,11 @@ const Faculty = (() => {
         <p style="font-size:var(--text-sm);color:var(--rose-deep);font-weight:var(--weight-semi);margin-bottom:var(--space-2);">${f.role}</p>
         <p style="font-size:var(--text-xs);color:var(--text-muted);line-height:1.8;">
           ${f.programs}<br>${f.batches} active batch${f.batches > 1 ? 'es' : ''}<br>
-          📞 ${f.phone}
         </p>
+        <span class="icon-line" style="justify-content:center;font-size:var(--text-xs);color:var(--text-muted);">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          ${f.phone}
+        </span>
         <div style="margin-top:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);">
           <a class="btn btn-secondary btn-sm" href="mailto:${f.email}" style="justify-content:center;">✉ Email</a>
           <button class="btn btn-secondary btn-sm" data-fac-schedule="${f.name}" style="justify-content:center;">View Schedule</button>
@@ -646,7 +654,7 @@ const Attendance = (() => {
       const p = $('#att-count-p').textContent;
       const a = $('#att-count-a').textContent;
       const l = $('#att-count-l').textContent;
-      notify(`Attendance saved for ${batch} — ✓ ${p} present, ✗ ${a} absent, ⏱ ${l} late.`, 'success');
+      notify(`Attendance saved for ${batch} — ${p} Present, ${a} Absent, ${l} Late.`, 'success');
     });
   }
   return { init, renderList };

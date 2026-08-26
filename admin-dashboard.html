@@ -36,6 +36,20 @@
       flex-wrap: wrap;
     }
 
+    /* Multi-column grids */
+    .dashboard-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+    .dashboard-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    @media (max-width: 900px) {
+      .dashboard-grid-2, .dashboard-grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* Icon rows inside cards */
+    .icon-line {
+      display: flex; align-items: center; gap: var(--space-3);
+      font-size: var(--text-sm); color: var(--text-secondary);
+    }
+    .icon-line svg { width: 16px; height: 16px; color: var(--orchid); flex-shrink: 0; }
+
     /* Students table */
     .student-cell { display: flex; align-items: center; gap: var(--space-3); }
     .student-avatar {
@@ -236,9 +250,6 @@
     </nav>
 
     <div class="sidebar-footer">
-      <a href="index.html" class="sidebar-link" style="color:var(--text-muted);">
-        <span class="sidebar-link-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> View Website
-      </a>
       <a href="login.html" class="sidebar-link" style="color:var(--text-muted);">
         <span class="sidebar-link-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span> Sign Out
       </a>
@@ -480,7 +491,7 @@
       <section class="dashboard-section" id="section-payments" aria-labelledby="payments-heading" hidden>
         <h2 id="payments-heading" class="sr-only">Fee Payments</h2>
 
-        <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="dashboard-grid-3" style="margin-bottom:var(--space-6);">
           <div class="kpi-card">
             <div class="kpi-info">
               <div class="kpi-label">Collected (Term 3)</div>
@@ -595,8 +606,8 @@
             <h3 class="widget-title">Export &amp; Share</h3>
           </div>
           <div class="widget-body toolbar-row">
-            <button class="btn btn-primary" id="export-csv">⬇ Export Students CSV</button>
-            <button class="btn btn-secondary" id="print-report">🖨 Print Report</button>
+            <button class="btn btn-primary" id="export-csv"><span style="display:inline-flex;margin-right:6px;"><svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> Export Students CSV</button>
+            <button class="btn btn-secondary" id="print-report"><span style="display:inline-flex;margin-right:6px;"><svg class="icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span> Print Report</button>
             <span style="font-size:var(--text-sm);color:var(--text-muted);">CSV includes all students with batch, program and parent contact.</span>
           </div>
         </div>
