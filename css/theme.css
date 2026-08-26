@@ -112,9 +112,6 @@
   color: var(--champagne);
 }
 /* Dashboard — inline-styled accents (dark overrides) */
-[data-theme="dark"] .profile-avatar-lg {
-  color: var(--champagne) !important;
-}
 [data-theme="dark"] #section-enrollment .enrollment-icon,
 [data-theme="dark"] .enrollment-card .enrollment-icon {
   color: var(--rose-gold-lt) !important;

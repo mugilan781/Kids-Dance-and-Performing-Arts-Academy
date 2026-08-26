@@ -173,13 +173,9 @@
     </nav>
 
     <div class="sidebar-footer">
-      <a href="login.html" class="sidebar-link" style="color:var(--text-muted);">
+<a href="login.html" class="sidebar-link" style="color:var(--text-muted);">
         <span class="sidebar-link-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span> Sign Out
       </a>
-      <div style="margin-top:var(--space-4);display:flex;gap:var(--space-2);">
-        <button class="icon-btn" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark/light mode"><svg class="icon-svg theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-svg theme-icon-sun hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
-        <button class="icon-btn" data-rtl-toggle aria-label="Toggle RTL" title="Toggle RTL/LTR"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></button>
-      </div>
     </div>
   </aside>
 
@@ -251,7 +247,31 @@
               <span class="badge badge-orchid">This Week</span>
             </div>
             <div class="widget-body">
-              <div class="chart-area" id="attendance-chart" style="height:160px;" aria-label="Attendance bar chart"></div>
+              <div class="chart-area" id="attendance-chart-overview" style="height:160px;" aria-label="Attendance bar chart"></div>
+              <div class="chart-summary" aria-label="Attendance summary">
+                <div class="chart-summary-item">
+                  <div class="chart-summary-value">88%</div>
+                  <div class="chart-summary-label">Avg Attendance</div>
+                </div>
+                <div class="chart-summary-item">
+                  <div class="chart-summary-value">100%</div>
+                  <div class="chart-summary-label">Best Day (Wed)</div>
+                </div>
+                <div class="chart-summary-item">
+                  <div class="chart-summary-value">6</div>
+                  <div class="chart-summary-label">Classes This Week</div>
+                </div>
+              </div>
+              <div class="attendance-log">
+                <div class="attendance-log-title">This Week's Log</div>
+                <div class="attendance-log-row"><span class="attendance-log-day">Monday</span><span class="attendance-log-time">5:00 – 6:30 PM</span><span class="attendance-log-status badge badge-success">Present</span></div>
+                <div class="attendance-log-row"><span class="attendance-log-day">Tuesday</span><span class="attendance-log-time">5:00 – 6:30 PM</span><span class="attendance-log-status badge badge-success">Present</span></div>
+                <div class="attendance-log-row"><span class="attendance-log-day">Wednesday</span><span class="attendance-log-time">5:00 – 6:30 PM</span><span class="attendance-log-status badge badge-success">Present</span></div>
+                <div class="attendance-log-row"><span class="attendance-log-day">Thursday</span><span class="attendance-log-time">5:00 – 6:30 PM</span><span class="attendance-log-status badge badge-warning">Late</span></div>
+                <div class="attendance-log-row"><span class="attendance-log-day">Friday</span><span class="attendance-log-time">5:00 – 6:30 PM</span><span class="attendance-log-status badge badge-success">Present</span></div>
+                <div class="attendance-log-row"><span class="attendance-log-day">Saturday</span><span class="attendance-log-time">10:00 – 11:30 AM</span><span class="attendance-log-status badge badge-success">Present</span></div>
+                <div class="attendance-log-note">You attended 5 of 6 classes this week — keep it up!</div>
+              </div>
             </div>
           </div>
           <div class="widget-card">
@@ -304,7 +324,7 @@
             </div>
             <div class="widget-body">
               <div style="display:flex;flex-direction:column;gap:var(--space-3);">
-                <button class="btn btn-primary w-full" onclick="alert('Fee payment portal — connect to payment gateway.')">
+<button class="btn btn-primary w-full" onclick="window.Artiste.Toast.show('Fee payment portal — connect to payment gateway.', 'info')">
                   Pay Term 3 Fee (₹3,500)
                 </button>
                 <button class="btn btn-secondary w-full" onclick="document.querySelector('[data-section=recitals]').click()">
@@ -327,9 +347,9 @@
         <h2 id="enrollment-title" style="font-family:var(--font-display);font-size:var(--text-3xl);margin-bottom:var(--space-8);">Child Enrollment</h2>
 
         <div class="profile-header">
-          <div class="profile-avatar-lg" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:var(--orchid);"><span style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></span></div>
+<div class="profile-avatar-lg" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:#fff;"><span style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></span></div>
           <div>
-            <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:4px;">Meera Sharma</h3>
+            <h3 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:4px;color:#fff;">Meera Sharma</h3>
             <p style="color:rgba(255,255,255,0.8);font-size:var(--text-sm);">Student ID: Artiste Academy-2024-0182 • Age 9 • Mid-Stars Batch</p>
           </div>
         </div>
@@ -593,7 +613,7 @@
           <div class="widget-card">
             <div class="widget-header"><h3 class="widget-title">Weekly Chart</h3></div>
             <div class="widget-body">
-              <div class="chart-area" id="attendance-chart" style="height:160px;"></div>
+              <div class="chart-area" id="attendance-chart-report" style="height:160px;"></div>
             </div>
           </div>
         </div>
@@ -645,7 +665,7 @@
               <div class="stat-number" style="font-family:var(--font-display);font-size:3rem;font-weight:900;color:var(--orchid);">₹3,500</div>
               <div style="font-size:var(--text-sm);color:var(--text-muted);">Term 3 Tuition Fee — Due November 30, 2025</div>
             </div>
-            <button class="btn btn-primary btn-lg" onclick="alert('Payment gateway integration — Razorpay/Stripe would connect here.')">
+<button class="btn btn-primary btn-lg" onclick="window.Artiste.Toast.show('Payment gateway integration — Razorpay/Stripe would connect here.', 'info')">
               Pay Now
             </button>
           </div>
@@ -702,9 +722,9 @@
       <section class="dashboard-section" id="section-profile" aria-labelledby="profile-title" hidden>
         <h2 id="profile-title" style="font-family:var(--font-display);font-size:var(--text-3xl);margin-bottom:var(--space-8);">Child Profile</h2>
         <div class="profile-header" style="margin-bottom:var(--space-8);">
-          <div class="profile-avatar-lg" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:var(--orchid);"><span style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></span></div>
+<div class="profile-avatar-lg" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:#fff;"><span style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></span></div>
           <div>
-            <h3 style="font-family:var(--font-display);font-size:var(--text-3xl);">Meera Sharma</h3>
+            <h3 style="font-family:var(--font-display);font-size:var(--text-3xl);color:#fff;">Meera Sharma</h3>
             <p style="color:rgba(255,255,255,0.8);">Student ID: Artiste Academy-2024-0182</p>
           </div>
         </div>

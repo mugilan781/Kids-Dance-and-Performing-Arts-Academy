@@ -54,7 +54,9 @@ const AttendanceChart = (() => {
       maxValue = 100
     } = options;
 
-    const bars = container.querySelector('.chart-area');
+    const bars = container.classList.contains('chart-area')
+      ? container
+      : container.querySelector('.chart-area');
     if (!bars) return;
 
     bars.innerHTML = '';
@@ -86,7 +88,8 @@ const AttendanceChart = (() => {
       { label: 'Fri', value: 90 },
       { label: 'Sat', value: 85 },
     ];
-    render('attendance-chart', attendanceData);
+    render('attendance-chart-overview', attendanceData);
+    render('attendance-chart-report', attendanceData);
   }
 
   return { init, render };
@@ -287,7 +290,9 @@ function handleEnrollmentSuccess(form) {
 // ── Theme Sync: re-render charts when dark/light toggles ───────
 function initThemeSync() {
   const observer = new MutationObserver(() => {
-    if (document.getElementById('attendance-chart')) AttendanceChart.init();
+    if (document.getElementById('attendance-chart-overview') || document.getElementById('attendance-chart-report')) {
+      AttendanceChart.init();
+    }
     if (document.getElementById('donut-chart')) DonutChart.render('donut-chart', 87);
   });
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });

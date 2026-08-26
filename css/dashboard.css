@@ -288,8 +288,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   gap: var(--space-2);
   flex: 1;
+  height: 100%;
 }
 .chart-bar {
   width: 100%;
@@ -302,6 +304,74 @@
   font-size: var(--text-xs);
   color: var(--text-muted);
   font-weight: var(--weight-medium);
+}
+
+/* Chart summary strip */
+.chart-summary {
+  display: flex;
+  gap: var(--space-4);
+  border-top: 1px solid var(--border-color);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+}
+.chart-summary-item {
+  flex: 1;
+  text-align: center;
+}
+.chart-summary-item + .chart-summary-item {
+  border-inline-start: 1px solid var(--border-color);
+}
+.chart-summary-value {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.chart-summary-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Weekly attendance log */
+.attendance-log {
+  margin-top: var(--space-5);
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-4);
+}
+.attendance-log-title {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+.attendance-log-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: var(--text-sm);
+}
+.attendance-log-row:last-of-type { border-bottom: none; }
+.attendance-log-day {
+  font-weight: var(--weight-semi);
+  color: var(--text-primary);
+  min-width: 96px;
+}
+.attendance-log-time {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  margin-inline-end: auto;
+}
+.attendance-log-note {
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-align: center;
 }
 
 /* Calendar mini */
@@ -351,6 +421,7 @@
   padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--border-color);
   color: var(--text-primary);
+  text-align: left;
 }
 .fee-table tr:last-child td { border-bottom: none; }
 .fee-table tr:hover td { background: var(--bg-secondary); }
