@@ -121,16 +121,32 @@ const CookieBanner = (() => {
   return { init };
 })();
 
-// ── Page Transition ───────────────────────────────────────────
+// ── Page Loading Screen ──────────────────────────────────────
 const PageTransition = (() => {
   let overlay;
 
-  function init() {
+  function build() {
     overlay = document.createElement('div');
-    overlay.className = 'page-transition';
+    overlay.className = 'page-loader hidden';
+    overlay.setAttribute('role', 'status');
+    overlay.setAttribute('aria-label', 'Loading page');
+    overlay.innerHTML = `
+      <div class="page-loader-inner">
+        <img class="page-loader-logo" src="assets/images/logo.png" alt="Artiste Academy logo">
+        <div class="page-loader-name">Artiste Academy</div>
+        <div class="page-loader-tagline">Born to Shine</div>
+        <div class="page-loader-bar"></div>
+      </div>`;
     document.body.appendChild(overlay);
+  }
 
-    // Intercept internal links
+  function show() { overlay?.classList.remove('hidden'); }
+  function hide() { overlay?.classList.add('hidden'); }
+
+  function init() {
+    build();
+
+    // Intercept internal links — show branded loader before navigation
     document.addEventListener('click', e => {
       const link = e.target.closest('a[href]');
       if (!link) return;
@@ -143,19 +159,17 @@ const PageTransition = (() => {
       if (isSamePage) return;
 
       e.preventDefault();
-      overlay.classList.add('entering');
+      show();
       setTimeout(() => {
         window.location.href = href;
-      }, 500);
+      }, 650);
     });
 
-    // On load — exit animation
-    window.addEventListener('pageshow', () => {
-      overlay.classList.remove('entering');
-    });
+    // On load / back-navigation from cache — hide loader
+    window.addEventListener('pageshow', hide);
   }
 
-  return { init };
+  return { init, show, hide };
 })();
 
 // ── Toast Notification ────────────────────────────────────────

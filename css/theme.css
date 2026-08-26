@@ -207,7 +207,7 @@
 @media print {
   .navbar, .mobile-drawer, .drawer-overlay, .cookie-banner,
   .hero-controls, .hero-arrows,
-  .hero-float-badge, .page-transition, .toast-container { display: none !important; }
+  .hero-float-badge, .page-loader, .toast-container { display: none !important; }
 
   body { color: #000; background: #fff; font-size: 12pt; }
   h1, h2, h3 { page-break-after: avoid; }
