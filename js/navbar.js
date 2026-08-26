@@ -76,9 +76,25 @@ const Navbar = (() => {
       link.addEventListener('click', closeDrawer);
     });
 
+    // Profile dropdown — click toggle (touch friendly)
+    const profileMenu = document.querySelector('.profile-menu');
+    const profileBtn = document.querySelector('.profile-btn');
+    function closeProfile() {
+      profileMenu?.classList.remove('open');
+      profileBtn?.setAttribute('aria-expanded', 'false');
+    }
+    profileBtn?.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = profileMenu.classList.toggle('open');
+      profileBtn.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', e => {
+      if (profileMenu && !profileMenu.contains(e.target)) closeProfile();
+    });
+
     // Keyboard ESC
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeDrawer();
+      if (e.key === 'Escape') { closeDrawer(); closeProfile(); }
     });
 
     setActiveLink();
