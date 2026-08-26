@@ -190,6 +190,9 @@
   gap: var(--space-3);
 }
 
+/* Sidebar hamburger — mobile / tab only */
+#sidebar-toggle { display: none; }
+
 .dashboard-content {
   padding: var(--space-8);
   flex: 1;
@@ -456,6 +459,7 @@
   .dashboard-sidebar { transform: translateX(-100%); }
   .dashboard-sidebar.open { transform: translateX(0); }
   .dashboard-main { margin-left: 0; }
+  #sidebar-toggle { display: flex; }
 }
 @media (max-width: 768px) {
   .dashboard-content { padding: var(--space-5); }
