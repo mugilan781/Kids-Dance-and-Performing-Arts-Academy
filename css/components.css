@@ -1384,14 +1384,21 @@
    ═══════════════════════════════════════════════ */
 .blog-cat-tag {
   display: inline-block;
-  padding: 3px 12px;
-  background: rgba(84,36,95,0.1);
+  padding: 4px 12px;
+  background: rgba(84, 36, 95, 0.08);
   color: var(--orchid);
+  border: 1px solid rgba(84, 36, 95, 0.15);
   border-radius: var(--radius-full);
   font-size: var(--text-xs);
   font-weight: var(--weight-bold);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+[data-theme="dark"] .blog-cat-tag {
+  background: rgba(231, 207, 167, 0.14);
+  color: var(--champagne);
+  border-color: rgba(231, 207, 167, 0.3);
 }
 blockquote {
   border-left: 4px solid var(--rose-gold);
