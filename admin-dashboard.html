@@ -19,6 +19,124 @@
   <link rel="stylesheet" href="css/theme.css">
   <style>
     body { padding-top: 0; }
+    /* ── Welcome Banner ──────────────────── */
+    .welcome-banner {
+      background: var(--grad-brand);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6) var(--space-8);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      animation: fadeUp 0.6s var(--ease-out);
+    }
+    .welcome-banner::before {
+      content: '';
+      position: absolute;
+      width: 220px; height: 220px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      top: -70px; right: -50px;
+      pointer-events: none;
+    }
+    .welcome-banner::after {
+      content: '';
+      position: absolute;
+      width: 140px; height: 140px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      bottom: -40px; right: 140px;
+      pointer-events: none;
+    }
+    .welcome-content { position: relative; z-index: 1; flex: 1; min-width: 0; }
+    .welcome-greeting {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 6px var(--space-4);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semi);
+      margin-bottom: var(--space-3);
+      border: 1px solid rgba(255,255,255,0.2);
+      letter-spacing: 0.02em;
+    }
+    .welcome-greeting .wave {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      animation: wave 1.8s ease-in-out infinite;
+      transform-origin: 70% 70%;
+    }
+    .welcome-greeting .wave svg { width: 18px; height: 18px; flex-shrink: 0; }
+    @keyframes wave {
+      0%, 60%, 100% { transform: rotate(0deg); }
+      10% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      30% { transform: rotate(14deg); }
+      40% { transform: rotate(-4deg); }
+      50% { transform: rotate(10deg); }
+    }
+    .welcome-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 1.875rem);
+      font-weight: var(--weight-bold);
+      line-height: 1.2;
+      margin-bottom: var(--space-2);
+      color: #fff;
+    }
+    .welcome-subtitle {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.88);
+      line-height: 1.6;
+      margin-bottom: var(--space-3);
+      max-width: 60ch;
+    }
+    .welcome-subtitle strong { color: #fff; font-weight: var(--weight-bold); }
+    .welcome-quote {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.92);
+      font-style: italic;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: rgba(255,255,255,0.10);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    .welcome-illustration {
+      position: relative;
+      z-index: 1;
+      width: 110px; height: 110px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .welcome-illustration svg { width: 52px; height: 52px; color: #fff; }
+    @media (max-width: 640px) {
+      .welcome-banner { flex-direction: column; align-items: flex-start; padding: var(--space-6); }
+      .welcome-illustration { width: 80px; height: 80px; }
+      .welcome-illustration svg { width: 38px; height: 38px; }
+      .welcome-title { font-size: 1.4rem; }
+    }
+    @media (max-width: 380px) {
+      .welcome-quote { font-size: var(--text-xs); }
+    }
     /* Sidebar overlay for mobile */
     #sidebar-overlay {
       position: fixed; inset: 0;
@@ -280,6 +398,27 @@
       <!-- ═══ OVERVIEW ═══ -->
       <section class="dashboard-section active" id="section-overview" aria-labelledby="overview-heading">
         <h2 id="overview-heading" class="sr-only">Dashboard Overview</h2>
+
+        <!-- Welcome Greeting — admin, vector-only, engaging -->
+        <div class="welcome-banner" role="region" aria-label="Welcome greeting">
+          <div class="welcome-content">
+            <div class="welcome-greeting" aria-live="polite">
+              <span class="wave" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></span>
+              <span id="admin-welcome-greeting">Welcome back, Priya!</span>
+            </div>
+            <h2 class="welcome-title">Empowering young artists — manage it all in one place.</h2>
+            <p class="welcome-subtitle">
+              Welcome back, <strong>Priya</strong>! You have <strong>3 new enrollments</strong> &amp; <strong>2 payments</strong> awaiting review — <span id="admin-welcome-date"></span>
+            </p>
+            <div class="welcome-quote" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m-4.5 3a4.5 4.5 0 1 0 4.5 4.5M7.5 12H9m7.5 0a4.5 4.5 0 1 1-4.5 4.5m4.5-4.5H15m-3 4.5V15"/><circle cx="12" cy="12" r="3"/></svg>
+              Tip: Approve pending applications to keep admissions flowing smoothly.
+            </div>
+          </div>
+          <div class="welcome-illustration" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+        </div>
 
         <!-- KPI Cards -->
         <div class="kpi-grid">
@@ -794,9 +933,27 @@
 <script src="js/main.js"></script>
 <script src="js/admin-dashboard.js"></script>
 <script>
-  // Set current date
+  // Set current date (topbar)
   document.getElementById('current-date').textContent =
     new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+  // Admin welcome greeting — time-based, vector only
+  (function() {
+    const el = document.getElementById('admin-welcome-greeting');
+    const dateEl = document.getElementById('admin-welcome-date');
+    if (el) {
+      const hour = new Date().getHours();
+      let greet = 'Welcome back';
+      if (hour >= 5 && hour < 12) greet = 'Good Morning';
+      else if (hour < 17) greet = 'Good Afternoon';
+      else if (hour < 21) greet = 'Good Evening';
+      else greet = 'Good Evening';
+      el.textContent = greet + ', Priya!';
+    }
+    if (dateEl) {
+      dateEl.textContent = new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
+    }
+  })();
 
   // Demo auth gate
   if (!localStorage.getItem('kdpa_admin_logged_in')) {
