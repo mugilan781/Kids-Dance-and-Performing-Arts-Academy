@@ -278,14 +278,14 @@
    480px — Mobile Large (iPhone Plus, Pixel, etc.)
    ------------------------------------------------------------ */
 @media (max-width: 480px) {
-  html { font-size: 15px; }
+  html { font-size: 16px; }
   .container { padding-inline: 1rem; }
-  .section { padding-block: 2rem; }
+  .section { padding-block: 2.25rem; }
   .section-header { margin-bottom: var(--space-6); text-align: center; }
   .section-header.left { text-align: left; }
-  .section-title { font-size: clamp(1.55rem, 6vw, 1.9rem); line-height: 1.2; }
-  .section-subtitle { font-size: var(--text-sm); line-height: 1.6; }
-  .section-tag { font-size: 0.62rem; letter-spacing: 0.09em; }
+  .section-title { font-size: clamp(1.85rem, 6.5vw, 2.15rem); line-height: 1.25; font-weight: var(--weight-semi); }
+  .section-subtitle { font-size: 0.9375rem; line-height: 1.7; max-width: 34ch; margin-inline: auto; }
+  .section-tag { font-size: 0.7rem; letter-spacing: 0.09em; padding: 6px 12px; }
 
   /* Navbar — very compact */
   .navbar { height: 60px; }
@@ -387,23 +387,23 @@
   .stats-card { padding: var(--space-5); }
   .stats-number { font-size: clamp(1.7rem, 7vw, 2.2rem); }
 
-  /* Cards */
+  /* Cards — increased for readability */
   .card { border-radius: var(--radius-lg); }
-  .card-body, .card-body-sm { padding: var(--space-4); }
-  .card-title { font-size: var(--text-xl); }
-  .card-text { font-size: var(--text-sm); }
+  .card-body, .card-body-sm { padding: var(--space-5); }
+  .card-title { font-size: var(--text-xl); line-height: 1.3; }
+  .card-text { font-size: var(--text-base); line-height: 1.7; }
   .testimonial-card { padding: var(--space-5); }
-  .testimonial-card .testimonial-text { font-size: var(--text-sm); line-height: 1.6; margin-bottom: var(--space-4); }
+  .testimonial-card .testimonial-text { font-size: 0.9375rem; line-height: 1.7; margin-bottom: var(--space-4); }
   .testimonial-card .author img, .author-avatar { width: 44px; height: 44px; }
   .program-card { aspect-ratio: 16/11; border-radius: var(--radius-lg); }
-  .program-card .card-content { padding: var(--space-4); }
+  .program-card .card-content { padding: var(--space-5); }
   .program-card .card-title { font-size: var(--text-xl); }
-  .program-card .card-desc { font-size: var(--text-xs); }
+  .program-card .card-desc { font-size: 0.8125rem; line-height: 1.6; }
   .faculty-card { padding: var(--space-5); }
   .faculty-card .faculty-img { width: 112px; height: 112px; border-width: 3px; }
   .faculty-card .faculty-name { font-size: var(--text-xl); }
-  .faculty-card .faculty-role { font-size: 0.7rem; }
-  .faculty-card .faculty-bio { font-size: 0.8125rem; }
+  .faculty-card .faculty-role { font-size: 0.75rem; }
+  .faculty-card .faculty-bio { font-size: 0.875rem; line-height: 1.6; }
 
   /* Gallery strip */
   .gallery-strip { gap: var(--space-3); padding: var(--space-1) 0; scroll-padding-inline: 1rem; }
@@ -469,19 +469,18 @@
   .batch-table-wrap .batch-table { min-width: 560px; }
   .batch-table-note { font-size: 0.7rem; margin-top: var(--space-3); }
 
-  /* Accordion */
+  /* Accordion — readable */
   .accordion-header { padding: var(--space-4); gap: var(--space-3); }
-  .accordion-question { font-size: var(--text-base); }
+  .accordion-question { font-size: 1rem; line-height: 1.4; }
   .accordion-icon { width: 28px; height: 28px; min-width: 28px; font-size: 1rem; }
-  .accordion-content { padding: 0 var(--space-4) var(--space-4); font-size: var(--text-sm); }
+  .accordion-content { padding: 0 var(--space-4) var(--space-4); font-size: 0.9375rem; line-height: 1.7; }
   .accordion-item.open .accordion-body { max-height: 800px; }
 
-  /* CTA */
+  /* CTA — readable */
   .cta-banner { padding: var(--space-12) 0; text-align: center; }
-  .cta-banner h2 { font-size: clamp(1.5rem, 7vw, 2rem) !important; }
-  .cta-banner p { font-size: var(--text-sm) !important; max-width: 28ch; }
-  .cta-banner .btn { width: 100%; justify-content: center; }
-  .cta-banner div[style*="display:flex"] { flex-direction: column; align-items: stretch; }
+  .cta-banner h2 { font-size: clamp(1.75rem, 7vw, 2.15rem) !important; line-height: 1.2; }
+  .cta-banner p { font-size: 0.9375rem !important; max-width: 32ch; line-height: 1.6; }
+  .cta-banner .btn { width: 100%; justify-content: center; font-size: 0.9375rem; }
 
   /* Footer — 1 column on mobile as requested */
   .footer::before { height: 40px; top: -40px; }
@@ -552,10 +551,10 @@
   /* Auth pages — already have own 480 rules but reinforce */
   .login-card, .signup-card { padding: var(--space-6) !important; border-radius: 20px !important; }
 
-  /* Buttons */
-  .btn { padding: 0.75rem 1.25rem; font-size: var(--text-xs); }
-  .btn-sm { padding: 0.5rem 1rem; }
-  .btn-lg, .btn-xl { padding: 0.875rem 1.5rem; font-size: var(--text-sm); }
+  /* Buttons — readable tap targets */
+  .btn { padding: 0.85rem 1.35rem; font-size: 0.875rem; font-weight: var(--weight-semi); }
+  .btn-sm { padding: 0.6rem 1.1rem; font-size: 0.8125rem; }
+  .btn-lg, .btn-xl { padding: 0.95rem 1.6rem; font-size: 0.9375rem; }
   .btn.w-full { width: 100%; }
 }
 
@@ -563,12 +562,13 @@
    360px — Mobile Medium (iPhone SE, smaller Android)
    ------------------------------------------------------------ */
 @media (max-width: 360px) {
-  html { font-size: 14.5px; }
+  html { font-size: 15.5px; }
   .container { padding-inline: 0.875rem; }
-  .section { padding-block: 1.75rem; }
-  .section-tag { font-size: 0.58rem; padding: 4px 10px; }
-  .section-title { font-size: clamp(1.4rem, 7vw, 1.7rem); }
-  .section-subtitle { font-size: 0.8125rem; }
+  .section { padding-block: 2rem; }
+  .section-tag { font-size: 0.65rem; padding: 5px 11px; letter-spacing: 0.08em; }
+  .section-title { font-size: clamp(1.65rem, 6.5vw, 1.95rem); line-height: 1.25; }
+  .section-subtitle { font-size: 0.9rem; line-height: 1.65; }
+  p { font-size: 0.9rem; line-height: 1.65; max-width: 100%; }
 
   /* Navbar */
   .navbar { height: 56px; }
@@ -599,24 +599,38 @@
   .page-hero-title { font-size: clamp(1.75rem, 7.2vw, 2.15rem); line-height: 1.1; }
   .page-hero-subtitle { font-size: 0.875rem; max-width: 30ch; line-height: 1.6; }
 
-  /* Cards & stats */
+  /* Cards & stats — readable */
   .stats-row { gap: var(--space-3); }
-  .stat-mini { padding: var(--space-3); }
-  .values-grid, .testimonials-track, .programs-grid, .blog-grid { gap: var(--space-3); }
+  .stat-mini { padding: var(--space-4); }
+  .stat-number { font-size: 1.75rem; }
+  .stat-label { font-size: 0.75rem; }
+  .values-grid, .testimonials-track, .programs-grid, .blog-grid { gap: var(--space-4); }
   .card-body, .testimonial-card, .faculty-card, .value-card { padding: var(--space-4); }
-  .program-card .card-title { font-size: var(--text-lg); }
+  .card-title { font-size: 1.15rem; line-height: 1.3; }
+  .card-text { font-size: 0.9rem; line-height: 1.65; }
+  .testimonial-card .testimonial-text { font-size: 0.9rem; line-height: 1.65; }
+  .program-card .card-title { font-size: 1.15rem; }
+  .program-card .card-desc { font-size: 0.8125rem; line-height: 1.5; }
   .faculty-card .faculty-img { width: 100px; height: 100px; }
+  .faculty-card .faculty-name { font-size: 1.05rem; }
+  .faculty-card .faculty-role { font-size: 0.75rem; }
+  .faculty-card .faculty-bio { font-size: 0.875rem; line-height: 1.6; }
   .gallery-strip-item { height: 260px; }
   .award-badge { min-width: 0; flex: 1 1 120px; padding: var(--space-3) var(--space-4); }
+  .award-name { font-size: 0.75rem; }
   .awards-strip { gap: var(--space-3); }
 
-  /* Forms */
-  .form-control { padding: 0.75rem 0.875rem; font-size: 0.8125rem; }
+  /* Forms — readable */
+  .form-control { padding: 0.85rem 1rem; font-size: 0.875rem; }
+  .form-label { font-size: 0.875rem; }
   .form-group { margin-bottom: var(--space-4); }
-  .btn { font-size: 0.75rem; }
+  .btn { font-size: 0.8125rem; padding: 0.75rem 1.15rem; }
+  .btn-sm { font-size: 0.75rem; }
   .office-hours-grid { gap: var(--space-2); }
   .contact-item { gap: var(--space-3); }
   .contact-icon-box { width: 40px; height: 40px; }
+  .contact-label { font-size: 0.7rem; }
+  .contact-value { font-size: 0.875rem; }
 
   /* Footer */
   .footer-grid { gap: var(--space-6); }
@@ -667,13 +681,14 @@
    320px — Mobile Small (iPhone 5/SE first gen, ultra small)
    ------------------------------------------------------------ */
 @media (max-width: 320px) {
-  html { font-size: 14px; }
+  html { font-size: 15px; }
   .container { padding-inline: 0.75rem; }
-  .section { padding-block: 1.5rem; }
-  .section-tag { font-size: 0.55rem; padding: 3px 8px; letter-spacing: 0.07em; }
-  .section-title { font-size: 1.35rem; line-height: 1.2; }
-  .section-subtitle { font-size: 0.75rem; line-height: 1.5; }
-  .section-header { margin-bottom: var(--space-4); }
+  .section { padding-block: 1.75rem; }
+  .section-tag { font-size: 0.62rem; padding: 4px 9px; letter-spacing: 0.07em; }
+  .section-title { font-size: clamp(1.55rem, 6vw, 1.75rem); line-height: 1.25; }
+  .section-subtitle { font-size: 0.875rem; line-height: 1.6; }
+  .section-header { margin-bottom: var(--space-5); }
+  p { font-size: 0.875rem; line-height: 1.65; max-width: 100%; }
 
   /* Prevent any horizontal overflow at 320 */
   html, body { overflow-x: hidden; max-width: 100vw; }
@@ -712,11 +727,11 @@
   .page-hero-subtitle { font-size: 0.8125rem; max-width: 26ch; line-height: 1.6; }
   .breadcrumb { font-size: 0.68rem; }
 
-  /* Typography clamp tighten for body */
-  h1 { font-size: clamp(1.5rem, 7vw, 1.75rem); }
-  h2 { font-size: clamp(1.25rem, 6vw, 1.5rem); }
-  h3 { font-size: var(--text-lg); }
-  p { font-size: 0.8125rem; line-height: 1.6; max-width: 100%; }
+  /* Typography — readable at 320 */
+  h1 { font-size: clamp(1.65rem, 7vw, 1.9rem); line-height: 1.2; }
+  h2 { font-size: clamp(1.4rem, 6vw, 1.65rem); line-height: 1.25; }
+  h3 { font-size: 1.05rem; line-height: 1.3; }
+  p { font-size: 0.875rem; line-height: 1.65; max-width: 100%; }
 
   /* Grids */
   .grid, .grid-2, .grid-3, .grid-4, .grid-6,
@@ -727,21 +742,25 @@
   .stat-mini .stat-number, .stats-number { font-size: 1.5rem; }
   .stat-label, .stats-label { font-size: 0.65rem; letter-spacing: 0.05em; }
   .value-card { padding: var(--space-4); }
-  .value-title { font-size: var(--text-base); }
-  .value-desc, .value-card p { font-size: 0.75rem !important; }
+  .value-title { font-size: 1rem; line-height: 1.3; }
+  .value-desc, .value-card p { font-size: 0.875rem !important; line-height: 1.6; }
 
-  /* Cards */
+  /* Cards — readable */
   .card { border-radius: var(--radius-md); }
-  .card-body { padding: 0.875rem; }
-  .card-title { font-size: var(--text-base); }
-  .card-text, .card-desc { font-size: 0.75rem; }
+  .card-body { padding: 1rem; }
+  .card-title { font-size: 1.05rem; line-height: 1.3; }
+  .card-text, .card-desc { font-size: 0.875rem; line-height: 1.6; }
   .program-card { aspect-ratio: 16/12; }
   .program-card .card-icon { width: 40px; height: 40px; border-radius: 10px; }
   .program-card .card-icon .icon-svg { width: 20px; height: 20px; }
   .faculty-card .faculty-img { width: 96px; height: 96px; }
+  .faculty-card .faculty-name { font-size: 1.05rem; }
+  .faculty-card .faculty-role { font-size: 0.75rem; }
+  .faculty-card .faculty-bio { font-size: 0.875rem; line-height: 1.6; }
   .testimonial-card { padding: var(--space-4); }
   .testimonial-card::before { font-size: 4rem; }
   .testimonial-card .author { gap: var(--space-3); }
+  .testimonial-card .testimonial-text { font-size: 0.875rem; line-height: 1.65; }
 
   /* Gallery */
   .gallery-strip { gap: var(--space-2); }
@@ -749,37 +768,44 @@
   .moments-arrow { width: 34px; height: 34px; }
   .moments-controls { gap: var(--space-2); margin-top: var(--space-4); }
 
-  /* Services */
-  .program-detail-body { padding: var(--space-4); }
+  /* Services — readable */
+  .program-detail-body { padding: var(--space-5); }
   .program-emoji { width: 42px; height: 42px; border-radius: 12px; }
-  .program-name { font-size: var(--text-lg); }
-  .program-desc { font-size: 0.75rem; }
-  .program-meta { flex-direction: column; align-items: flex-start; }
+  .program-name { font-size: 1.1rem; line-height: 1.3; }
+  .program-desc { font-size: 0.875rem; line-height: 1.65; }
+  .program-meta { flex-direction: row; flex-wrap: wrap; gap: var(--space-2); }
+  .program-meta .badge { font-size: 0.7rem; }
 
-  /* Blog */
-  .blog-hero-body { padding: var(--space-4); }
-  .blog-hero-title { font-size: 1.1rem; line-height: 1.25; }
-  .blog-meta { gap: var(--space-2); font-size: 0.65rem; flex-wrap: wrap; }
-  .blog-card-body { padding: 0.875rem; }
-  .blog-card-title { font-size: 0.9375rem; }
-  .blog-cat-tag { font-size: 0.58rem; padding: 3px 8px; }
+  /* Blog — readable */
+  .blog-hero-body { padding: var(--space-5); }
+  .blog-hero-title { font-size: 1.15rem; line-height: 1.3; }
+  .blog-excerpt { font-size: 0.875rem; line-height: 1.6; }
+  .blog-meta { gap: var(--space-2); font-size: 0.7rem; flex-wrap: wrap; }
+  .blog-card-body { padding: 1rem; }
+  .blog-card-title { font-size: 1rem; line-height: 1.3; }
+  .blog-card-excerpt { font-size: 0.875rem; line-height: 1.6; }
+  .blog-cat-tag { font-size: 0.65rem; padding: 4px 10px; }
 
-  /* Contact */
-  .contact-info-card { padding: var(--space-4); }
-  .contact-form-card { padding: var(--space-4); }
+  /* Contact — readable */
+  .contact-info-card { padding: var(--space-5); gap: var(--space-4); }
+  .contact-form-card { padding: var(--space-5); }
   .contact-form-card form > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
-  .form-control, .form-control[rows] { font-size: 0.8125rem; min-height: 0; }
-  .form-error { font-size: 0.68rem; }
-  .map-wrap { height: 220px; }
+  .form-control, .form-control[rows] { font-size: 0.875rem; min-height: 0; }
+  .form-label { font-size: 0.875rem; }
+  .contact-label { font-size: 0.7rem; }
+  .contact-value { font-size: 0.875rem; }
+  .form-error { font-size: 0.75rem; }
+  .map-wrap { height: 240px; }
 
-  /* CTA & pricing */
-  .cta-banner { padding: var(--space-8) 0; }
-  .cta-banner h2 { font-size: 1.35rem !important; }
-  .cta-banner p { font-size: 0.75rem !important; max-width: 24ch; }
-  .cta-banner .btn { font-size: 0.75rem; padding: 0.75rem 1rem; }
-  .pricing-card { padding: var(--space-4); }
-  .pricing-price { font-size: 1.75rem; }
-  .pricing-features li { font-size: 0.75rem; gap: var(--space-2); }
+  /* CTA & pricing — readable */
+  .cta-banner { padding: var(--space-10) 0; }
+  .cta-banner h2 { font-size: clamp(1.6rem, 6vw, 1.85rem) !important; line-height: 1.2; }
+  .cta-banner p { font-size: 0.875rem !important; max-width: 30ch; line-height: 1.6; }
+  .cta-banner .btn { font-size: 0.8125rem; padding: 0.85rem 1.25rem; }
+  .pricing-card { padding: var(--space-5); }
+  .pricing-name { font-size: 1.05rem; }
+  .pricing-price { font-size: 1.9rem; }
+  .pricing-features li { font-size: 0.8125rem; gap: var(--space-2); line-height: 1.6; }
   .check { width: 18px; height: 18px; font-size: 0.6rem; }
 
   /* Batch table — critical at 320 */
@@ -788,20 +814,22 @@
   .batch-table th, .batch-table td { padding: 8px 8px; font-size: 0.68rem; }
   .age-badge { font-size: 0.6rem; padding: 2px 8px; }
 
-  /* Accordion */
-  .accordion-header { padding: var(--space-3); }
-  .accordion-question { font-size: 0.8125rem; line-height: 1.3; }
+  /* Accordion — readable */
+  .accordion-header { padding: var(--space-4); }
+  .accordion-question { font-size: 0.9375rem; line-height: 1.4; }
   .accordion-icon { width: 26px; height: 26px; min-width: 26px; font-size: 0.9rem; }
-  .accordion-content { font-size: 0.75rem; line-height: 1.6; }
+  .accordion-content { font-size: 0.875rem; line-height: 1.65; }
 
-  /* Footer */
-  .footer-main { padding-top: var(--space-6); padding-bottom: var(--space-6); }
-  .footer-brand .logo-name { font-size: 1.1rem; }
-  .footer-desc { font-size: 0.75rem; }
-  .footer-col-title { font-size: 0.8125rem; }
-  .footer-link { font-size: 0.75rem; }
-  .footer-contact-text, .footer-newsletter-text { font-size: 0.75rem; }
-  .footer-bottom { padding-block: var(--space-3); }
+  /* Footer — readable */
+  .footer-main { padding-top: var(--space-8); padding-bottom: var(--space-6); }
+  .footer-brand .logo-name { font-size: 1.15rem; }
+  .footer-desc { font-size: 0.875rem; line-height: 1.6; }
+  .footer-col-title { font-size: 0.9rem; }
+  .footer-link { font-size: 0.8125rem; }
+  .footer-contact-text, .footer-newsletter-text { font-size: 0.8125rem; line-height: 1.6; }
+  .footer-contact-label { font-size: 0.7rem; }
+  .footer-bottom { padding-block: var(--space-4); }
+  .footer-copy, .footer-legal a { font-size: 0.75rem; }
   .footer-copy, .footer-legal a { font-size: 0.65rem; }
 
   /* Dashboard */
