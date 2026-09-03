@@ -36,6 +36,46 @@
       display: block;
     }
     .value-title { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--orchid); }
+    /* Stats cards — proper card container (fixes plain look) */
+    .stats-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base);
+    }
+    .stats-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .stats-icon {
+      width: 56px; height: 56px;
+      margin: 0 auto var(--space-4);
+      background: rgba(84,36,95,0.08);
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orchid);
+      flex-shrink: 0;
+    }
+    .stats-icon svg { width: 26px; height: 26px; }
+    .stats-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: var(--weight-black);
+      color: var(--orchid);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .stats-label {
+      font-size: var(--text-sm);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: var(--weight-semi);
+    }
+    [data-theme="dark"] .stats-icon { background: rgba(217,203,232,0.12); color: var(--champagne); }
+    [data-theme="dark"] .stats-card { border-color: rgba(217,203,232,0.12); }
+    [data-theme="dark"] .stats-number { color: var(--champagne); }
+    [data-theme="dark"] .stats-label { color: var(--lavender); }
     .awards-strip {
       display: flex;
       flex-wrap: wrap;
@@ -273,25 +313,29 @@
   </div>
 </header>
 
-<!-- SECTION 1: STATS (hero next — bg distinct from hero grad-brand) -->
+<!-- SECTION 1: STATS (hero next — proper card container, bg distinct from hero) -->
 <section class="section" style="background:var(--bg-secondary); border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color);" aria-label="Academy statistics">
   <div class="container">
     <div class="grid grid-4 gap-6 stagger-children">
-      <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--orchid);line-height:1;" data-counter data-target="500" data-suffix="+">0+</div>
-        <div style="font-size:var(--text-sm);letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;">Happy Students</div>
+      <div class="stats-card">
+        <div class="stats-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="stats-number" data-counter data-target="500" data-suffix="+">0+</div>
+        <div class="stats-label">Happy Students</div>
       </div>
-      <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--orchid);line-height:1;" data-counter data-target="25" data-suffix="+">0+</div>
-        <div style="font-size:var(--text-sm);letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;">Expert Faculty</div>
+      <div class="stats-card">
+        <div class="stats-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div class="stats-number" data-counter data-target="25" data-suffix="+">0+</div>
+        <div class="stats-label">Expert Faculty</div>
       </div>
-      <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--orchid);line-height:1;" data-counter data-target="20" data-suffix="+">0+</div>
-        <div style="font-size:var(--text-sm);letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;">Years of Excellence</div>
+      <div class="stats-card">
+        <div class="stats-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="stats-number" data-counter data-target="20" data-suffix="+">0+</div>
+        <div class="stats-label">Years of Excellence</div>
       </div>
-      <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--orchid);line-height:1;" data-counter data-target="100" data-suffix="+">0+</div>
-        <div style="font-size:var(--text-sm);letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-top:8px;">Grand Recitals</div>
+      <div class="stats-card">
+        <div class="stats-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h8c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"/><path d="M18 4H6v7a6 6 0 0 0 12 0V4Z"/></svg></div>
+        <div class="stats-number" data-counter data-target="100" data-suffix="+">0+</div>
+        <div class="stats-label">Grand Recitals</div>
       </div>
     </div>
   </div>
