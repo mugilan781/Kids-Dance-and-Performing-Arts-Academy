@@ -165,6 +165,7 @@
 .card-title {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
+  font-weight: var(--weight-semi);
   margin-bottom: var(--space-3);
   color: var(--text-primary);
 }
@@ -918,6 +919,7 @@
 }
 .page-hero-title {
   font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-weight: var(--weight-semi);
   color: #fff;
   line-height: 1.15;
   margin-bottom: var(--space-3);
@@ -925,6 +927,7 @@
 }
 .page-hero-subtitle {
   font-size: clamp(var(--text-base), 1.5vw, var(--text-xl));
+  font-weight: var(--weight-regular);
   color: rgba(255, 255, 255, 0.85);
   max-width: 60ch;
   margin-inline: auto;
@@ -1173,6 +1176,7 @@
 .process-title {
   font-family: var(--font-display);
   font-size: var(--text-xl);
+  font-weight: var(--weight-semi);
   margin-bottom: var(--space-3);
 }
 .process-desc {
@@ -1235,6 +1239,7 @@
 .pricing-name {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
+  font-weight: var(--weight-semi);
   margin-bottom: var(--space-2);
 }
 .pricing-price {
@@ -1419,6 +1424,7 @@ blockquote {
 .blog-article-body h2 {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
+  font-weight: var(--weight-semi);
   margin-top: var(--space-10);
   margin-bottom: var(--space-4);
 }

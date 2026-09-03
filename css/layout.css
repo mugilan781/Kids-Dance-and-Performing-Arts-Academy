@@ -95,6 +95,7 @@
 
 .section-title {
   font-size: clamp(2rem, 4vw, var(--text-5xl));
+  font-weight: var(--weight-semi);
   margin-bottom: var(--space-4);
   background: var(--grad-brand);
   -webkit-background-clip: text;
@@ -112,6 +113,7 @@
 
 .section-subtitle {
   font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
   color: var(--text-secondary);
   line-height: var(--leading-loose);
 }

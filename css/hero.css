@@ -110,6 +110,7 @@
 }
 .hero-title {
   font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: var(--weight-semi);
   color: #fff;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -124,6 +125,7 @@
 }
 .hero-subtitle {
   font-size: clamp(var(--text-base), 2vw, var(--text-xl));
+  font-weight: var(--weight-regular);
   color: rgba(255,255,255,0.82);
   line-height: var(--leading-loose);
   max-width: 56ch;

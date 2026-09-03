@@ -80,7 +80,7 @@
 .nav-logo-name {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-semi);
   color: var(--text-primary);
   white-space: nowrap;
   letter-spacing: -0.01em;
@@ -92,7 +92,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--rose-gold);
-  font-weight: var(--weight-semi);
+  font-weight: var(--weight-medium);
   line-height: 1;
 }
 .navbar.transparent .nav-logo-tagline { color: var(--champagne); }
