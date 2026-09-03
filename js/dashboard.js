@@ -28,15 +28,21 @@ const DashboardSidebar = (() => {
     const overlay = document.getElementById('sidebar-overlay');
     if (!sidebar) return;
 
+    function close() {
+      sidebar.classList.remove('open');
+      overlay?.classList.remove('open');
+      toggleBtn?.setAttribute('aria-expanded', 'false');
+    }
+
     toggleBtn?.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-      overlay?.classList.toggle('open');
+      const open = sidebar.classList.toggle('open');
+      overlay?.classList.toggle('open', open);
+      toggleBtn?.setAttribute('aria-expanded', open);
     });
 
-    overlay?.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('open');
-    });
+    overlay?.addEventListener('click', close);
+
+    return { close };
   }
 
   return { init };
@@ -157,7 +163,18 @@ const DashboardTabs = (() => {
     const sidebarLinks = document.querySelectorAll('.sidebar-link[data-section]');
     const sections = document.querySelectorAll('.dashboard-section');
 
-    function activate(id) {
+    function closeSidebar() {
+      const sidebar = document.querySelector('.dashboard-sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      const toggleBtn = document.getElementById('sidebar-toggle');
+      if (sidebar?.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        overlay?.classList.remove('open');
+        toggleBtn?.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    function activate(id, pushHash = true) {
       sidebarLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
       sections.forEach(s => {
         s.hidden = s.id !== `section-${id}`;
@@ -168,6 +185,11 @@ const DashboardTabs = (() => {
       const active = document.querySelector(`.sidebar-link[data-section="${id}"]`);
       const title = document.querySelector('.topbar-page-title');
       if (title && active) title.textContent = active.textContent.trim();
+
+      // Auto-close sidenavbar on mobile/tablet after menu click
+      closeSidebar();
+      if (pushHash) history.replaceState(null, '', '#' + id);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     sidebarLinks.forEach(link => {
@@ -178,12 +200,12 @@ const DashboardTabs = (() => {
     });
 
     // Activate first
-    if (sidebarLinks[0]) activate(sidebarLinks[0].dataset.section);
+    if (sidebarLinks[0]) activate(sidebarLinks[0].dataset.section, false);
 
     // Deep-link support: dashboard.html#enrollment opens that section
     const hash = window.location.hash.replace('#', '');
     if (hash && document.querySelector(`.sidebar-link[data-section="${hash}"]`)) {
-      activate(hash);
+      activate(hash, false);
     }
   }
 
