@@ -52,49 +52,56 @@ const Navbar = (() => {
     drawerOverlay = document.getElementById('drawer-overlay');
     hamburger = document.getElementById('nav-hamburger');
 
-    if (!navbar) return;
+    if (navbar) {
+      // Initial transparent state on hero pages
+      if (navbar.dataset.transparent === 'true') {
+        navbar.classList.add('transparent');
+      }
 
-    // Initial transparent state on hero pages
-    if (navbar.dataset.transparent === 'true') {
-      navbar.classList.add('transparent');
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Hamburger
+      hamburger?.addEventListener('click', () => {
+        drawer?.classList.contains('open') ? closeDrawer() : openDrawer();
+      });
+
+      // Close drawer
+      drawerOverlay?.addEventListener('click', closeDrawer);
+      document.getElementById('drawer-close')?.addEventListener('click', closeDrawer);
+
+      // Close drawer on link click
+      document.querySelectorAll('.drawer-link').forEach(link => {
+        link.addEventListener('click', closeDrawer);
+      });
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    // Hamburger
-    hamburger?.addEventListener('click', () => {
-      drawer.classList.contains('open') ? closeDrawer() : openDrawer();
-    });
-
-    // Close drawer
-    drawerOverlay?.addEventListener('click', closeDrawer);
-    document.getElementById('drawer-close')?.addEventListener('click', closeDrawer);
-
-    // Close drawer on link click
-    document.querySelectorAll('.drawer-link').forEach(link => {
-      link.addEventListener('click', closeDrawer);
-    });
-
-    // Profile dropdown — click toggle (touch friendly)
-    const profileMenu = document.querySelector('.profile-menu');
-    const profileBtn = document.querySelector('.profile-btn');
-    function closeProfile() {
-      profileMenu?.classList.remove('open');
-      profileBtn?.setAttribute('aria-expanded', 'false');
-    }
-    profileBtn?.addEventListener('click', e => {
-      e.stopPropagation();
-      const open = profileMenu.classList.toggle('open');
-      profileBtn.setAttribute('aria-expanded', String(open));
-    });
-    document.addEventListener('click', e => {
-      if (profileMenu && !profileMenu.contains(e.target)) closeProfile();
+    // Profile dropdown — click toggle (touch friendly, supports all pages & dashboards)
+    document.querySelectorAll('.profile-menu').forEach(menu => {
+      const btn = menu.querySelector('.profile-btn');
+      function closeProfile() {
+        menu.classList.remove('open');
+        btn?.setAttribute('aria-expanded', 'false');
+      }
+      btn?.addEventListener('click', e => {
+        e.stopPropagation();
+        const open = menu.classList.toggle('open');
+        btn?.setAttribute('aria-expanded', String(open));
+      });
+      document.addEventListener('click', e => {
+        if (!menu.contains(e.target)) closeProfile();
+      });
     });
 
     // Keyboard ESC
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { closeDrawer(); closeProfile(); }
+      if (e.key === 'Escape') {
+        closeDrawer();
+        document.querySelectorAll('.profile-menu').forEach(m => {
+          m.classList.remove('open');
+          m.querySelector('.profile-btn')?.setAttribute('aria-expanded', 'false');
+        });
+      }
     });
 
     setActiveLink();
