@@ -222,6 +222,9 @@
   .hero-subtitle { color: #333; }
   .hero-slide-bg { display: none; }
   .hero-slide-overlay { display: none; }
+  .page-hero { height: auto; min-height: unset; padding: 1rem 0; background: none; color: #000; }
+  .page-hero-title { color: #000; font-size: 24pt; }
+  .page-hero-subtitle { color: #333; }
 }
 
 /* ── High Contrast / Accessibility ──────────────────────────── */
