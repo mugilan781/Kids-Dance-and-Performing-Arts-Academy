@@ -217,15 +217,17 @@
   .office-hours-grid { grid-template-columns: 1fr; }
   .office-day { padding: var(--space-3) var(--space-4); }
 
-  /* Process & pricing */
-  .process-steps { grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-  .process-step { padding: var(--space-6) var(--space-4); }
-  .pricing-card { padding: var(--space-8) var(--space-6); }
-  .grid.grid-3.gap-6:has(.pricing-card) { grid-template-columns: 1fr 1fr; }
+  /* Process & pricing — proper 1-col at tablet */
+  .process-steps { grid-template-columns: 1fr; gap: var(--space-4); }
+  .process-step { padding: var(--space-6) var(--space-4); width: 100%; max-width: 420px; margin-inline: auto; }
+  .pricing-card { padding: var(--space-6); width: 100%; max-width: 420px; margin-inline: auto; box-sizing: border-box; }
+  .pricing-card.featured { transform: none !important; }
+  .grid.grid-3.gap-6:has(.pricing-card) { grid-template-columns: 1fr; gap: var(--space-5); }
+  .grid.grid-3 { grid-template-columns: 1fr; }
 
-  /* Batch table */
-  .batch-table-wrap { border-radius: var(--radius-lg); }
-  .batch-table { min-width: 600px; font-size: var(--text-xs); }
+  /* Batch table — horizontal scroll at tablet */
+  .batch-table-wrap { border-radius: var(--radius-lg); overflow-x: auto !important; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; display: block; width: 100%; max-width: 100%; scrollbar-width: thin; }
+  .batch-table { min-width: 600px; width: max-content; font-size: var(--text-xs); border-collapse: collapse; }
   .batch-table th, .batch-table td { padding: var(--space-3) var(--space-3); white-space: nowrap; }
   .batch-table-note { font-size: var(--text-xs); padding-inline: var(--space-2); }
 
@@ -452,22 +454,33 @@
   .map-wrap + div[style*="display:flex"] { flex-direction: column; align-items: stretch !important; text-align: center; }
   .map-wrap + div .btn { width: 100%; justify-content: center; }
 
-  /* Process & pricing */
-  .process-steps { gap: var(--space-4); }
-  .process-step { padding: var(--space-5); }
+  /* Process & pricing — proper 1-col at 480 */
+  .process-steps { gap: var(--space-4); grid-template-columns: 1fr !important; }
+  .process-step { padding: var(--space-5); width: 100%; max-width: 420px; margin-inline: auto; box-sizing: border-box; }
   .process-num { width: 44px; height: 44px; font-size: var(--text-xl); }
-  .process-title { font-size: var(--text-base); }
-  .process-desc { font-size: var(--text-xs); }
-  .pricing-card { padding: var(--space-6); }
-  .pricing-card.featured { transform: none; }
-  .pricing-name { font-size: var(--text-xl); }
+  .process-title { font-size: 1.05rem; line-height: 1.3; }
+  .process-desc { font-size: 0.875rem; line-height: 1.6; }
+  .pricing-card { padding: var(--space-6); width: 100%; max-width: 400px; margin-inline: auto; box-sizing: border-box; }
+  .pricing-card.featured { transform: none !important; }
+  .grid.grid-3, .grid.grid-3.gap-6 { grid-template-columns: 1fr !important; gap: var(--space-4); }
+  .pricing-name { font-size: 1.15rem; }
   .pricing-price { font-size: clamp(2rem, 8vw, 2.5rem); }
-  .pricing-features li { font-size: var(--text-xs); }
+  .pricing-period { font-size: 0.8125rem; }
+  .pricing-features li { font-size: 0.875rem; line-height: 1.6; }
+  .pricing-badge { font-size: 0.65rem; }
 
-  /* Batch table — critical for 480 */
-  .batch-table-wrap { margin-inline: -1rem; border-radius: 0; border-left: none; border-right: none; }
-  .batch-table-wrap .batch-table { min-width: 560px; }
-  .batch-table-note { font-size: 0.7rem; margin-top: var(--space-3); }
+  /* Batch table — proper horizontal scroll at 480 */
+  .batch-table-wrap { margin-inline: -1rem; border-radius: 0; border-left: none; border-right: none; overflow-x: auto !important; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; display: block; width: calc(100% + 2rem); max-width: calc(100% + 2rem); scrollbar-width: thin; padding-bottom: 4px; }
+  .batch-table-wrap .batch-table { min-width: 560px; width: max-content; }
+  .batch-table { min-width: 560px; width: max-content; }
+  .batch-table-note { font-size: 0.7rem; margin-top: var(--space-3); text-align: center; }
+
+  /* Blog Subscribe — proper at 480 */
+  .subscribe-field { flex-direction: column !important; gap: var(--space-3) !important; max-width: 100% !important; width: 100% !important; align-items: stretch !important; }
+  .subscribe-field .form-control { border-radius: var(--radius-full) !important; border-right: 1.5px solid var(--border-color) !important; width: 100% !important; flex: none !important; }
+  .subscribe-field .btn, .subscribe-field .btn.btn-champagne { border-radius: var(--radius-full) !important; width: 100% !important; justify-content: center !important; flex: none !important; }
+  .cta-banner .subscribe-field, .cta-banner form .subscribe-field { max-width: 380px; margin-inline: auto; }
+  .cta-banner form { max-width: 380px; margin-inline: auto; width: 100%; padding-inline: var(--space-2); box-sizing: border-box; }
 
   /* Accordion — readable */
   .accordion-header { padding: var(--space-4); gap: var(--space-3); }
@@ -650,14 +663,16 @@
   .step-dot { width: 28px; height: 28px; }
   .step-line { max-width: 24px; }
 
-  /* Batch table — even tighter */
-  .batch-table-wrap { margin-inline: -0.875rem; }
-  .batch-table { min-width: 520px; }
+  /* Batch table — horizontal scroll at 360 */
+  .batch-table-wrap { margin-inline: -0.875rem; overflow-x: auto !important; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; display: block; width: calc(100% + 1.75rem); max-width: calc(100% + 1.75rem); scrollbar-width: thin; padding-bottom: 4px; border-radius: 0; border-left: none; border-right: none; }
+  .batch-table { min-width: 520px; width: max-content; }
 
-  /* Blog CTA subscribe */
-  .subscribe-field { flex-direction: column; gap: var(--space-2); }
-  .subscribe-field .form-control { border-radius: var(--radius-full) !important; border-right: 1.5px solid var(--border-color) !important; }
-  .subscribe-field .btn { border-radius: var(--radius-full) !important; width: 100%; justify-content: center; }
+  /* Blog Subscribe — proper at 360 */
+  .subscribe-field { flex-direction: column !important; gap: var(--space-3) !important; max-width: 100% !important; width: 100% !important; align-items: stretch !important; }
+  .subscribe-field .form-control { border-radius: var(--radius-full) !important; border-right: 1.5px solid var(--border-color) !important; width: 100% !important; flex: none !important; font-size: 0.875rem; padding: 0.85rem 1.1rem; }
+  .subscribe-field .btn, .subscribe-field .btn.btn-champagne { border-radius: var(--radius-full) !important; width: 100% !important; justify-content: center !important; flex: none !important; padding: 0.85rem 1.25rem; font-size: 0.875rem; }
+  .cta-banner .subscribe-field, .cta-banner form .subscribe-field { max-width: 340px; margin-inline: auto; }
+  .cta-banner form { max-width: 340px; margin-inline: auto; width: 100%; padding-inline: var(--space-2); box-sizing: border-box; }
 
   /* Cookie */
   .cookie-banner { padding: var(--space-4); }
@@ -808,11 +823,18 @@
   .pricing-features li { font-size: 0.8125rem; gap: var(--space-2); line-height: 1.6; }
   .check { width: 18px; height: 18px; font-size: 0.6rem; }
 
-  /* Batch table — critical at 320 */
-  .batch-table-wrap { margin-inline: -0.75rem; border-radius: 0; }
-  .batch-table { min-width: 480px; font-size: 0.68rem; }
-  .batch-table th, .batch-table td { padding: 8px 8px; font-size: 0.68rem; }
-  .age-badge { font-size: 0.6rem; padding: 2px 8px; }
+  /* Batch table — horizontal scroll at 320 */
+  .batch-table-wrap { margin-inline: -0.75rem; border-radius: 0; border-left: none; border-right: none; overflow-x: auto !important; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; display: block; width: calc(100% + 1.5rem); max-width: calc(100% + 1.5rem); scrollbar-width: thin; padding-bottom: 4px; }
+  .batch-table { min-width: 480px; width: max-content; font-size: 0.75rem; }
+  .batch-table th, .batch-table td { padding: 8px 8px; font-size: 0.75rem; white-space: nowrap; }
+  .age-badge { font-size: 0.65rem; padding: 3px 8px; }
+
+  /* Blog Subscribe — proper at 320 */
+  .subscribe-field { flex-direction: column !important; gap: var(--space-2) !important; max-width: 100% !important; width: 100% !important; align-items: stretch !important; }
+  .subscribe-field .form-control { border-radius: var(--radius-full) !important; border-right: 1.5px solid var(--border-color) !important; width: 100% !important; flex: none !important; font-size: 0.8125rem; padding: 0.75rem 1rem; }
+  .subscribe-field .btn, .subscribe-field .btn.btn-champagne { border-radius: var(--radius-full) !important; width: 100% !important; justify-content: center !important; flex: none !important; font-size: 0.8125rem; padding: 0.75rem 1rem; }
+  .cta-banner .subscribe-field, .cta-banner form .subscribe-field { max-width: 280px; margin-inline: auto; }
+  .cta-banner form { max-width: 280px; margin-inline: auto; width: 100%; padding-inline: var(--space-2); box-sizing: border-box; }
 
   /* Accordion — readable */
   .accordion-header { padding: var(--space-4); }
@@ -869,10 +891,17 @@
   /* Toast */
   .toast { padding: var(--space-3) var(--space-4); font-size: 0.8125rem; }
 
-  /* Timeline */
-  .timeline { padding-left: var(--space-6); }
-  .timeline-title { font-size: var(--text-base); }
-  .timeline-desc { font-size: 0.75rem; line-height: 1.5; }
+  /* Timeline — Our Journey line and dots proper at 320 */
+  .timeline { padding-left: var(--space-8) !important; }
+  [dir="rtl"] .timeline { padding-left: 0 !important; padding-right: var(--space-8) !important; }
+  .timeline::before { left: var(--space-3) !important; }
+  [dir="rtl"] .timeline::before { left: auto !important; right: var(--space-3) !important; }
+  .timeline-dot { left: calc(-1 * var(--space-8) + var(--space-3) - 8px) !important; width: 16px !important; height: 16px !important; border-width: 2px !important; top: 4px !important; }
+  [dir="rtl"] .timeline-dot { left: auto !important; right: calc(-1 * var(--space-8) + var(--space-3) - 8px) !important; }
+  .timeline-item { margin-bottom: var(--space-6) !important; }
+  .timeline-year { font-size: 0.7rem !important; }
+  .timeline-title { font-size: 1rem !important; line-height: 1.3; }
+  .timeline-desc { font-size: 0.875rem !important; line-height: 1.6; }
 
   /* Buttons — ensure tap targets but compact */
   .btn { padding: 0.65rem 1rem; font-size: 0.7rem; letter-spacing: 0.02em; }
@@ -1010,10 +1039,24 @@
   .hero2-desc { font-size: 0.8125rem; line-height: 1.6; text-align: center !important; margin-inline: auto !important; }
   .hero2-tag { margin-inline: auto !important; display: inline-flex !important; justify-content: center !important; }
   .hero2-social { justify-content: center !important; }
-  .showcase-card { padding: var(--space-4); }
-  .showcase-unit { padding: var(--space-2); }
-  .showcase-num { font-size: 1.25rem; }
-  .showcase-lbl { font-size: 0.6rem; }
+  /* Next Performance — proper responsive at 320px */
+  .showcase-card { padding: var(--space-4); width: 100%; max-width: 100%; box-sizing: border-box; overflow: hidden; border-radius: var(--radius-xl); }
+  .showcase-top { flex-direction: column !important; align-items: center !important; text-align: center !important; gap: var(--space-4) !important; }
+  .showcase-date { width: 72px; height: 72px; flex-shrink: 0; }
+  .showcase-date-day { font-size: 1.75rem; }
+  .showcase-info { width: 100%; min-width: 0; text-align: center; }
+  .showcase-title { font-size: clamp(1.2rem, 5vw, 1.45rem) !important; text-align: center !important; line-height: 1.2; }
+  .showcase-eyebrow { text-align: center; }
+  .showcase-meta { align-items: center !important; text-align: center !important; gap: var(--space-2); }
+  .showcase-meta span { justify-content: center !important; text-align: center; font-size: 0.75rem; flex-wrap: wrap; }
+  .showcase-bottom { flex-direction: column !important; align-items: stretch !important; gap: var(--space-4) !important; padding-top: var(--space-4); }
+  .showcase-countdown { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: var(--space-2) !important; width: 100% !important; }
+  .showcase-unit { padding: var(--space-3) var(--space-2) !important; min-width: 0 !important; width: 100% !important; min-height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .showcase-num { font-size: 1.3rem !important; }
+  .showcase-lbl { font-size: 0.6rem !important; }
+  .showcase-cta { width: 100% !important; text-align: center; }
+  .showcase-cta .btn { width: 100% !important; justify-content: center !important; font-size: 0.8125rem; padding: 0.75rem 1rem; }
+  .showcase-note { text-align: center !important; font-size: 0.7rem; }
   .feature-item { padding: var(--space-4); }
   .journey-step { padding: var(--space-4); }
   .journey-icon { width: 48px; height: 48px; }
